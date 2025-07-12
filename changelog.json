@@ -1,0 +1,3838 @@
+{
+	"1743427856680": {
+		"updates": {
+			"chat": {
+				"revision": 86,
+				"notes": [
+					[
+						"fixed emote fetching stopping way too early if 7TV is down"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 92,
+				"notes": [
+					[
+						"fixed HTTP 401 errors not triggering a reauth when using Spotify's artist metadata on external music players"
+					]
+				]
+			}
+		}
+	},
+
+	"1742793980425": {
+		"updates": {
+			"spotify": {
+				"revision": 29,
+				"notes": [
+					[
+						"scannable data checker just checks for the presence of a uri field now"
+					],
+					[
+						"abstracted a couple of spotify-centric functions"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 91,
+				"notes": [
+					[
+						"added the ability to use ISRCs in external player track data as data for spotify scannables",
+						["this will require Spotify API tokens, as it uses the search call on the Web API"],
+						{"anchor": "mus_useISRCToFetchScannableID"}
+					],
+					[
+						"added the ability to use ISRCs in external player track data for replacement artist metadata from Spotify",
+						["this will require Spotify API tokens, as it uses various parts of the Web API"],
+						{"anchor": "mus_useISRCToFetchArtistMetadata"}
+					],
+					[
+						"re-organized the supported external music player list"
+					],
+					[
+						"added link to mercurialworld's external player bridge script for YouTube Music (via th-ch's client)",
+						{"anchor": "mus_overrideSpotify"}
+					]
+				]
+			}
+		}
+	},
+
+	"1742436356571": {
+		"updates": {
+			"spotify": {
+				"revision": 28,
+				"notes": [
+					[
+						"added the ability to use comment fields in external player track data as data for spotify scannables",
+						["comments should only contain the ID/code for this to work"],
+						{"anchor": "mus_useCommentFieldAsScannableID"}
+					],
+					[
+						"quieted down logging on external music scripts"
+					],
+					[
+						"fixed gradients not being applied to the artist display if an external music player sends artist data as a string"
+					],
+					[
+						"added missing events for the playing field in external player track state"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 90,
+				"notes": [
+					[
+						"added link to mercurialworld's external player bridge script for Cider",
+						{"anchor": "mus_overrideSpotify"}
+					]
+				]
+			}
+		}
+	},
+
+	"1739740699104": {
+		"updates": {
+			"bs": {
+				"revision": 22,
+				"notes": [
+					[
+						"personal best rank display now shows score-relevant modifiers if any are present"
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 85,
+				"notes": [
+					[
+						"fixed reply containers remaining left-aligned in right-aligned layouts"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 89,
+				"notes": [
+					[
+						"fixed Beat Saber map details not updating if swapping to a different difficulty within the same map"
+					],
+					[
+						"prevented non-chat events from triggering in shared chats that are not from the host broadcaster"
+					]
+				]
+			}
+		}
+	},
+
+	"1737157883622": {
+		"updates": {
+			"all": {
+				"notes": [
+					[
+						"added support for changing the page body background color value",
+						["this now adds transparency support for use in VR via Desktop+ or anything else that supports transparency natively"]
+					]
+				]
+			},
+
+			"bs": {
+				"revision": 21,
+				"notes": [
+					[
+						"fixed minor clipping issues with secondary metadata display"
+					],
+					[
+						"added missing font weight settings for miscellaneous info",
+						{"anchor": "bs_miscInfoTopAdditionalFontWeight"}
+					],
+					[
+						"fixed text alignment being forced center on the top row of miscellaneous info",
+						{"anchor": "bs_miscInfoAlignment"}
+					],
+					[
+						"refactored BeatLeader personal best data fetching to avoid \"already read\" errors if refreshing the overlay",
+						["this wasn't really breaking anything, but it looks bad and it bothered me"]
+					]
+				]
+			},
+
+			"bsvas": {
+				"revision": 7,
+				"notes": [
+					[
+						"fixed VOD audio being muted when restarting a map or when backing out and into the same map, regardless of the safe flag"
+					],
+					[
+						"fixed map hash using the wrong font"
+					],
+					[
+						"fixed cover art URL trying to use 2 different image types on the DataPuller endpoint"
+					],
+					[
+						"fixed local database trying to save every map as null"
+					],
+					[
+						"fixed undefined toggleVODAudio function being called when pressing either flag button",
+						["this was moved to a BroadcastChannel event forever ago and i never migrated it, oops"]
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 84,
+				"notes": [
+					[
+						"fixed line wrapping issues with Beat Saber request information on the traditional layout",
+						["honestly this whole bsr layout is a trainwreck now, i may go back and completely re-do it at some point"]
+					],
+					[
+						"fixed widths not being forced on the traditional layout if Beat Saber request content exceeded allotted width"
+					]
+				]
+			},
+
+			"clock": {
+				"revision": 10,
+				"notes": [
+					[
+						"fixed issue with broadcaster data sometimes coming back empty, causing errors involving undefined variables (again)"
+					],
+					[
+						"prevented ad timer data loops from running if ad data ever comes back empty",
+						["this will only ever happen if you're not authorized to fetch that data, which if you're not, that display is useless"]
+					]
+				]
+			},
+
+			"nightscout": {
+				"revision": 2,
+				"notes": [
+					[
+						"fixed the leading zero pad setting only taking effect if the \"fade\" setting for it is also enabled"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 88,
+				"notes": [
+					[
+						"added a setting for changing the page body background color value on all overlays",
+						{"anchor": "_overall_bgColor"}
+					],
+					[
+						"fixed setting jumps going to the About tab not going to the correct setting position"
+					],
+					[
+						"extended fade out animation on settings jumped to from settings jumpers"
+					]
+				]
+			}
+		}
+	},
+
+	"1736096349162": {
+		"updates": {
+			"bs": {
+				"revision": 20,
+				"notes": [
+					[
+						"fixed ranking info always using the first played difficulty of a map if swapping to a difficulty within the same map"
+					],
+					[
+						"added support for map modifiers in PP calculation",
+						["BS+ only supports speed modifiers; if you use GN/DA/etc. it may not line up with actual PP values"]
+					],
+					[
+						"added ability to display active map modifiers in the miscellaneous info cell",
+						["NF is skipped over, kinda useless information"],
+						{"anchor": "bs_miscInfoShowMapModifiers"}
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 83,
+				"notes": [
+					[
+						"fixed positioning issues with shared chat broadcaster avatars",
+						["this was a 1 line CSS fix lol, certified web dev moment"]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 87,
+				"notes": [
+					[
+						"added support for sending Beat Saber map modifier data",
+						["BS+ will only get the SS/FS/SF modifiers, as it does not provide any modifier data except for song speed data"]
+					],
+					[
+						"removed erroneous map hash check being set to null in DataPuller stuff"
+					]
+				]
+			}
+		}
+	},
+
+	"1735257421730": {
+		"updates": {
+			"chat": {
+				"revision": 82,
+				"notes": [
+					[
+						"fixed minor vertical alignment issue with map codes in Beat Saber request information if using smaller fonts"
+					],
+					[
+						"fixed mentions sometimes appearing in the wrong place if next to multiple emotes"
+					],
+					[
+						"added additional font settings for map codes in Beat Saber request information",
+						{"anchor": "chatBSRMapCodeVerticalOffset"}
+					],
+					[
+						"simplified various true/false conditionals in setting setters into inline conditionals"
+					],
+					[
+						"fixed mentions using custom name fonts sometimes clipping"
+					]
+				]
+			},
+
+			"clock": {
+				"revision": 9,
+				"notes": [
+					[
+						"fixed issue with broadcaster data sometimes coming back empty, causing errors involving undefined variables"
+					]
+				]				
+			},
+
+			"settings": {
+				"revision": 86,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1733519932164": {
+		"updates": {
+			"chat": {
+				"revision": 81,
+				"notes": [
+					[
+						"fixed badge containers remaining visible and adding an outer gap if the chatter has badges, even if none of which are enabled on the overlay"
+					],
+					[
+						"fixed unicode emoji remaining big in replies if big emotes are enabled"
+					],
+					[
+						"fixed identity flags toggle doing nothing"
+					],
+					[
+						"fixed impossibly rare thrown exception on a yet-to-be-defined badge variable",
+						["literally the only way you can run into this is by refreshing the overlay the *exact* second a message is rendered. funny initialization issue"]
+					],
+					[
+						"fixed default sub badges always remaining at the first streak level (the purple 1 month badge)",
+						["i've also added a toggle to force it to the one month badge, since twitch only uses that one by default"],
+						{"anchor": "forceDefaultSubBadgeToFirstTier"}
+					],
+					[
+						"simplified some badge conditionals"
+					],
+					[
+						"re-added support for hidden modifiers on emotes",
+						["think i can figure out stuff like BetterTTV's v! and h! modifiers eventually. the emote refactoring should make this a bit easier"]
+					],
+					[
+						"cover art's border radius in Beat Saber request information can now be changed",
+						{"anchor": "chatBSRMapArtBorderRadius"}
+					],
+					[
+						"added various appearance settings in relation to the map key for Beat Saber request information",
+						{"anchor": "chatBSRMapCodeFGColor"}
+					],
+					[
+						"cover art can now be toggled in Beat Saber request information",
+						{"anchor": "chatBSREnableCoverArt"}
+					],
+					[
+						"added cover art display permissions for Beat Saber request information",
+						{"anchor": "chatBSRAlwaysShowCoverArt"}
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 85,
+				"notes": [
+					[
+						"organized the badge toggles a bit in Chat > Badges"
+					],
+					[
+						"made color input fields narrower",
+						["...why did i make them so wide anyways?"]
+					]
+				]
+			}
+		}
+	},
+
+	"1733071037986": {
+		"updates": {
+			"bs": {
+				"revision": 19,
+				"notes": [
+					[
+						"fixed hand scoring cell not disappearing along with the rest of the overlay"
+					],
+					[
+						"fixed multiple exceptions being thrown on OST maps concerning map rank status"
+					],
+					[
+						"prevented duplicate leaderboard fetch requests triggering within milliseconds of each other",
+						["i lvoe async porgrmaing"]
+					],
+					[
+						"fixed cover art visibility state not quite lining up with the rest of the overlay"
+					],
+					[
+						"fixed overlay always being hidden if refreshing with the \"hide if not in a map\" setting was enabled"
+					],
+					[
+						"added warning concerning combo display with versions of DataPuller older than 2.1.10"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 84,
+				"notes": [
+					[
+						"added conditional for color schemes in Beat Saber map information for versions of DataPuller older than 2.1.9"
+					],
+					[
+						"LevelID fields in Beat Saber map information are now dynamically generated for versions of DataPuller that did not provide it already",
+						["*most of the time* it's just the title in lowercase with symbols and white-space stripped out"]
+					]
+				]
+			}
+		}
+	},
+
+	"1732713884785": {
+		"updates": {
+			"chat": {
+				"revision": 80,
+				"notes": [
+					[
+						"added a structuredClone polyfill to fix a breaking error on Chromium 95 (OBS 27)"
+					],
+					[
+						"fixed badges not rendering properly if the gradient blending mode is plus-lighter on Chromium 95 (OBS 27)",
+						["plus-lighter wasn't a valid option until Chromium 100"]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 83,
+				"notes": [
+					[
+						"added a timezone array polyfill to fix a breaking error on Chromium 95 (OBS 27)"
+					]
+				]
+			}
+		}
+	},
+
+	"1732437853357": {
+		"updates": {
+			"chat": {
+				"revision": 79,
+				"notes": [
+					[
+						"fixed 7TV name paints not applying if a custom paint is present, but the viewer wants their 7TV paint to override it",
+						["this was literally just flip-flopping the order of 2 function calls lol"]
+					],
+					[
+						"added a toggle to switch to a more traditional chat layout flow",
+						{"anchor": "chatOverlayIsTraditional"}
+					],
+					[
+						"made back-to-back messages being combined into one overall block optional",
+						{"anchor": "combineMessagesIntoOneBlock"}
+					],
+					[
+						"fixed unicode emoji breaking stored Twitch emote names"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 82,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1732171425145": {
+		"updates": {
+			"bs": {
+				"revision": 18,
+				"notes": [
+					[
+						"fixed BeatLeader avatars not showing up on initialization of the overlay if no map is being played at the time of initialization"
+					],
+					[
+						"added the ability to add additional padding to the health outline",
+						["seeing some confusion about the health outline and progress outline being in the same spot showing similar things, hopefully this differentiates it enough?"],
+						{"anchor": "bs_healthOutlinePadding"}
+					],
+					[
+						"added a BeatLeader icon option for rank icon display",
+						{"anchor": "bs_pbRankIcon"}
+					],
+					[
+						"fixed vertical alignment issue with BeatLeader icons and avatars in the Personal Best cell"
+					],
+					[
+						"added the ability to display ranked and curation status lines akin to status lines on BeatSaver map cards",
+						{"anchor": "bs_elementOrder"}
+					],
+					[
+						"fixed personal best cell reappearing on layout change even if a personal best was not set and the setting to hide it if so was enabled"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 81,
+				"notes": [
+					[
+						"fixed incorrect state check in Twitch oauth token fetching",
+						["this might? fix auth errors for one particular streamer? (sorry xav, hopefully this fixes it)"]
+					]
+				]
+			}
+		}
+	},
+
+	"1731996059215": {
+		"updates": {
+			"chat": {
+				"revision": 78,
+				"notes": [
+					[
+						"moderators and VIPs can now bypass ASCII art filtering",
+						{"anchor": "chatModsBypassASCIIArtFilter"}
+					],
+					[
+						"messages shorter than 3 characters now bypass ASCII art filtering",
+						{"anchor": "chatMessageLengthASCIIArtFilterMinimum"}
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 80,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1731824299925": {
+		"updates": {
+			"bs": {
+				"revision": 17,
+				"notes": [
+					[
+						"failing while playing a map will now add an icon indicating failure on top of the cover art",
+						{"anchor": "bs_enableSkullOnDeath"}
+					],
+					[
+						"fixed a duplicate CSS variable name"
+					],
+					[
+						"added the ability to display personal bests from BeatLeader",
+						{"anchor": "bs_elementOrder"}
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 77,
+				"notes": [
+					[
+						"added the ability to shift perspective of the overlay as a whole",
+						{"anchor": "chatShiftPerspective"}
+					],
+					[
+						"fixed default subscriber badges not reflecting their proper subscription amount"
+					],
+					[
+						"fixed default bits badges not showing up"
+					],
+					[
+						"removed old badge show/hide code and migrated toggles to CSS definitions",
+						["i broke toggles in the shared chat refactor, they now work again. sorry! didn't catch it until recently"]
+					],
+					[
+						"fixed non-twitch emotes in cheer messages doubling as their text form"
+					],
+					[
+						"fixed new subscribers who haven't chatted in a session yet triggering a non-breaking undefined exception",
+						["this is so specific that i probably just caught a rare event happening lol, that never happens"]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 79,
+				"notes": [
+					[
+						"fixed setting cell labels with multiple lines not being vertically centered"
+					]
+				]
+			}
+		}
+	},
+
+	"1731375866256": {
+		"updates": {
+			"chat": {
+				"revision": 76,
+				"notes": [
+					[
+						"prevented viewers' personal 7TV emote sets from appearing in the overlay and modifying the channel's active emote sets, unless toggled on",
+						{"anchor": "enable7TVPersonalEmoteSets"}
+					],
+					[
+						"dynamic emote create/remove events now ensure it's only affecting emote sets mirroring the event's attached emote set ID",
+						["this only affects BTTV and 7TV. no live data interface/endpoint exists for FFZ"]
+					],
+					[
+						"added a setting to switch BTTV emote formats between GIF/PNG and WEBP",
+						["by default it will now use WEBP. was completely unaware this format was supported on there woops"],
+						{"anchor": "emoteFormatBTTV"}
+					],
+					[
+						"fixed 7TV paints not setting if the broadcaster disables individuality settings on name blocks, but still allows 7TV paints"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 78,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1731253599587": {
+		"updates": {
+			"all": {
+				"notes": [
+					[
+						"ensured all overlays now use shared asset paths"
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 75,
+				"notes": [
+					[
+						"added support for \"Gigantify an Emote\" message effects",
+						["most of the other implementations i've seen of this effect also enlarge text, so the whole message will enlarge on the overlay. not just the emote"],
+						{"anchor": "enableGigantifiedMessageEffect"}
+					],
+					[
+						"fixed twitch badges remaining visible in viewer information even after the viewer or twitch has removed them"
+					],
+					[
+						"badge blocks in viewer information are now separated per-chatroom in shared chats"
+					],
+					[
+						"badges are now forced to render in a specific order, no matter how they're ordered in the DOM"
+					],
+					[
+						"fixed avatars not rendering even if a cheering threshold was met",
+						["removing all of the else if's in the avatarEnabled getter fixed this and i'm... yeah. i'm clueless. no idea."]
+					],
+					[
+						"completely overhauled emote rendering",
+						["this should pretty much completely fix zero-width emotes, there were originally 5 bugs in the changelog concerning zero-width emotes, but completely re-doing it fixed all of those + more. so."]
+					],
+					[
+						"added a setting to manually adjust vertical offsets of inline emotes",
+						{"anchor": "emotesInlineVerticalOffset"}
+					],
+					[
+						"changed default 7TV emote format from GIF/PNG to WEBP",
+						["discovered during testing that GIFs don't quite render opacity correctly compared to WEBP and AVIF"],
+						{"anchor": "emoteFormat7TV"}
+					],
+					[
+						"fixed reply bodies remaining highlighted if the message being replied to was highlighted"
+					],
+					[
+						"attempted to fix initial system messages sometimes failing to decay",
+						["i've only seen this come up a few times, ever? i think what i moved around should fix it."]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 77,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1730938028623": {
+		"updates": {
+			"chat": {
+				"revision": 74,
+				"notes": [
+					[
+						"fixed emote-only replies cutting off the lower half of emotes if big emotes are enabled"
+					],
+					[
+						"reworked how twitch emotes are handled internally",
+						["they're now being treated much more similarly to emotes on external services"]
+					],
+					[
+						"fixed zero-width emotes not rendering as zero-width emotes"
+					],
+					[
+						"zero-width emotes no longer count towards emote limits in big emote messages"
+					],
+					[
+						"emotes cached URL objects are now cleared when toggling the low quality images setting"
+					],
+					[
+						"removed some old commented out code"
+					],
+					[
+						"(hotfix @ 19:02 CST) fixed emotes with HTML-encoded entities not rendering",
+						["this broke \"<3\""]
+					]
+				]
+			}
+		}
+	},
+
+	"1730554830132": {
+		"updates": {
+			"all": {
+				"notes": [
+					[
+						"centralized all shared libraries and assets into a shared path"
+					],
+					[
+						"updated Font Awesome to version 6.6.0"
+					],
+					[
+						"updated coloris to version 0.24.0"	
+					],
+					[
+						"updated FancySelect to version 0.7.0",
+						["had to remove a conditional check to get this version working, wtf"]
+					],
+					[
+						"updated markdown-it to version 14.1.0"	
+					],
+					[
+						"updated obs-websocket-js to version 5.0.6"	
+					],
+					[
+						"updated socket.io to version 4.8.1"	
+					],
+					[
+						"ensured all overlays have access to self-hosted mirrors of Google webfonts",
+						["there were a bunch that didn't, woops"]
+					]
+				]
+			},
+
+			"bs": {
+				"revision": 16,
+				"notes": [
+					[
+						"fixed health outlines not appearing due to z-index conflicts with the song progress outline",
+						["(this was silently patched on the 31st)"]
+					],
+					[
+						"disabled health outline foreground color reflection by default",
+						{"anchor": "bs_healthOutlineFGReflectsArtColor"}
+					],
+					[
+						"added icon for map characteristics added by ReBeat",
+						["can't verify if the icons show up as the mod is... very, very broken on 1.37 unfortunately. should be fine"]
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 73,
+				"notes": [
+					[
+						"ensured management-related chat commands are only triggerable from the broadcaster's chatroom in shared chats"
+					],
+					[
+						"added a setting to limit big emote messages by line count",
+						{"anchor": "chatMaxBigEmoteLines"}
+					],
+					[
+						"added a setting to limit reply block widths",
+						{"anchor": "chatReplyMaxWidth"}
+					],
+					[
+						"externalized badge category data"
+					],
+					[
+						"cleaned up some class functions",
+						["ty DJDavid98 for pointing some stuff out a little while back, haven't gotten around to looking at things until now"]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 76,
+				"notes": [
+					[
+						"added a setting flag to indicate a default value is not needed"
+					],
+					[
+						"added a toggle to enable/disable error notifications",
+						{"anchor": "panel_disableErrorNotifications"}
+					]
+				]
+			}
+		}
+	},
+
+	"1730283704485": {
+		"updates": {
+			"bs": {
+				"revision": 15,
+				"notes": [
+					[
+						"fixed the QR code cell remaining visible if the option to hide the overlay in the menu was enabled",
+						["(this was silently patched on the 29th, was a 2 line fix)"]
+					],
+					[
+						"added health display around the cover art",
+						{"anchor": "bs_enableHealthOutline"}
+					],
+					[
+						"added icons for map characteristics added by Chirality"
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 27,
+				"notes": [
+					[
+						"fixed secondary metadata color reflecting the art color overriding the static color, even if that setting is disabled"
+					],
+					[
+						"added a setting to generate a spotify scannable code for the album the playing track is on, rather than the track itself",
+						{"anchor": "spotify_scannableUseAlbum"}
+					],
+					[
+						"the \"from\" in album data display can now be changed",
+						{"anchor": "spotify_albumDataFromString"}
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 75,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1730029623853": {
+		"updates": {
+			"bs": {
+				"revision": 14,
+				"notes": [
+					[
+						"moved ranked pp curve data to an external JSON file"
+					],
+					[
+						"added a setting to show ranked pp amounts based on current score instead of current accuracy",
+						{"anchor": "bs_ppIsProgressive"}
+					],
+					[
+						"added some filters for BS+'s internal art texture due to *something* using the wrong color space for image data",
+						["don't know if this is Unity or Beat Saber or BS+ or what causing this issue"]
+					],
+					[
+						"fixed QR code cell showing up when loading the overlay even when no code has been generated yet"
+					],
+					[
+						"added a gradient to the QR code cell's background",
+						{"anchor": "bs_qrGradient"}
+					],
+					[
+						"added an option to add a border to the QR code cell",
+						{"anchor": "bs_qrBorder"}
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 72,
+				"notes": [
+					[
+						"stats on Beat Saber request information now hide if they extend outside the message block"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 74,
+				"notes": [
+					[
+						"removed some console log spamming from the DataPuller live data endpoint"
+					]
+				]
+			}
+		}
+	},
+
+	"1729884011089": {
+		"updates": {
+			"bs": {
+				"revision": 13,
+				"notes": [
+					[
+						"added a QR code generator for map links",
+						["went ahead and allowed QR codes, Aztec codes, and PDF417 codes. the reader i'm using seems to support these just fine at all error correction levels"],
+						{"anchor": "bs_elementOrder"}
+					],
+					[
+						"fixed bug with beatleader ranked data causing null read errors on custom beat saber maps not uploaded to beatsaver"
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 71,
+				"notes": [
+					[
+						"added a setting to reverse the order of user information elements",
+						{"anchor": "reverseChatMessageUserInfo"}
+					],
+					[
+						"big emotes on layouts with narrow widths now wrap to the next line instead of clipping on outer edges",
+						["this was especially apparent on right-aligned layouts, but easily dismissable on left-aligned ones as it would just... look normal"]
+					],
+					[
+						"added a setting to switch 7TV emote formats between GIF/PNG, WEBP, and AVIF",
+						["by default it will use GIF/PNG (this is what it's been using), AVIF seems to offer the lowest filesizes"],
+						{"anchor": "emoteFormat7TV"}
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 73,
+				"notes": [
+					[
+						"fixed custom beat saber maps not uploaded to beatsaver causing undefined variable errors on beat saber overlays"
+					]
+				]
+			}
+		}
+	},
+
+	"1729564411882": {
+		"updates": {
+			"chat": {
+				"revision": 70,
+				"notes": [
+					[
+						"chat badges from shared chat channels now render together with the broadcaster's badges",
+						["this did in fact require some internal rewrites, decided to just combine chat badges from all channels as needed"]
+					],
+					[
+						"fixed BTTV and 7TV entitlements not applying from shared chatrooms that are not the broadcaster's own chatroom"
+					],
+					[
+						"increased default shared chat border size from 2px to 3px",
+						{"anchor": "sharedChatSameRoomBorderSize"}
+					],
+					[
+						"flipped order of brightness and contrast filters on shared chat avatars",
+						["it's now contrast first, brightness second, defaults were adjusted"],
+						{"anchor": "sharedChatAvatarBrightness"}
+					],
+					[
+						"fixed global variable name re-use in external emote fetching",
+						["woops!"]
+					],
+					[
+						"external emotes from shared chats can now merge with the streamer's",
+						{"anchor": "sharedChatMergeExternalEmotes"}
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 72,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1729302564000": {
+		"updates": {
+			"chat": {
+				"revision": 69,
+				"notes": [
+					[
+						"(basic) support for shared chat",
+						[
+							"still figuring out how i'm gonna get sub badges for messages not from the broadcaster, may require some small internal rewrites. FFZ does it, so it's possible",
+							"currently thinking maybe making separate badge blocks that render depending on what channel the message comes from, and adding broadcaster IDs to subs/bits badge objects. simplest solution i think"
+						],
+						{"anchor": "enabledSharedChatAvatar"}
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 71,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1728870202542": {
+		"updates": {
+			"chat": {
+				"revision": 68,
+				"notes": [
+					[
+						"messages being replied to now hide the message being replied to if it was deleted, or if the user was timed out or banned",
+						["this was an oversight, my bad!"]
+					],
+					[
+						"attempted to fix avatar display not updating if the viewer starts a subscription"
+					],
+					[
+						"fixed beat saber request information never displaying if the stream did not start in the beat saber category",
+						["if someone !bsr's and the overlay detects you're not in the beat saber category, it will trigger a stream info update so long as it's been 5 minutes since the last one"]
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 26,
+				"notes": [
+					[
+						"added support for showing artist images beside artist names",
+						{"anchor": "spotify_showArtistImages"}
+					],
+					[
+						"fixed secondary metadata field remaining blank if album metadata is toggled off while it's visible"
+					],
+					[
+						"fixed secondary metadata field getting stuck once done scrolling if album metadata is disabled"
+					],
+					[
+						"gradient on the artist field no longer stretches across the entire element, but will now apply to each individual artist",
+						["this was actually a by-product of the artist image addition, but it really improves legibility too so i'm calling this a feature and not a bug lol"]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 70,
+				"notes": [
+					[
+						"spotify artist data schema is now an array of objects rather than an array of strings",
+						["i've put in a failsafe on the frontend code in case bridge scripts/plugins for external media players don't update and are still using only strings"]
+					],
+					[
+						"spotify image data is now stored in a CacheStorage object",
+						["artists have a good chance of getting requested multiple times now. think it's about time to do the optimize of thingies"]
+					]
+				]
+			}
+		}
+	},
+
+	"1727485621896": {
+		"updates": {
+			"chat": {
+				"revision": 67,
+				"notes": [
+					[
+						"message body elements are now cloned to a not-visible container for use in reply elements",
+						[
+							"should allow emotes to always render in replies if the reply is from a message that has decayed already"
+						]
+					],
+					[
+						"removed additional font weight on mentions in chat messages from viewers that have custom name settings"
+					],
+					[
+						"actually fixed the badge container not disappearing when all badges were hidden/clipped this time"
+					],
+					[
+						"removed a debug console log woops"
+					]
+				]
+			},
+
+			"nightscout": {
+				"revision": 1,
+				"notes": [
+					[
+						"new overlay that shows current blood glucose levels mirrored from a Nightscout instance",
+						["this is kinda just meant moreso for me, but i'm including it in the public suite in case anyone else is struggling to find an overlay for this lol"],
+						{"anchor": "ns_url"}
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 69,
+				"notes": [
+					[
+						"(update only contains new settings / framework stuff for the Nightscout overlay)"
+					],
+					[
+						"also, nice!"
+					]
+				]
+			}
+		}
+	},
+
+	"1726366668775": {
+		"updates": {
+			"chat": {
+				"revision": 66,
+				"notes": [
+					[
+						"fixed badge element clipping sometimes not hiding the container element"
+					],
+					[
+						"fixed badges not re-appearing if the width of the overlay increases at any point"
+					],
+					[
+						"slightly extended margins between art and stats displays in !bsr requests"
+					],
+					[
+						"added display of map age to !bsr chat requests"
+					],
+					[
+						"fixed replying to !bsr chat requests resulting in a blank message in the reply body"	
+					],
+					[
+						"added a tab for !bsr chat request settings",
+						{"anchor": "cmdEnableBSR"}
+					],
+					[
+						"added the ability to show rating percentage display in !bsr chat requests",
+						{"anchor": "chatBSRShowRatingPercentage"}
+					],
+					[
+						"lowered default minimum BeatSaver account age threshold for map information display from 180 days to 90 days"
+					],
+					[
+						"map information for !bsr requests can now be hidden on new maps",
+						{"anchor": "chatBSRMapAgeThreshold"}
+					],
+					[
+						"mapper information in !bsr request output can now use data provided by BeatSaver over internal map data",
+						{"anchor": "chatBSRUseBeatSaverInformation"}
+					],
+					[
+						"stats panel in !bsr request information can now be toggled on/off",
+						{"anchor": "chatBSRShowStatsPanel"}
+					],
+					[
+						"stats panel elements in !bsr request information can now be toggled on/off",
+						{"anchor": "chatBSRShowCode"}
+					],
+					[
+						"removed some unnecessary vertical alignment shenanigans with metadata in !bsr request information"
+					],
+					[
+						"fixed clipping and alignment issues with !bsr request information rejection messages"
+					],
+					[
+						"fixed saturation effects not being applied to international names"
+					]
+				]
+			},
+
+			"customizer": {
+				"revision": 8,
+				"notes": [
+					[
+						"fixed loading stalling on new users due to some null color setting values, also ensured a fallback is set just in case",
+						["my bad my bad i sorry"]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 68,
+				"notes": [
+					[
+						"HeartRateBroadcaster connections now consider not receving value updates within a timeframe as a timeout by default, rather than static connect/disconnect events",
+						["this was causing some issues with mirror scripts (namely mine) never triggering \"connection lost\" events, because technically, it never did lose connection"],
+						{"anchor": "hr_timeoutFunctionUseUpdates"}
+					],
+					[
+						"fixed ordering of the final section of chat settings in the sidebar",
+						["I comes before E right? yeah. mhm mhm"]
+					]
+				]
+			}
+		}
+	},
+
+	"1725675533945": {
+		"updates": {
+			"chat": {
+				"revision": 65,
+				"notes": [
+					[
+						"fixed renamed 7TV emotes taking on their original name instead of the new name if added mid-session"
+					],
+					[
+						"moved external emote service functions to their own separate scripts"
+					],
+					[
+						"fixed messages sticking sometimes (hopefully) (again)"
+					],
+					[
+						"changing message decay time to 0 now clears existing decay timers"
+					],
+					[
+						"added support for toggling Twitch DJ Program badges",
+						{"anchor": "enableTwitchDJBadges"}
+					],
+					[
+						"updated organization of Twitch badges with recent events/cons/etc."
+					],
+					[
+						"decreased default indentation of replies from 10px to 4px"
+					]
+				]
+			},
+
+			"customizer": {
+				"revision": 7,
+				"notes": [
+					[
+						"added a toggle to show what name color settings will look like against default color brightness thresholds/limits"
+					],
+					[
+						"added some gradient palette presets"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 67,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1725243469981": {
+		"updates": {
+			"settings": {
+				"revision": 66,
+				"notes": [
+					[
+						"added support for HttpSiraStatus as a data source for Beat Saber-related overlays",
+						["just like BS+ and DataPuller, it too has some issues. guh"]
+					],
+					[
+						"moved some global variables related to Beat Saber overlays from their individual data source scripts to the main script"
+					],
+					[
+						"fixed Beat Saber maps deleted from BeatSaver failing to display data on overlays"
+					],
+					[
+						"cleaned up the External Music Player section in the Connections tab, also added a spot for bridge scripts/media player plugins",
+						["foobar2000 is now officially supported through a bridge script utilizing foo_beefweb by the way"]
+					],
+					[
+						"hid everything related to the clip overlay until further notice",
+						["stuff i was doing has been patched and i'm tired and mad and pissed fuck amazon"]
+					]
+				]
+			}
+		}
+	},
+
+	"1724886038717": {
+		"updates": {
+			"chat": {
+				"revision": 64,
+				"notes": [
+					[
+						"badge block elements now attempt to hide individual badges before outright hiding the parent container when clipping user info elements"
+					],
+					[
+						"fixed occasional flicker from user info element clipping"
+					],
+					[
+						"added support for chat message replies",
+						{"anchor": "chatReplyOpacity"}
+					],
+					[
+						"adjusted a few default settings",
+						["biggest change is names no longer being capitalized by default, thought maybe names were taking up a bit *too* much space. especially with the new reply stuff"]
+					],
+					[
+						"fixed custom font settings from viewers applying to mentions even if individuality settings are disabled while font reflection is on"
+					],
+					[
+						"updated Font Awesome to version 6.5.1"
+					],
+					[
+						"fixed user chat colors not applying to user objects if they're hidden"
+					]
+				]
+			},
+
+			"clock": {
+				"revision": 8,
+				"notes": [
+					[
+						"forcing oauth-tied broadcaster data fetching if the channel you're pulling information from is your own",
+						["i'm adding this on as a hotfix to the previous update"]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 65,
+				"notes": [
+					[
+						"fixed multiple other dropdowns not initializing on the right setting values"
+					]
+				]
+			}
+		}
+	},
+
+	"1724671935043": {
+		"updates": {
+			"chat": {
+				"revision": 63,
+				"notes": [
+					[
+						"fixed issues with message censoring filters becoming very trigger happy if either of the censor lists were blank, especially on numbers"
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 25,
+				"notes": [
+					[
+						"added support for external music players",
+						[
+							"this currently only supports Music Player Daemon/MPD through an example bridge script, bridge scripts/player plugins must be made to support the socket connection",
+							"the MPD bridge script can be viewed at https://github.com/TheBlackParrot/stream_resource_dump/tree/main/overlays/overlay-mpd-bridge"
+						],
+						{"anchor": "mus_overrideSpotify"}
+					]
+				]				
+			},
+
+			"settings": {
+				"revision": 64,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1724245024068": {
+		"updates": {
+			"bs": {
+				"revision": 12,
+				"notes": [
+					[
+						"added the ability to replace combo with FC acc on miss",
+						["this is currently only functional with DataPuller as the data source, ask HardCPP for an equivalent DataPuller -> LiveData/MaxScore variable if you want this with Beat Saber Plus (as it's not provided)"],
+						{"anchor": "bs_showFCAccIfNotFC"}
+					],
+					[
+						"added a 'hands' option to element display list that shows current average pre-swing, post-swing, and accuracy scoring on both hands",
+						[
+							"this is currently only functional with DataPuller as the data source, ask HardCPP for swing average variables per-hand if you want this with Beat Saber Plus (as it's not provided)",
+							"DataPuller's hand scoring is currently buggy, these values will probably not reflect actual values at the moment (bug has been reported)"
+						],
+						{"anchor": "bs_elementOrder"}
+					],
+					[
+						"fixed some weird css overflow thing that broke metadata scrolling only on newer versions of chromium i think?",
+						["...uhhhhh? it's been fine up until i updated my dev environment the other day. /shrug"]
+					],
+					[
+						"fixed vertical alignment issue when flipping combo / accuracy display"
+					],
+					[
+						"fixed blank space appearing where the ranked PP display should be upon refreshing the settings panel if a map is not ranked"
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 62,
+				"notes": [
+					[
+						"made flow of mention CSS changes make a little more sense"
+					],
+					[
+						"mentions in chat messages can now reflect the name's font setting from the person being mentioned, if they've set one",
+						{"anchor": "chatMessageMentionsReflectTargetFont"}
+					],
+					[
+						"fixed issue with repeating name gradients (from the chat customizer) missing the final color if it was a hard stop",
+						["7TV name paints go through different processing, those were unaffected / always worked fine"]
+					]
+				]
+			},
+
+			"customizer": {
+				"revision": 6,
+				"notes": [
+					[
+						"added some more 'space' to various parts of the page on mobile devices"	
+					],
+					[
+						"fixed rightmost margins still applying on last-child input fields"
+					],
+					[
+						"fixed some minor various alignment issues"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 63,
+				"notes": [
+					[
+						"making sure HTTP 401 errors are specifically being handled in Spotify oauth flow"
+					],
+					[
+						"added placeholder support for non-Spotify music players through a websocket layer",
+						["this is just a placeholder for the time being, there's no functionality yet. just wanted to get some other things done first before starting on this. more to come!"]
+					],
+					[
+						"moved MusicBrainz data fetching to its own separate function"
+					],
+					[
+						"moved heartrate timeout settings over to the Connections tab",
+						{"anchor": "hr_timeoutWait"}
+					],
+					[
+						"fixed Beat Saber data sources showing as disconnected upon refreshing any Beat Saber-related overlay"
+					],
+					[
+						"fixed Beat Saber data source setting dropdown not properly initializing"
+					],
+					[
+						"fixed color settings not updating their swatches on initialization"
+					],
+					[
+						"fixed Beat Saber Plus connections starting upon exit of Beat Saber even if DataPuller is the selected data source, and vice versa"
+					]
+				]
+			}
+		}
+	},
+
+	"1722911240097": {
+		"updates": {
+			"bs": {
+				"revision": 11,
+				"notes": [
+					[
+						"fixed FC display failing to initialize sometimes"
+					],
+					[
+						"simplified hit/miss and FC display code"
+					],
+					[
+						"minor positioning tweaks in ranked star display"
+					],
+					[
+						"attempted to fix extra miscellaneous info cells occasionally showing when loading a new map"
+					],
+					[
+						"ranked map data is now cached locally",
+						["defaults to 2 weeks"],
+						{"anchor": "rankedMapCacheExpiryDelay"}
+					],
+					[
+						"service icons in pp display elements now reflect Font Awesome full-width element margins"
+					],
+					[
+						"pp display is now updated when leaderboard/ranked data is refreshed"
+					],
+					[
+						"pp values are now capped between 0% and 100% accuracy values"
+					],
+					[
+						"added sanity checks to pp value calculation",
+						["the accuracy caps should address weird values too but w/e"]
+					],
+					[
+						"accuracy display now forcibly rounds down to the nearest decimal place instead of rounding normally",
+						["before, 97.96% would round up to 98.0% with decimals only showing to the tenths place. it will now show 97.9% instead"]
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 61,
+				"notes": [
+					[
+						"fixed scaling on decaying messages not properly taking the origin point setting into account"
+					],
+					[
+						"fixed history effects not toggling on and off properly",
+						["toggling fade effects on and off are still a little weird for some reason, no idea what's causing it yet"]
+					],
+					[
+						"fixed emotes within the Dingbats unicode range triggering ASCII art filters"
+					],
+					[
+						"fixed prominent avatar colors failing to set if a 'Vibrant' color was not found"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 62,
+				"notes": [
+					[
+						"moved BeatSaver cache settings into the Beat Saber section in the Connections tab",
+						{"anchor": "bsMapCacheExpiryDelay"}
+					],
+					[
+						"added buttons to clear Beat Saber-related cached data"
+					]
+				]
+			}
+		}
+	},
+
+	"1722556300433": {
+		"updates": {
+			"bs": {
+				"revision": 10,
+				"notes": [
+					[
+						"fixed overlay stalling if BeatLeader or ScoreSaber leaderboard data remains null"
+					]
+				]
+			}
+		}
+	},
+
+	"1722370867475": {
+		"updates": {
+			"bs": {
+				"revision": 9,
+				"notes": [
+					[
+						"map data now clears on receving the hash event"
+					],
+					[
+						"decimal precision on the accuracy display can now be changed",
+						{"anchor": "bs_accPrecision"}
+					],
+					[
+						"removed unused old HTTP fetch and old combo display code"
+					],
+					[
+						"added a 'pp' option to element display list that shows current PP value of ranked maps on ScoreSaber and BeatLeader",
+						{"anchor": "bs_elementOrder"}
+					],
+					[
+						"icons on the hit/miss and combo display now align themselves to the right of values if aligned to the right"
+					],
+					[
+						"calmed down logging on state change events"
+					],
+					[
+						"added setting to change animation 'divisor' on accuracy changes",
+						["the higher the value, the more time it will take for it to fall into the final accuracy value"],
+						{"anchor": "bs_accAnimationDivisor"}
+					],
+					[
+						"fixed accuracy display not perfectly representing the final accuracy post-animations",
+						["this wasn't an apparent issue without the new settings, but with low enough divisors and high enough decimal precision, it became super obvious"]
+					],
+					[
+						"added ranked map star rating information to miscellaneous info rotation",
+						{"anchor": "bs_miscInfoShowScoreSaberStars"}
+					],
+					[
+						"individual parts of the miscellaneous info display rotation can now be toggled on and off",
+						{"anchor": "bs_miscInfoShowDifficulty"}
+					],
+					[
+						"interval of miscellaneous info rotating out can now be changed",
+						{"anchor": "bs_miscInfoRotationInterval"}
+					],
+					[
+						"adjusted default layout settings to accomodate new pp display"
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 60,
+				"notes": [
+					[
+						"completely overhauled flow of creating and updating the user/viewer information element",
+						["this should fix the flickery-ness of user info element initialization for those that have multiple external badges too"]
+					],
+					[
+						"fixed vertical alignment issue with avatars smaller than the parent container's height"
+					],
+					[
+						"avatar shape now uses percentages rather than static pixel amounts"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 61,
+				"notes": [
+					[
+						"added settings to change thresholds for refreshing BeatSaver data caches",
+						{"anchor": "bsMapCacheExpiryDelay"}
+					],
+					[
+						"reduced default BeatSaver map data cache expiry time from 7 days to 5 days"
+					],
+					[
+						"calmed down logging on Beat Saber state change events"
+					]
+				]
+			}
+		}
+	},
+
+	"1722050606023": {
+		"updates": {
+			"chat": {
+				"revision": 59,
+				"notes": [
+					[
+						"another attempt at fixing deleted messages remaining up on the overlay if they're deleted during processing"
+					],
+					[
+						"fixed name colors showing up as transparent if viewers refresh their settings and allow the streamer's settings to take precedence"
+					],
+					[
+						"added icons for announcement event tags"
+					],
+					[
+						"fixed names not showing ellipsis if needed at low enough widths"
+					],
+					[
+						"fixed low width user info element culling being wonky sometimes"
+					]
+				]
+			},
+
+			"customizer": {
+				"revision": 5,
+				"notes": [
+					[
+						"fixed an issue with loading settings on completely new browser sessions"
+					],
+					[
+						"fixed settings initializers mistakenly considering coloris fields as settings"
+					],
+					[
+						"fixed being unable to interact with elements underneath the notification bubble wrapper"
+					],
+					[
+						"toggling the setting to use your username over displayed name now changes the displayed name in the name preview"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 60,
+				"notes": [
+					[
+						"even more minor styling tweaks"
+					],
+					[
+						"added setting to disable successful connection notifications",
+						{"anchor": "panel_disableSuccessNotifications"}
+					]
+				]				
+			}
+		}
+	},
+
+	"1721689587850": {
+		"updates": {
+			"clock": {
+				"revision": 7,
+				"notes": [
+					[
+						"timezones can now be manually overriden",
+						{"anchor": "clock_overrideTimezone"}
+					],
+					[
+						"swapped from javascript Date objects to Luxon DateTime objects on the local clock",
+						["had to do this for the timezone overrides"]
+					],
+					[
+						"fixed timezones with an offset of 0 not displaying a sign prefix"
+					],
+					[
+						"meridiems can now be disabled in 12-hour display",
+						{"anchor": "clock_showMeridiems"}
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 59,
+				"notes": [
+					[
+						"more minor styling tweaks"
+					]
+				]
+			}
+		}
+	},
+
+	"1721425357628": {
+		"updates": {
+			"bsvas": {
+				"revision": 6,
+				"notes": [
+					[
+						"hash checks are performed independent of map data fetching now",
+						["should prevent stalling if beatsaver's slow to respond with map data, seen this happen a few times"]
+					],
+					[
+						"fixed internal cover art not loading for bs+ data endpoints"
+					],
+					[
+						"calmed console logging on beat saber event messages"
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 58,
+				"notes": [
+					[
+						"emote parsing can now be filtered to ignore words or substrings, akin to the censor filter",
+						["figured some of you with the funny 'the' -> 'hte' emote might not want it to show on the overlay, or you just don't want to see a specific streamer's emotes or something"],
+						{"anchor": "bigNoNoEmotes"}
+					]
+				]
+			},
+
+			"clock": {
+				"revision": 6,
+				"notes": [
+					[
+						"added some sanity checks on ad timer updating/values"
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 24,
+				"notes": [
+					[
+						"added the ability to apply outline and shadow effects to the scannable tag's foreground content",
+						["do note this may make scannable tags harder to read, effects will be forced off if the foreground color is dark (unless the outline color matches the background) as this renders it completely unreadable"],
+						{"anchor": "spotify_enableShadowEffectsScannable"}
+					],
+					[
+						"fixed black foreground color resetting to white when a new song starts"
+					],
+					[
+						"fixed both secondary metadata fields appearing occasionally when a new song starts"
+					]
+				]				
+			},
+
+			"settings": {
+				"revision": 58,
+				"notes": [
+					[
+						"updated FancySelect to v0.6.1",
+						["had to add a small patch to fix a type error in a conditional check, too"]
+					],
+					[
+						"fixed backup selection dropdown not working"
+					],
+					[
+						"fixed setting input checks triggering on the backup selection dropdown"
+					],
+					[
+						"added a 'hash' event to beatsaber output, triggered whenever the current map's hash changes",
+						["this is primarily for the VOD audio system as it runs on map hashes rather than any map data, i've seen it stall a couple of times waiting for beatsaver to respond with some extra data. which is bad"]
+					],
+					[
+						"fixed hover CSS stuff not applying to branded icons"
+					],
+					[
+						"added quick jumps to settings in changelog messages",
+						[
+							"this has been a very long time coming, apologies",
+							"also retroactively added jumps to some previous changelog entries"
+						]
+					],
+					[
+						"some minor styling tweaks"
+					]
+				]
+			}
+		}
+	},
+
+	"1720944273198": {
+		"updates": {
+			"settings": {
+				"revision": 57,
+				"notes": [
+					[
+						"fixed icon/text color inconsistencies in the sidebar"
+					],
+					[
+						"added mention of the new support-oriented discord server in the About page",
+						["https://discord.gg/WFbzQ4WC8Z"]
+					]
+				]
+			}
+		}
+	},
+
+	"1720683202542": {
+		"updates": {
+			"spotify": {
+				"revision": 23,
+				"notes": [
+					[
+						"fixed song metadata failing to update on narrower source sizes",
+						["note to self: CSS animationend events are not as stable as they seem"]
+					]
+				]
+			}
+		}
+	},
+
+	"1720628041023": {
+		"updates": {
+			"chat": {
+				"revision": 57,
+				"notes": [
+					[
+						"replaced placeholder first time chat icon with twitch's first time chat icon",
+						["oopsie i fogor"]
+					],
+					[
+						"mentions in chat messages can now reflect colors from the person being mentioned",
+						["e.g. mentioning me would color my name #CBADFF in the message, rather than only emboldening it"],
+						{"anchor": "chatMessageMentionsReflectTargetColor"}
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 22,
+				"notes": [
+					[
+						"fixed slide-in animations retriggering every time playback state checks were triggered",
+						["i think i'm just going to end up completely re-doing display flow at some point, should be mostly fine for now"]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 56,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1720409575766": {
+		"updates": {
+			"chat": {
+				"revision": 56,
+				"notes": [
+					[
+						"fixed italic fonts being forced on viewers that have applied custom chat settings if the streamer uses an italic font"
+					],
+					[
+						"fixed small vertical alignment issue in the user info container"
+					],
+					[
+						"messages from newer viewers can now be hidden until they send some amount of messages",
+						["this particular metric has been tracked for a *long* time for avatar display permissions, turning this on (it's off by default) shouldn't disrupt things"],
+						{"anchor": "chatHideUntilThresholdMet"}
+					],
+					[
+						"added the ability to filter messages suspected of only being ASCII art",
+						["messages containing characters from the unicode ranges for Block Elements, Box Drawing, Braille Patterns, Dingbats, and Geometric Shapes will trigger filter checks"],
+						{"anchor": "chatHideASCIIArt"}
+					],
+					[
+						"messages flagged as a \"first time chat\" can now be tagged as such on the overlay",
+						{"anchor": "enableEventTagsFirstTimeChat"}
+					],
+					[
+						"ensured messages decay if the decay timer on message elements somehow fails"
+					],
+					[
+						"added icons for cheer, resub, and new subscription event tags"
+					]
+				]
+			},
+
+			"customizer": {
+				"revision": 4,
+				"notes": [
+					[
+						"message fonts can now be italicized",
+						["this was initially for a bugfix on the chat overlay, but decided to just make it a setting for viewers"]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 55,
+				"notes": [
+					[
+						"added mention of the chat customization page for viewers to change their own chat settings in the Chat > Individuality section and the About section",
+						["i don't think some people know this (still) exists actually: https://theblackparrot.me/overlays/chat-customizer"]
+					],
+					[
+						"separated chat filtering settings from Chat > Function into their own section",
+						["it was getting long... which you could see as a negative thing, in a sense :("]
+					],
+					[
+						"removed sensitive content warning from the Chat > Function tab",
+						["was all moved to the new Chat > Filtering tab"]
+					],
+					[
+						"moved message settings in Chat > Function to Chat > Messages with the rest of the message settings"
+					]
+				]
+			}
+		}
+	},
+
+	"1720218494209": {
+		"updates": {
+			"spotify": {
+				"revision": 21,
+				"notes": [
+					[
+						"fixed overlay failing to return after resuming playback if the \"Hide overlay if music is paused\" setting was disabled while playback was paused"
+					],
+					[
+						"added a setting to control cover art image size",
+						["initially i forced it to double the cover art container size, but leaving it here seems kinda useless if no changes are being made to the layout"],
+						{"anchor": "spotify_artImageSize"}
+					],
+					[
+						"added a setting to control cover art image quality settings",
+						{"anchor": "spotify_artImageQuality"}
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 54,
+				"notes": [
+					[
+						"moved the remote data fetching timeout setting to the main About page in the Panel Settings portion, as that applies to various non-chat related things now",
+						["meant to do this forever ago, my bad"]
+					],
+					[
+						"fixed the remote data fetching timeout setting being interpreted as an integer rather than a float in various areas of code",
+						["...guh. bluh, even"]
+					],
+					[
+						"force-capped the remote data fetching timeout setting between 3 and 30 seconds"
+					],
+					[
+						"enabled image smoothing on image compression/re-sizing function"
+					]
+				]
+			}
+		}
+	},
+
+	"1719433323766": {
+		"updates": {
+			"chat": {
+				"revision": 55,
+				"notes": [
+					[
+						"fixed issue with 7tv paints not applying sometimes",
+						["this was my bad haha woops"]
+					],
+					[
+						"fixed vertical alignment issue with name elements if the avatar was the tallest element"
+					],
+					[
+						"prevented emote parsing in system messages",
+						["7TV added a global emote specifically for \"7TV\", which shows up in the initialization messages"]
+					]
+				]
+			}
+		}
+	},
+
+	"1719140993760": {
+		"updates": {
+			"chat": {
+				"revision": 54,
+				"notes": [
+					[
+						"fixed issue with 7tv reconnections re-applying user paints even if disabled by the user",
+						["i caved and bought a 7tv sub for a month so debugging paid-for 7tv stuff should be easier now. guh"]
+					],
+					[
+						"fixed 7tv badges remaining visible after they were removed on 7tv's side"
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 20,
+				"notes": [
+					[
+						"worked around rare issue with song metadata not fading back in with animations due to an animation conflict",
+						["lazy fix for now, i'll look into this deeper later on"]
+					]
+				]
+			}
+		}
+	},
+
+	"1718225179008": {
+		"updates": {
+			"all": {
+				"notes": [
+					[
+						"improved initialization flow for all remaining overlays",
+						["this includes: Beat Saber Stats, Beat Saber VOD Audio System, Clock, and Spotify overlays"]
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 53,
+				"notes": [
+					[
+						"added a check to make sure the mapper associated with a beat saber map actually exists",
+						["this appears to be an error on beatsaver's side, adding a catch in case there's more than 1 case of this happening"]
+					],
+					[
+						"extended clipping fix on slanted/wide fonts from 8px to 12px"
+					],
+					[
+						"applied clipping fix to all name fonts, rather than just italicized ones"
+					]
+				]
+			},
+
+			"customizer": {
+				"revision": 3,
+				"notes": [
+					[
+						"fixed clipping on extremely slanted/italicized fonts",
+						["padding fix goes brrr"]
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 19,
+				"notes": [
+					[
+						"fixed titles that start with numbers appearing reversed when right-aligned"
+					]
+				]
+			}
+		}
+	},
+
+	"1717969899625": {
+		"updates": {
+			"clips": {
+				"revision": 4,
+				"notes": [
+					[
+						"fixed usernames with underscores reporting back as a non-existant user due to filtering out of said underscore characters"
+					],
+					[
+						"moved onloaded code out of a deferred script tag"
+					]
+				]
+			}
+		}
+	},
+
+	"1717906610971": {
+		"updates": {
+			"chat": {
+				"revision": 52,
+				"notes": [
+					[
+						"fixed identity flags sometimes failing to load, causing other things to also fail to load"
+					]
+				]
+			}
+		}
+	},
+
+	"1717808406236": {
+		"updates": {
+			"bs": {
+				"revision": 8,
+				"notes": [
+					[
+						"fixed FC display bugging out if the first block was missed"
+					]
+				]				
+			},
+
+			"chat": {
+				"revision": 51,
+				"notes": [
+					[
+						"another attempt at ensuring deleted messages don't appear if they were deleted before data fetching/message prep finished"
+					],
+					[
+						"attempted to fix randomly ocurring issues involving random functions being called before initialization"
+					]
+				]
+			},
+
+			"heartrate": {
+				"revision": 2,
+				"notes": [
+					[
+						"fixed (sort of) effects on 0-digit pad numbers not following transparency",
+						["the current value's effects render on top of the padded numbers still, but that'll be a whole 'nother headache"]
+					],
+					[
+						"tweaked pulse animation"
+					],
+					[
+						"fixed clipping on the left side of the heart icon"
+					],
+					[
+						"not fading out leading zeroes now just adds zeroes onto the displayed value",
+						["this hides the issue with effects if fading isn't wanted"]
+					],
+					[
+						"fixed pre-mature firing of an \"overlay loaded\" event sometimes breaking the overlay"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 53,
+				"notes": [
+					[
+						"beat saber pack data is now separated from the script setting the variable for it"	
+					],
+					[
+						"attempted to fix randomly occurring issues involving random functions being called before initialization",
+						["if the changes i've made here fix the issues i'm running into, all overlays will get an update similar to this later on"]
+					],
+					[
+						"moved update data over to async fetch"
+					],
+					[
+						"sidebar text is now lighter than the icons beside them",
+						["should make longer lists easier to read"]
+					],
+					[
+						"fixed revert button on color input fields",
+						["...i broke these at some point? idk how"]
+					],
+					[
+						"most recent overlay patch notes will now also show in the about tab"
+					]
+				]
+			}
+		}
+	},
+
+	"1717153564754": {
+		"updates": {
+			"chat": {
+				"revision": 50,
+				"notes": [
+					[
+						"made changes relating to the new test message system"
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 18,
+				"notes": [
+					[
+						"fixed secondary metadata transitions triggering the slide-in animation anytime it went back to the artist"
+					],
+					[
+						"fixed art fade in/out animations applying to each individual part of itself, rather than a container"
+					]
+				]
+			},			
+
+			"settings": {
+				"revision": 52,
+				"notes": [
+					[
+						"revamped test messages to a constant stream of messages from pre-defined conversations",
+						["if you'd like to be added as a sample message subject, just let me know! all i need is your twitch username"],
+						{"anchor": "allowSampleMessages"}
+					],
+					[
+						"removed the test message button and replaced it with a toggle in the Debug section of Chat > Function"
+					],
+					[
+						"added data source information for album/publisher information for the spotify overlay"
+					],
+					[
+						"updated beat saber DLC pack data"
+					],
+					[
+						"buttons to refresh emote data and clear messages will now only appear if the chat overlay is active"
+					]
+				]
+			}
+		}
+	},
+
+	"1715904368165": {
+		"updates": {
+			"chat": {
+				"revision": 49,
+				"notes": [
+					[
+						"fixed issue with new message blocks parenting to previous message blocks even if they're currently in a dismiss animation"
+					],
+					[
+						"doubled padding on name displays to fix clipping issues on italicized/skewed fonts"
+					],
+					[
+						"added negative right margin to act against added padding in name displays",
+						[
+							"experimenting with this as a fix, shouldn't be visible on left-aligned layouts but should get right-aligned ones lined up right"
+						]
+					]
+				]
+			},
+
+			"heartrate": {
+				"revision": 1,
+				"notes": [
+					[
+						"got overlay ready for public use",
+						[
+							"available at https://theblackparrot.me/overlays/heartrate",
+							"for details on how to set it up, see https://theblackparrot.me/overlays"
+						]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 51,
+				"notes": [
+					[
+						"added support for emitting events from HeartRateBroadcaster"
+					],
+					[
+						"twitch clip overlay status wasn't in the right spot woops",
+						["we love alphabetical order"]
+					],
+					[
+						"ensured default color settings are all lowercase to avoid false positives on non-default settings checks"
+					]
+				]
+			}
+		}
+	},
+
+	"1715129304875": {
+		"updates": {
+			"chat": {
+				"revision": 48,
+				"notes": [
+					[
+						"reworked user initialization in order to remove arbitrary delays in message parsing if the user doesn't exist yet"
+					],
+					[
+						"fixed stall issue with !refreshcosettings command"
+					]
+				]
+			},
+
+			"customizer": {
+				"revision": 2,
+				"notes": [
+					[
+						"added settings (that are ENABLED by default) that will force what settings the *streamer* sets to be the default, rather than the user overrides",
+						[
+							"i've seen some people only changing part of everything you can change and thought maybe i needed some safeguards in place in case something wasn't changed from defaults, as *my* defaults would then override what the streamer sets",
+							"if you've previously set custom settings, i've already toggled all of these off for you and there's nothing extra you need to do. they'll be on by default for everyone else"
+						]
+					],
+					[
+						"fixed some strong and em tags not emboldening or italicizing text (woops)"
+					],
+					[
+						"ensured message display's enbolded font uses the base message weight"
+					],
+					[
+						"added confirmation of saving success/failure and other functions"
+					],
+					[
+						"loader spinner is now static-sized instead of dynamic-sized"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 50,
+				"notes": [
+					[
+						"variables from the old customization commands are now cleared on load, woops"
+					],
+					[
+						"moved custom user/chatter settings toggles to their own tab",
+						["felt like these might've needed to be more accessible"]
+					]
+				]
+			}
+		}
+	},
+
+	"1714963758850": {
+		"updates": {
+			"chat": {
+				"revision": 47,
+				"notes": [
+					[
+						"completely overhauled user chat customization",
+						[
+							"using commands to set chat appearance clogs up chat and confuses people that don't even know it's there, i think it's time to move this to a centralized spot and apply it globally instead",
+							"use https://theblackparrot.me/overlays/chat-customizer if you want to update URLs, the old previewer now does a 301 redirect to that URL",
+							"for now the !refreshcosettings may not show an update message, i'm running into a reeeally bizarre 12 second stall if i properly wait for the task it's doing to properly finish up"
+						]
+					],
+					[
+						"flags are now fetched from the customizer rather than hardcoded internally"
+					],
+					[
+						"fixed vertical alignment issues with some fonts on name display"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 49,
+				"notes": [
+					[
+						"added some toggles pertaining to the new chat customization options"
+					]
+				]
+			}
+		}
+	},
+
+	"1714252607795": {
+		"updates": {
+			"settings": {
+				"revision": 48,
+				"notes": [
+					[
+						"made the dumpster fire button reload the settings panel and all overlays",
+						["man i really don't know anymore, still investigating why twitch oauth is failing"]
+					]
+				]
+			}
+		}
+	},
+
+	"1713905296545": {
+		"updates": {
+			"chat": {
+				"revision": 46,
+				"notes": [
+					[
+						"replaced the font awesome spinner with a CSS-defined one for bsr map requests"
+					],
+					[
+						"fixed emote refresh button on the settings panel failing to refresh emotes",
+						["forgot to update this long ago, woops"]
+					],
+					[
+						"fixed 7TV name paints with glow effects not rendering the glow effect"
+					],
+					[
+						"added the ability to manually add to and remove from the known bot list fetched from Twitch Insights",
+						["noticed while debugging a thing that a normal person was being tagged as a bot from this list"]
+					],
+					[
+						"cleaned up cheers in chat messages a bit"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 47,
+				"notes": [
+					[
+						"attempt at fixing some twitch oauth refresh failures that infinitely recurse",
+						["i'm not entirely sure what's triggering this issue (i've only ever seen it happen twice, ever, anywhere) and i can't purposefully get it to happen in my dev environment, so"]
+					],
+					[
+						"re-worded the dumpster fire button on the about page"
+					],
+					[
+						"split up the chat appearance settings tab into multiple different tabs",
+						["it was getting long, sorry"]
+					]
+				]
+			}
+		}
+	},
+
+	"1713293906193": {
+		"updates": {
+			"all": {
+				"notes": [
+					[
+						"outline and shadow effects are now being done through SVG filters",
+						["these should be MUCH more performant over the way they were previously being done"]
+					],
+					[
+						"updated Luxon to version 3.4.4"
+					],
+					[
+						"updated jQuery to version 3.7.1"
+					],
+					[
+						"attempted to fix overlays sometimes failing to init properly due to scripts being executed out of order"
+					]
+				]
+			},
+
+			"bs": {
+				"revision": 7,
+				"notes": [
+					[
+						"(nothing specific to note)"
+					]
+				]				
+			},
+
+			"bsvas": {
+				"revision": 4,
+				"notes": [
+					[
+						"fixed version information not properly sending to the settings panel on initial load"
+					],
+					[
+						"migrated remote database syncing ajax calls over to fetch calls"
+					]
+				]				
+			},
+
+			"chat": {
+				"revision": 45,
+				"notes": [
+					[
+						"added some more maps to the goofy font filter for beat saber map requests"
+					],
+					[
+						"bsr map keys that don't exist will now show an error for map requests"
+					],
+					[
+						"added aegosexual flag to the flags command"
+					],
+					[
+						"swapped to jdecked's fork of twemoji (updated to version 15.1.0)"
+					],
+					[
+						"fixed bsr map information not showing up on the overlay if the category wasn't initially set to Beat Saber",
+						["i've also tweaked the conditional flow to allow !bsr to show up if streams are offline for debugging/configuration purposes"]
+					],
+					[
+						"fixed default bit badges sometimes only rendering part of the normal 28 available badge tiers",
+						["there's some... weird oddity on some channels? idk what's going on. was testing changes in Canadian_Dragon's channel and noticed the 3 custom bit badges were all just clones of some default bit badges (the 5000, 10000, and 25000 ones to be precise)"]
+					],
+					[
+						"fixed users with invalid/broken avatars rendering avatars at all",
+						["how does this even happen wtf did y'all do???"]
+					],
+					[
+						"fixed system messages rendering with avatars if everyone has avatars enabled"
+					],
+					[
+						"removed viewer settings to enable/disable shadow/outline effects",
+						["i'm seeing people disable these in order to make their names harder to read. no. stop that."]
+					]
+				]
+			},
+
+			"clips": {
+				"revision": 3,
+				"notes": [
+					[
+						"tweaked UI flow a little bit, should show details after API responses now"
+					],
+					[
+						"added a loading spinner if a buffer underflow occurs"
+					]
+				]
+			},
+
+			"clock": {
+				"revision": 4,
+				"notes": [
+					[
+						"manually set the timezone abbreviation for Philippine Standard Time",
+						["was being set to \"PST\" which causes confusion with Pacific Standard Time, Luxon has no code for the timezone either and simply returns \"GMT+8\", so, manual override time yippee"]
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 17,
+				"notes": [
+					[
+						"added placeholder data for text fields"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 46,
+				"notes": [
+					[
+						"added a condensed \"all\" category for changelog entries if a change pertains to all overlays"
+					],
+					[
+						"changelog entires without a revision set in a category no longer shows \"(rundefined)\" as its revision"
+					],
+					[
+						"updated obs-websocket-js to version 5.0.5"
+					],
+					[
+						"decreased beatsaver stale cache time from 90 days to 7 days",
+						["not me forgetting vote counts are also in this data. nope. definitely did not forget about that"]
+					]
+				]
+			}
+		}
+	},
+
+	"1712812641277": {
+		"updates": {
+			"bs": {
+				"revision": 6,
+				"notes": [
+					[
+						"fixed various alignment issues with some non-default settings"
+					],
+					[
+						"added settings to change line heights on each cell"
+					],
+					[
+						"duration's font size now scales properly with the elapsed time's font size"
+					],
+					[
+						"added in placeholder data for some DOM elements",
+						["should be a little easier to configure without opening the game now"]
+					]
+				]				
+			},
+
+			"chat": {
+				"revision": 44,
+				"notes": [
+					[
+						"data fetched for beat saber map info display now comes from a CacheStorage object if present, it will also write to said storage if not present"
+					],
+					[
+						"beatsaver account's first upload must be at least 180 days old for map information to display, up from ~120 days"
+					],
+					[
+						"better clarified the \"account is too new\" bsr error message to reflect what it's actually looking at"
+					],
+					[
+						"beat saber map info display should now reflect chat appearance settings"
+					],
+					[
+						"fixed chat settings changed messages not showing up",
+						["...i'm gonna go out on a limb here and assume this is an issue with OBS's CEF? i couldn't replicate the issue in my dev environment. idk, this solution is just ensuring a message gets rendered at the cost of applying settings twice now. /shrug"]
+					]
+				]
+			},
+
+			"clips": {
+				"revision": 2,
+				"notes": [
+					[
+						"streamers who raid in can now trigger the !clip command as if they had regular permission to do so one time"
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 16,
+				"notes": [
+					[
+						"fixed cover art track progress outlines still increasing to 100% even if spotify is paused"
+					],
+					[
+						"fixed artist info displaying alongside other secondary metadata if the other secondary metadata is visible when the overlay is transitioning to a new song",
+						["this took a lot longer to fix than it seems i promise"]
+					],
+					[
+						"removed some UI flow debugging lines"
+					],
+					[
+						"artist/album metadata switching intervals were wrongly being used as an integer rather than a float"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 45,
+				"notes": [
+					[
+						"removed now-extraneous beatsaver API call to fetch map collaborator data",
+						["initially collaborator data wasn't available in the 'maps/hash' endpoint, hence having to fetch it through 'maps/id' instead. but it's there now, so"]
+					],
+					[
+						"beatsaver response data is now cached in a CacheStorage object rather than in SessionStorage",
+						["response data will be considered stale after 90 days"]
+					],
+					[
+						"added link to my patreon page in the about panel",
+						["i have bills to pay pls to help weh"]
+					]
+				]
+			}
+		}
+	},
+
+	"1711420507592": {
+		"updates": {
+			"clips": {
+				"revision": 1,
+				"notes": [
+					[
+						"new overlay for clips/shoutouts since others bother me in various ways",
+						[
+							"available at https://theblackparrot.me/overlays/clips",
+							"moderators can use '!clip [user] [optional: index starting from 0]' or '!clip [clip URL]' to show a clip on stream, like other shoutout overlays"
+						]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 44,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1710491263894": {
+		"updates": {
+			"chat": {
+				"revision": 43,
+				"notes": [
+					[
+						"improved avatar caching, processed image data is now what's cached over raw responses",
+						["this is moreso to cut down on network requests while i'm working on the overlay, as i forcibly disable caching. some things (like static images) really need to continue being cached though"]
+					],
+					[
+						"fixed emotes failing to fetch if broadcaster has a 7TV account but does not have an active emote set"
+					],
+					[
+						"fixed !refreshpfp not refreshing the user's avatar correctly"
+					],
+					[
+						"set the overlay system's avatar to a static image",
+						["for some reason createImageBitmap fails on SVG blobs, but not URLs pointing to SVG files??? what"]
+					],
+					[
+						"fixed private BTTV channel emotes overwriting public emotes added to the channel"
+					],
+					[
+						"fixed users that only have 1 bit badges sometimes failing to have any messages appear"
+					],
+					[
+						"avatars that are PNGs now remain cached as a PNG internally"
+					],
+					[
+						"avatar display permissions now reflect changes on previously sent messages"
+					],
+					[
+						"avatar background effect toggle now reflects the setting's state on previously sent messages"
+					],
+					[
+						"removed an extra avatar background element being created that was never actually used"
+					],
+					[
+						"removed animation delay on in-animations for message blocks as it's now pretty much waiting on data to be received before actually rendering things to the DOM now"
+					],
+					[
+						"FFZ and twitch emotes are now cached internally"
+					],
+					[
+						"fixed animated FFZ emotes not animating"
+					],
+					[
+						"cached avatars now expire after a week, or if the current avatar size setting doesn't match up with the cached avatar size"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 43,
+				"notes": [
+					[
+						"each primary section of the sidebar is now a collapsable submenu",
+						["for those of you who don't use the chat overlay but use other pieces of the overlay suite, this should make things a bit cleaner for y'all :)"]
+					],
+					[
+						"reordered some sections within setting pages"
+					],
+					[
+						"added a button to clear cached avatars in the chat's avatars tab"
+					],
+					[
+						"added a button to clear cached emotes in the chat's emotes tab"
+					]
+				]
+			}
+		}
+	},
+
+	"1709870431919": {
+		"updates": {
+			"bs": {
+				"revision": 5,
+				"notes": [
+					[
+						"updated datapuller support to use the new internal cover art and level id fields"
+					],
+					[
+						"added the new level ID's from the Daft Punk pack to the OST/DLC list"
+					]
+				]
+			},
+
+			"chat": {
+				"revision": 42,
+				"notes": [
+					[
+						"avatars are now cached locally using the CacheStorage API",
+						["looking into a way i can get emotes to use this too, it's a little... more complicated"]
+					],
+					[
+						"functions that fetch emote data are now asynchronous",
+						["they were still using jquery ajax calls, meant to get around to updating that and never did woops"]
+					],
+					[
+						"version checking function was made asynchronous"
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 15,
+				"notes": [
+					[
+						"fixed various minor aesthetic issues with the previous update"
+					]
+				]
+			}
+		}
+	},
+
+	"1709145558201": {
+		"updates": {
+			"bs": {
+				"revision": 4,
+				"notes": [
+					[
+						"rewrote some stuff to use the new normalized data schema"
+					],
+					[
+						"mapper metadata from BeatSaver can now be shown over internal mapper metadata"
+					],
+					[
+						"added support for BeatSaver map collaborators",
+						["(for now this is making 2 API calls to BeatSaver, as the maps/hash endpoint doesn't contain collaborator metadata yet)"]
+					],
+					[
+						"avatars will no longer show for suspended BeatSaver users regardless of user verification status, map rank status, or map curation status"
+					],
+					[
+						"cover images fetched from BeatSaver are now resized to double the cover art size and cached locally while an active session lasts"
+					],
+					[
+						"on base game maps, the mapper field now includes which pack the map is from",
+						["DataPuller does not expose any information i can use to show this, so (for now?) this is only for BS+"]
+					],
+					[
+						"secondary metadata now scrolls if its width extends beyond the parent container's bounds"
+					],
+					[
+						"forced removal of font variants on textual parts of the overlay",
+						["::DROPOUT::'s third colon character appeared to be misaligned while testing and it bothered me. see what i mean?"]
+					]
+				]
+			},
+
+			"bsvas": {
+				"revision": 3,
+				"notes": [
+					[
+						"rewrote some stuff to use the new normalized data schema"
+					],
+					[
+						"revision data is now internally tracked (woops)"
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 14,
+				"notes": [
+					[
+						"secondary metadata now scrolls if its width extends beyond the parent container's bounds",
+						["this is actually really rough at the moment and i'll probably just end up re-doing the markup/layout later on. my head hurts"]
+					],
+					[
+						"musicbrainz release data that doesn't contain a date string is now skipped when determining which release to use for extraneous data",
+						["to whomever contributed a release to Porter Robinson's \"Unfold\" without a release date: wtf >:("]
+					],
+					[
+						"forced removal of font variants on textual parts of the overlay"
+					],
+					[
+						"moved state fetching timer retriggering towards the beginning of the state response callback function to prevent hangups if something within said callback function throws an error"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 42,
+				"notes": [
+					[
+						"removed IP settings for external beat saber connections and forced IP settings to localhost",
+						[
+							"none of the mods that expose websocket connections support websockets over SSL, meaning only localhost and anything in 127.0.0.0/8 are the only valid settings",
+							"if in the future someone needs a setting to force a wss connection via their own ws->wss proxy, shoot me a message and i'll add a setting when the need comes"
+						]
+					],
+					[
+						"incoming data from the datapuller beat saber mod can now be used instead of incoming data from bs+'s song overlay module for beat saber related overlays",
+						["both are normalized to a new internal schema, using datapuller won't offer any new features. it is simply an alternative"]
+					]
+				]
+			}
+		}
+	},
+
+	"1708687629182": {
+		"updates": {
+			"chat": {
+				"revision": 41,
+				"notes": [
+					[
+						"updated pronouns to use alejo's new API",
+						["if you haven't looked in a while, you can now set the secondary pronoun manually"]
+					],
+					[
+						"removed old pronoun classes"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 41,
+				"notes": [
+					[
+						"deprecated settings for pronoun tags specifically and added a setting to change the separator instead"
+					]
+				]
+			}
+		}
+	},
+
+	"1708575471393": {
+		"updates": {
+			"bs": {
+				"revision": 3,
+				"notes": [
+					[
+						"added a setting to draw the background below the actual overlay"
+					],
+					[
+						"fixed additional weight on the combo counter not loading on new sessions"
+					],
+					[
+						"made pause state logic make more sense, also made sure the pause effect doesn't \"stick\" if turning it off while the game is paused"
+					],
+					[
+						"fixed secondary metadata triggering fade animations any time a game scene change happened, regardless if it needed to refresh it or not"
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 13,
+				"notes": [
+					[
+						"reverted change of multiple border-radius CSS declarations on scannable elements",
+						["in-browser these declarations weren't necessary, but in OBS this was adding a bit of a brighter halo around corners of the scannable"]
+					],
+					[
+						"moved shadow class further into the DOM on scannables"
+					],
+					[
+						"fixed musicbrainz release sorting not actually doing anything",
+						["most of the time (not all the time) it was sorted by oldest release first direct from the API, didn't catch this until flipping songs back and forth"]
+					],
+					[
+						"release year can now be shown alongside album information",
+						["musicbrainz data will override spotify's information if it's present, spotify's information sometimes pertains to when the song was put on the platform and not it's actual release date"]
+					],
+					[
+						"moved automatic dark/light color variable setters to the settings panel"
+					],
+					[
+						"borders can now be rendered on scannables"
+					],
+					[
+						"fixed art outline backgrounds being misaligned on the right-aligned layout"
+					],
+					[
+						"added a setting to draw the background below the actual overlay"
+					],
+					[
+						"couple of default settings were changed"
+					],
+					[
+						"colors following cover art now update when playing a track after pausing"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 40,
+				"notes": [
+					[
+						"fixed duplicate rows being added for non-chat overlay settings if the sidebar was collapsed"
+					],
+					[
+						"fixed non-chat settings being sent to the chat overlay's settings handler"
+					],
+					[
+						"fixed duplicate BS+ connections triggering on reload of beat saber related overlays while in a disconnected state"
+					]
+				]
+			}
+		}
+	},
+
+	"1708126522507": {
+		"updates": {
+			"spotify": {
+				"revision": 12,
+				"notes": [
+					[
+						"attempted to fix scannables sometimes failing to appear",
+						["i wasn't able to replicate the bug i was running into on stream in my dev environment, but i'm hoping moving the on load trigger's DOM element outside of the scannable wrapper will fix this"]
+					],
+					[
+						"scannables should now auto-hide on load failure"
+					],
+					[
+						"cover art should now show the placeholder cover on load failure"
+					],
+					[
+						"fixed state fetching triggering a new vibrant call on cover art every time it fetched player state",
+						["didn't catch this issue initially until i did some deeper digging for other things, woops. i think this was loading from cache at least. i hope."]
+					],
+					[
+						"vibrant failing to fetch cover art no longer stops the fetch timer",
+						["this will also force both light/dark colors to the default background color"]
+					],
+					[
+						"cover art is now shrunk on a canvas element equal to double of the set art size and base64-encoded to avoid duplicate GET requests on cover art fetching"
+					],
+					[
+						"switched from jpeg scannables to (modified) svg scannables",
+						["i don't... think spotify mentions the svg format anywhere? found this out through a stackoverflow question"]
+					],
+					[
+						"removed some css formatting on scannables since they're actually transparent now",
+						["based SVG format"]
+					],
+					[
+						"fixed duplicate scannable fetching, as loading in CSS and DOM elements are separate",
+						["it now just base64 encodes a single fetch response and uses that in both CSS and the DOM element"]
+					],
+					[
+						"state fetching now properly handles HTTP status code 204 if no active spotify instances are available"
+					],
+					[
+						"song publishers/labels can now be shown alongside album information (fetched via MusicBrainz)",
+						["it has been 6 years since spotify said \"yeah! sure! we'll get around to adding this in our API!\" so clearly they're not adding it (https://github.com/spotify/web-api/issues/779#issuecomment-413182817)"]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 39,
+				"notes": [
+					[
+						"oauth token code flows were made asynchronous",
+						["i wasn't yet in the async mindset when initially coding all of that, a lot of promise catching was simplified"]
+					],
+					[
+						"increased setting label and input divider width to 2px"
+					],
+					[
+						"added user agent string to the bottom of the about panel"
+					],
+					[
+						"the out-of-date warning notification now lasts 2 minutes instead of 10 seconds"
+					],
+					[
+						"clicking notifications now dismisses them"
+					],
+					[
+						"decreased default remote data fetching timeout from 7 seconds to 4 seconds"
+					]
+				]
+			}
+		}
+	},
+
+	"1707634360347": {
+		"updates": {
+			"bs": {
+				"revision": 2,
+				"notes": [
+					[
+						"added placeholder data for map metadata fields left blank by mappers"
+					],
+					[
+						"hiding the overlay when not playing a map can now be toggled"
+					],
+					[
+						"default font now properly loads (my bad)"
+					],
+					[
+						"added horizontal alignment settings to relevant parts of the overlay"
+					],
+					[
+						"added some additional font settings to some portions of the overlay"
+					],
+					[
+						"removed outside margins on elements"
+					],
+					[
+						"forgot a box shadow class on cover art for initial view of the overlay"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 38,
+				"notes": [
+					[
+						"minimum width settings can now be changed in the about tab"
+					],
+					[
+						"the sidebar can now be collapsed to save some horizontal space"
+					],
+					[
+						"removed permanent invite link to my discord as it's no longer valid",
+						["if i still need to be reached via discord, simply shoot me a message request"]
+					]
+				]
+			}
+		}
+	},
+
+	"1707000315317": {
+		"updates": {
+			"chat": {
+				"revision": 40,
+				"notes": [
+					[
+						"7TV emote sets now automatically update",
+						["!refreshemotes should no longer be required for anything but FFZ emotes now"]
+					],
+					[
+						"moved some leftover jquery get calls in the !bsr command over to the fetch API"
+					],
+					[
+						"fixed user customizable name colors not applying on previously sent messages with default settings once changed"
+					],
+					[
+						"fixed resetting user customizable chat settings not appearing to do anything"
+					]
+				]
+			}
+		}
+	},
+
+	"1706459562699": {
+		"updates": {
+			"bs": {
+				"revision": 1,
+				"notes": [
+					[
+						"new beat saber overlay is ready enough for public use yippee",
+						["https://theblackparrot.me/overlays/bs"]
+					]
+				]
+			},
+
+			"bsvas": {
+				"revision": 2,
+				"notes": [
+					[
+						"updated to work with new data schemas"
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 11,
+				"notes": [
+					[
+						"added a setting to automatically determine scannable foreground color based on the background color's brightness"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 37,
+				"notes": [
+					[
+						"fixed variable/setting resets still triggering on dev timestamps"
+					],
+					[
+						"fixed some setting elements rendering way wider than they needed to be",
+						["horizontal scrolling shouldn't be an issue now yw"]
+					],
+					[
+						"enforced a minimum width of 500px on the main part of the panel"
+					],
+					[
+						"fixed arrows having too much padding on the left"
+					],
+					[
+						"normalized setting measurement element margins"
+					],
+					[
+						"almost completely restructured the data schemas and flow of beat saber plus data"
+					],
+					[
+						"added icons for beat saber related overlays"
+					],
+					[
+						"removed alpha values from default color values if the default was fully opaque",
+						["the color picker polyfill i'm using removes it if it's not transparent at all, which caused some reset button issues"]
+					]
+				]
+			}
+		}
+	},
+
+	"1705268268367": {
+		"updates": {
+			"chat": {
+				"revision": 39,
+				"notes": [
+					[
+						"fixed user info culling always triggering on right-aligned layouts, also simplified the width check function"
+					],
+					[
+						"fixed radial gradient 7tv paints (usually) only showing half the paint"
+					],
+					[
+						"announcements can now be tagged messages"
+					],
+					[
+						"fixed abyss falloff on avatar background blur effects"
+					],
+					[
+						"never added a default value for avatar background blurring, woops"
+					],
+					[
+						"adjusted default amount of padding on avatar backgrounds"
+					],
+					[
+						"removed outline/shadow effects on avatar background effects",
+						["tried for a while to get these to show up again after the new changes were made to no avail, sorry"]
+					],
+					[
+						"removed setting for avatar background magnification, as it's now automatic"
+					],
+					[
+						"adjusted more default settings (sorry weh)"
+					],
+					[
+						"fixed CEF-audio-bug-workaround-noise playing even if it's disabled when the overlay loads"
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 10,
+				"notes": [
+					[
+						"re-did how cover art background offsets were being calculated",
+						["abysses were appearing on the outer edges of the background element if the blurring amount got too high, the width and height will now auto-adjust dependent on blur amount"]
+					],
+					[
+						"removed background effect offset settings",
+						["they were there to address the abyss issue but this is now auto-fixed so it's not needed anymore"]
+					],
+					[
+						"added a setting to toggle the gradient mask on the background"
+					],
+					[
+						"added a setting to ensure automatic colors are between set brightness levels"
+					],
+					[
+						"added placeholder cover art when no song data is present"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 36,
+				"notes": [
+					[
+						"added the ability to reset specific settings values on settings panel updates",
+						["this'll only be used if i'm changing the way the values function, things won't be reset if it just \"looks better\""]
+					]
+				]
+			}
+		},
+		"reset": {
+			"check": 1,
+			"settings": [
+				"avatarsBGVerticalPadding",
+				"avatarsBGHorizontalPadding",
+				"avatarsBGBlurAmount"
+			]
+		}
+	},
+
+	"1704855184206": {
+		"updates": {
+			"chat": {
+				"revision": 38,
+				"notes": [
+					[
+						"added a setting to alternate horizontal alignment of message blocks"
+					],
+					[
+						"lowered some default values on settings to condense the overlay a bit"
+					],
+					[
+						"simplified some of the default block appear/decay animations"
+					],
+					[
+						"added support for watch streak messages",
+ 						["holy crap twitch PLEASE update your IRC docs"]
+					],
+					[
+						"chat messages can now be delayed (for automatic moderation purposes/etc)",
+						["i have this defaulted to 2 seconds, should hardly be noticeable"]
+					]
+				]
+			},
+
+			"clock": {
+				"revision": 3,
+				"notes": [
+					[
+						"fixed minutes not being padded with a leading zero if the setting to pad the leading value is off and hours are present"
+					],
+					[
+						"changed the way the clock switches shown values, should fix cases where it fails to continue its loop"
+					],
+					[
+						"increased default clock width to accommodate the 12-hour format"
+					],
+					[
+						"fixed clock disappearing if the settings panel is refreshed"
+					]
+				]				
+			},
+
+			"settings": {
+				"revision": 35,
+				"notes": [
+					[
+						"forced timestamp of 9999999999999 to show \"(in progress)\" for its patch notes header",
+						["this timestamp is in the year 2280, it will never be hit. this also only ever shows on the dev path, so."]
+					],
+					[
+						"updated font awesome from 5.15 to 6.5"
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 9,
+				"notes": [
+					[
+						"added a setting to force background color on scannables"
+					],
+					[
+						"scannable URLs are now generated on the overlay side",
+						["...why did i even make the settings panel do this wtf"]
+					],
+					[
+						"changed the way scannables are being rendered",
+						["it'll no longer have to fetch a new scannable image any time colors change"]
+					],
+					[
+						"reworded the setting to switch the foreground scannable color to denote switching between automatic light/dark background colors"
+					],
+					[
+						"if song data has been fetched before, it's now sent out immediately upon the overlay announcing its presence"
+					],
+					[
+						"art outlines now blur a slightly zoomed in cover art rather than just showing it directly",
+						["cover art with borders made the outlines look ugly and it's been bothering me"]
+					],
+					[
+						"cover art can now be used as a background for the overlay"
+					],
+					[
+						"fixed marquee scrolling on title text if it's too long on the initial load"
+					],
+					[
+						"adjusted some default settings"
+					]
+				]
+			}
+		}
+	},
+
+	"1703848762628": {
+		"updates": {
+			"chat": {
+				"revision": 37,
+				"notes": [
+					[
+						"channel point reward redemptions can now be shown as an event tag if the redemption has text associated with it"
+					],
+					[
+						"fixed incorrect cache location of the known bots list data"
+					],
+					[
+						"fixed BTTV badges failing to render if user object hasn't completely initialized yet"
+					]
+				]
+			},
+
+			"clock": {
+				"revision": 2,
+				"notes": [
+					[
+						"can now show local time, stream uptime, and ad countdown"
+					],
+					[
+						"overall element width can now be forced",
+						["useful if more than 1 time value is shown"]
+					],
+					[
+						"alignment of text can now be changed"
+					],
+					[
+						"clock header cases can now be forced"
+					],
+					[
+						"fixed 12am showing as 0am on 12-hour formats"
+					],
+					[
+						"switched out the header text override setting for a string variable",
+						["use %zi to show timezone initials, %zo to show timezone offset relative to GMT, and %zn to show the full timezone name in any of the clock/timer headers"]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 34,
+				"notes": [
+					[
+						"added authorization code grant flow auth to twitch to allow for additional data scopes",
+						[
+							"some new functionality may not work without connecting to twitch in this way, everything up to this point should remain unchanged as none of it requires this authentication flow",
+							"there's also a related setting in the Connections tab that you must manually enable to allow for these additional data points to work. i'm forcing these to give nothing back initially as the API tokens have to be owned by the same account you're trying to access, otherwise they don't work",
+							"i've also run into an issue (once) where sometimes things just catastrophically break and the panel continuously reloads because of a token error? i've added a button to the about panel in case things happen (it should be fine though, i think)"
+						]
+					],
+					[
+						"clarified what data scopes are being obtained and for what reasons in the authentication tab",
+						["i love transparency, transparency is great"]
+					],
+					[
+						"re-organized the authentication tab a bit"
+					],
+					[
+						"made the bullet points in list elements dashes"
+					],
+					[
+						"fixed some issues with new setup initialization"
+					],
+					[
+						"un-hardcoded a delay on fetching data for new spotify songs playing",
+						["this was added in to ensure a new song is playing after the currently playing one finishes so the quicker refresh doesn't misfire, was hardcoded at 500ms"]
+					]
+				]
+			}
+		}
+	},
+	
+	"1703516161056": {
+		"updates": {
+			"chat": {
+				"revision": 36,
+				"notes": [
+					[
+						"migrated audio fetching functions to async equivalents"
+					],
+					[
+						"migrated calls to twitch's helix API to async equivalents"
+					],
+					[
+						"moved avatar permission checking into the user class as a getter function"
+					],
+					[
+						"added support for custom bit badges",
+						["i meant to add in support for this forever ago but never got around to it, woops"]
+					],
+					[
+						"custom sub and bit badges can now be toggled"
+					],
+					[
+						"internal badge list is now an object instead of an array",
+						["twitch sends this out as an array still and i have, no idea why"]
+					],
+					[
+						"messages that have a custom channel point redemption attached to them can now be hidden"
+					],
+					[
+						"properly support default sub badge variants"
+					],
+					[
+						"fixed 7TV paints and badges failing to apply if the user is still being initialized"
+					],
+					[
+						"fixed 7TV badges not showing up if the user has no other badges"
+					],
+					[
+						"adjusted default margin on international names"
+					],
+					[
+						"removed delay on applying settings when the overlay loads up"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 33,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1702689377060": {
+		"updates": {
+			"chat": {
+				"revision": 35,
+				"notes": [
+					[
+						"began work on migrating various data objects to classes",
+						["emotes, user data, and external cosmetics/badges are fully migrated at this point"]
+					],
+					[
+						"began work on turning callback-hell functions into asynchronous functions"
+					],
+					[
+						"changed the way sub badge fetching was being executed"
+					],
+					[
+						"condensed some internal for loops"
+					],
+					[
+						"user data cache is no longer stored in SessionStorage, as it'll now only execute data fetches when it sees users for the first time",
+						["was kinda pointless since most overlay use is just 1 session anyways"]
+					],
+					[
+						"badges from external services and badges added by the overlay itself can now be instantly toggled"
+					],
+					[
+						"updated some of the badge categories with some of the newer badges that've been released",
+						["also added an \"Event-based\" category (for the r/place and recap badges only right now)"]
+					],
+					[
+						"added support for chat announcements",
+						["for now they'll just mimic highlighted messages, may look into announcement formatting in the future"]
+					],
+					[
+						"moved settings to toggle external emotes out of the data fetching functions",
+						["it now determines if emotes are \"enabled\" through a custom getter in the new emote class when messages are being parsed"]
+					],
+					[
+						"smoothed outline shadows out if outline size exceeds 1px"
+					],
+					[
+						"added a setting to use the prominent avatar color as a name color fallback instead of the defined default"
+					],
+					[
+						"added the ability to add borders to badges"
+					],
+					[
+						"avatars and pronouns now update on all previous message blocks after using either of the refresh commands"
+					],
+					[
+						"de-broadcaster'd the test messages"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 32,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1702521029531": {
+		"updates": {
+			"spotify": {
+				"revision": 8,
+				"notes": [
+					[
+						"if a track ends before the next state fetch is triggered, it will now trigger early"
+					],
+					[
+						"increased the state refresh interval's default from 5 seconds to 15 seconds",
+						["this and the above change should heavily lower API requests at the cost of pausing feeling a little less snappy. would highly recommend resetting this setting to the new default"]
+					],
+					[
+						"fixed the track progress outline sometimes showing 100% even after new track data is fetched"
+					],
+					[
+						"added a setting to toggle displaying if an album is a single"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 31,
+				"notes": [
+					[
+						"cached spotify authentication tokens can now be manually cleared if a manual re-auth is needed"
+					],
+					[
+						"fixed buttons needing a confirmation click not displaying icons after letting the confirmation click expire"
+					],
+					[
+						"ensured buttons needing a confirmation click have a static width set"
+					],
+					[
+						"changed spotify \"artist\" settings to \"secondary metadata\" settings",
+						["they also apply to the album information, so this just makes more sense"]
+					]
+				]
+			}
+		}
+	},
+
+	"1702077102594": {
+		"updates": {
+			"spotify": {
+				"revision": 7,
+				"notes": [
+					[	
+						"fixed shadow effects clipping on the left side of text"
+					],
+					[
+						"scannable height is now a fixed, static setting",
+						["this also fixes \"lines\" appearing below scannables if some other part's height exceeds the scannable's height"]
+					],
+					[
+						"merged line height settings from the title and artist elements into one setting"
+					],
+					[
+						"added setting to right-align the overlay's layout"
+					],
+					[
+						"added setting to flip the order of artist/album and title elements"
+					],
+					[
+						"added setting to change the brightness value of the cover art outline"
+					],
+					[
+						"minor default settings tweaks"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 30,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
+	"1701910291177": {
+		"updates": {
+			"chat": {
+				"revision": 34,
+				"notes": [
+					[
+						"strengthened word filtering a bit, will now strip out non letter-characters, and reduce characters with any sort of accent marks to ascii-compliant characters and attempt to find words within the stripped string",
+						["(again, these filters are only there to prevent user-defined words from directly appearing on the overlay, there will always be a way to work around it, but it will involve messing the word up in some fashion now)"]
+					],
+					[
+						"added a toggle for !bsr output"
+					],
+					[
+						"simplified the way text outline effects are being rendered",
+						["to restore the effect back to something that looked like it did before this change, set your outline effects color to a fully opaque black. the default has been adjusted"]
+					],
+					[
+						"tweaked some default settings slightly"
+					],
+					[
+						"split the word censors into harder filters and only specific-word filters",
+						["the shorter f and n slurs were triggering false positives on the new system, it's *highly advised* to reset those settings to the new defaults"]
+					],
+					[
+						"apparently i never added the default international name settings?",
+						["uh, woops"]
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 6,
+				"notes": [
+					[
+						"added an option to display the album/compilation a song is on",
+						["will fade between the artist and the album/comp on a loop (configurable)"]
+					],
+					[
+						"added a toggle for animations"
+					],
+					[
+						"removed unnecessary condition check in state fetching"
+					],
+					[
+						"moved filter effects from parent wrapper elements to the text elements themselves"
+					],
+					[
+						"simplified the way text outline effects are being rendered"
+					]
+				]
+			},
+
+			"clock": {
+				"revision": 1,
+				"notes": [
+					[
+						"now configurable through the settings panel"
+					],
+					[
+						"timezone data now fetched through Luxon, timezone abbreviations should now be automatic for everyone"
+					],
+					[
+						"header can now be forced to show user-defined text"
+					],
+					[
+						"leading zero character on the hour display can now be toggled"
+					],
+					[
+						"added support for 12-hour time format"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 29,
+				"notes": [
+					[
+						"added a primary color setting specifically for the settings panel in the about tab",
+						["meh, why not /shrug"]
+					],
+					[
+						"re-arranged the about tab a bit"
+					],
+					[
+						"tweaked the overall theme \"just a bit\""
+					],
+					[
+						"added a button to reset each specific setting back to defaults if the setting is not set to the default value"
+					]
+				]
+			}
+		}
+	},
+
+	"1701610973962": {
+		"updates": {
+			"spotify": {
+				"revision": 5,
+				"notes": [
+					[
+						"overlay will now hide itself when paused (can be turned off)"
+					],
+					[
+						"gradients can now be drawn over scannables",
+						["this may make the scannables harder for spotify apps to read if the gradient applied is too strong, use with caution"]
+					],
+					[
+						"added border radius setting for scannables"
+					],
+					[
+						"added border radius setting for cover art",
+						["i forgor to un-hardcode these my bad"]
+					],
+					[
+						"removed setting for scannable width",
+						["updates to how scannables are being rendered in the DOM makes dealing with this setting a lot more of a headache, it'll now just fill available space"]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 28,
+				"notes": [
+					[
+						"changelogs are now shown in the new Updates tab"
+					],
+					[
+						"removed critical flag on most of the spotify settings",
+						["settings pertaining to functionality will remain marked as critical"]
+					]
+				]
+			}
+		}
+	}
+}
