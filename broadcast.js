@@ -235,6 +235,31 @@ broadcastFuncs = {
 		showExtraRow("ns");
 		updateNightscout();
 		updateNightscoutSettings();
+	},
+
+	SRXDOverlayExists: async function(data) {
+		changeStatusCircle("SRXDOverlayStatus", "green", `loaded (r${data.data.version})`);
+
+		postToBGColorChannel(localStorage.getItem("setting__overall_bgColor"));
+
+		let settingsKeys = Object.keys(defaultConfig);
+		let settingsKeysSRXD = settingsKeys.filter((key) => key.substr(0, 5) === "srxd_");
+		postToChannel("settingsKeysSRXD", settingsKeysSRXD);
+
+		showExtraRow("srxd");
+		startSpinStatusWebsocket();
+
+		if(currentSRXDSong !== null) {
+			postToSRXDEventChannel({
+				type: "map",
+				data: currentSRXDSong
+			});
+
+			postToSRXDEventChannel({
+				type: "state",
+				data: currentSRXDState
+			});
+		}
 	}
 };
 

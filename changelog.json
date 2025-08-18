@@ -1,4 +1,26 @@
 {
+	"9999999999999": {
+		"updates": {
+			"srxd": {
+				"revision": 1,
+				"notes": [
+					[
+						"new Spin Rhythm XD now playing overlay added, reachable at /overlays/srxd"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 93,
+				"notes": [
+					[
+						"added support for SpinStatus connections for the Spin Rhythm XD now playing overlay"
+					]
+				]
+			}
+		}
+	},
+
 	"1743427856680": {
 		"updates": {
 			"chat": {
