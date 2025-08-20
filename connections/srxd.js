@@ -192,6 +192,15 @@ const SRXDMessageHandlers = {
 			currentSRXDState.misses++;
 		}
 
+		//console.log(data.type, data.accuracy);
+
+		if(data.accuracy !== "Valid") {
+			postToSRXDEventChannel({
+				type: "hit",
+				data: data.accuracy.replace("Early", "")
+			});
+		}
+
 		postToSRXDEventChannel({
 			type: "state",
 			data: currentSRXDState
@@ -219,7 +228,7 @@ function startSpinStatusWebsocket() {
 
 	srxd_ws.addEventListener("message", async function(msg) {
 		var data = JSON.parse(msg.data);
-		console.log(data);
+		//console.log(data);
 
 		if(!srxd_ws.hasSeenFirstMessage) {
 			srxd_ws.hasSeenFirstMessage = true;
