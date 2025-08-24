@@ -257,6 +257,13 @@ h1, h2 {
 	background-color: var(--primary-color);
 }
 
+#sidebar .srxd {
+	-webkit-mask-image: url('icons/srxd-icon.png');
+	height: 60%;
+	vertical-align: middle;
+	background-color: var(--primary-color);
+}
+
 h1 .icon {
 	background-color: var(--settings-header-color);
 	mask-type: luminance;
