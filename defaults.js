@@ -1030,6 +1030,7 @@ const defaultConfig = {
 	"bs_accAnimationDivisor": "10",
 	"bs_miscInfoShowDifficulty": "true",
 	"bs_miscInfoShowBSR": "true",
+	"bs_miscInfoShowOSTWIP": "true",
 	"bs_miscInfoShowScoreSaberStars": "false",
 	"bs_miscInfoShowBeatLeaderStars": "false",
 	"bs_miscInfoRotationInterval": "7",
