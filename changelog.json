@@ -12,6 +12,16 @@
 				]
 			},
 
+			"chat": {
+				"revision": 88,
+				"notes": [
+					[
+						"fixed weird clipping issues when using specific width settings in the traditional layout",
+						["(reported by Eiernase)"]
+					]
+				]
+			},
+
 			"settings": {
 				"revision": 94,
 				"notes": [
