@@ -6,7 +6,7 @@
 				"notes": [
 					[
 						"added toggle for showing \"OST\" and \"WIP\" in place of bsr codes when relevant",
-						["(added by mercurialworld [beat-saber-now-playing/#1])"]
+						["(added by mercurialworld [beat-saber-now-playing/#1])"],
 						{"anchor": "bs_miscInfoShowOSTWIP"}
 					]
 				]
