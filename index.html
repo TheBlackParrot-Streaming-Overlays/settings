@@ -5458,7 +5458,12 @@
 					</div>
 					<div class="setting">
 						<div class="settingCell">
-							<input checked id="bs_miscInfoShowBSR" type="checkbox"/> <span class="settingInfo">Show map !bsr code in information rotation</span>
+							<input checked id="bs_miscInfoShowBSR" type="checkbox" data-dependent="bs_miscInfoShowBSR"/> <span class="settingInfo">Show map !bsr code in information rotation</span>
+						</div>
+					</div>
+					<div class="setting" data-dependent="bs_miscInfoShowBSR">
+						<div class="settingCell">
+							<input checked id="bs_miscInfoShowOSTWIP" type="checkbox"/> <span class="settingInfo">Show "OST"/"WIP" for OST/WIP maps in place of !bsr code in information rotation</span>
 						</div>
 					</div>
 					<div class="setting">
