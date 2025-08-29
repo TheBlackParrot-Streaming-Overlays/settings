@@ -1,4 +1,28 @@
 {
+	"9999999999999": {
+		"updates": {
+			"bs": {
+				"revision": 23,
+				"notes": [
+					[
+						"added toggle for showing \"OST\" and \"WIP\" in place of bsr codes when relevant",
+						["(added by mercurialworld [beat-saber-now-playing/#1])"]
+						{"anchor": "bs_miscInfoShowOSTWIP"}
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 94,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
 	"1756032034047": {
 		"updates": {
 			"chat": {
