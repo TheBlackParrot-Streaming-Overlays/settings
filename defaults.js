@@ -190,7 +190,9 @@ const nonPublicSettings = [
 	"srxd_enableHealthOutline",
 	"srxd_healthOutlineShowsOnAllChanges",
 	"srxd_healthOutlineTimeout",
-	"spinstatus_port"
+	"spinstatus_port",
+	"anotherspinstatus_port",
+	"srxdDataMod"
 ];
 
 const defaultConfig = {
@@ -1313,7 +1315,7 @@ const defaultConfig = {
 	"srxd_expertDiffName": "Expert",
 	"srxd_xdDiffName": "XD",
 	"srxd_remiXDDiffName": "RemiXD",
-	"srxd_elementOrder": "misc,art,metadata,hitmiss,score",
+	"srxd_elementOrder": "misc,art,metadata,hitmiss,acc",
 	"srxd_elementSpacing": "12",
 	"srxd_overlayMarginHorizontal": "12",
 	"srxd_overlayMarginVertical": "12",
@@ -1492,7 +1494,6 @@ const defaultConfig = {
 	"srxd_qrBorderSize": "1",
 	"srxd_qrBorderColor": "#ffffff40",
 	"srxd_qrBorderStyle": "solid",
-	//"srxd_accPrecision": "2",
 	"srxd_scoreAnimationDivisor": "10",
 	"srxd_miscInfoShowDifficulty": "true",
 	"srxd_miscInfoShowSpinShareKey": "true",
@@ -1504,11 +1505,35 @@ const defaultConfig = {
 	"srxd_metadataLineHeight": "26",
 	"srxd_miscInfoLineHeight": "24",
 	"srxd_hitMissLineHeight": "16",
-	"srxd_scoreLineHeight": "21",
+	"srxd_scoreLineHeight": "0",
 	"srxd_forceSpinShareData": "false",
 	"srxd_renderArtLower": "false",
 	"srxd_comboFontAdditionalWeight": "0",
-	"spinstatus_port": "38304"
+	"spinstatus_port": "38304",
+	"anotherspinstatus_port": "6971",
+	"srxdDataMod": "spinstatus",
+	"srxd_accWidth": "140",
+	"srxd_accLineHeight": "21",
+	"srxd_flipAccDetails": "false",
+	"srxd_accAlignment": "center",
+	"srxd_animateAccChanges": "true",
+	"srxd_animateAccInterval": "10",
+	"srxd_accAnimationDivisor": "10",
+	"srxd_accPrecision": "2",
+	"srxd_accColor": "#ffffff",
+	"srxd_accFontFamily": "Manrope",
+	"srxd_accFontItalic": "false",
+	"srxd_accFontSize": "27",
+	"srxd_accFontWeight": "900",
+	"srxd_accFontAdditionalWeight": "0",
+	"srxd_accLetterSpacing": "-1",
+	"srxd_showPerfectPlusHitsIfFC": "true",
+	"srxd_perfectPlusHitsColor": "#ffffff",
+	"srxd_perfectPlusHitsFontFamily": "Manrope",
+	"srxd_perfectPlusHitsFontItalic": "false",
+	"srxd_perfectPlusHitsFontSize": "12",
+	"srxd_perfectPlusHitsFontWeight": "900",
+	"srxd_perfectPlusHitsFontAdditionalWeight": "0"
 };
 // i typed out the bigNoNoWords so you don't have to, i'm sorry :(
 // it's gotta know what to remove

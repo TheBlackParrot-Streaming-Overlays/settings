@@ -143,6 +143,7 @@
 				<div class="rowEntries" data-tab="srxd">
 					<div class="row" data-tab="srxd_layout"><i class="fas fa-table-cells-large"></i>Layout</div>
 					<hr/>
+					<div class="row" data-tab="srxd_acc"><i class="fas fa-bullseye"></i>Accuracy Cell</div>
 					<div class="row" data-tab="srxd_score"><i class="fas fa-bullseye"></i>Score Cell</div>
 					<div class="row" data-tab="srxd_art"><i class="fas fa-image"></i>Cover Art Cell</div>
 					<div class="row" data-tab="srxd_hitmiss"><i class="fas fa-xmark"></i>Hit / Miss Cell</div>
@@ -2234,18 +2235,26 @@
 					</div>
 					<div class="setting">
 						<div class="settingCellLabel">
-							<strong>SpinStatus</strong>
-						</div>
-						<div class="settingCell">
-							<div class="statusCircle grayCircle" id="SpinStatusStatus"></div> <div class="statusMessage grayMessage">inactive</div>
-						</div>
-					</div>
-					<div class="setting">
-						<div class="settingCellLabel">
 							<strong>Spotify Web API</strong>
 						</div>
 						<div class="settingCell">
 							<div class="statusCircle grayCircle" id="SpotifyStatus"></div> <div class="statusMessage grayMessage">inactive</div>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<strong>SRXD AnotherSpinStatus</strong>
+						</div>
+						<div class="settingCell">
+							<div class="statusCircle grayCircle" id="AnotherSpinStatusStatus"></div> <div class="statusMessage grayMessage">inactive</div>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<strong>SRXD SpinStatus</strong>
+						</div>
+						<div class="settingCell">
+							<div class="statusCircle grayCircle" id="SpinStatusStatus"></div> <div class="statusMessage grayMessage">inactive</div>
 						</div>
 					</div>
 					<div class="setting">
@@ -3033,6 +3042,43 @@
 						</div>
 						<div class="settingCell">
 							<input type="number" id="ns_updateInterval" min="1" max="60" step="1" value="5"/><span class="settingCellMeasurement">minutes</span>
+						</div>
+					</div>
+				</div>
+				<div class="part">
+					<h1>Spin Rhythm XD</h1>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">SpinStatus port</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="spinstatus_port" min="1" max="65536" step="1" value="38304"/>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">AnotherSpinStatus port</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="anotherspinstatus_port" min="1" max="65536" step="1" value="6971"/>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Use data from</span>
+						</div>
+						<div class="settingCell">
+							<select id="srxdDataMod">
+								<option selected value="spinstatus">SpinStatus</option>
+								<option value="anotherspinstatus">AnotherSpinStatus</option>
+							</select>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCell smol">
+							The settings panel will need to be reloaded after switching which data mod is being used for SRXD-related overlays. You can do this by right-clicking the settings panel and clicking Refresh in the menu that pops up.
 						</div>
 					</div>
 				</div>
@@ -9812,12 +9858,12 @@
 							<span class="settingInfo">Element order</span>
 						</div>
 						<div class="settingCell">
-							<input id="srxd_elementOrder" type="text" value="misc,art,metadata,hitmiss,score"/>
+							<input id="srxd_elementOrder" type="text" value="misc,art,metadata,hitmiss,acc"/>
 						</div>
 					</div>
 					<div class="setting">
 						<div class="settingCell smol">
-							<strong>Available elements:</strong> score, art, hitmiss, metadata, misc
+							<strong>Available elements:</strong> acc, art, hitmiss, metadata, misc, score
 						</div>
 					</div>
 					<div class="setting">
@@ -9830,15 +9876,15 @@
 					</div>
 				</div>
 			</div>
-			<div class="section" data-content="srxd_score">
+			<div class="section" data-content="srxd_acc">
 				<div class="part">
-					<h1>Score Cell</h1>
+					<h1>Accuracy Cell</h1>
 					<div class="setting">
 						<div class="settingCellLabel">
 							<span class="settingInfo">Width</span>
 						</div>
 						<div class="settingCell">
-							<input type="number" id="srxd_scoreWidth" min="0" max="500" step="1" value="130"/><span class="settingCellMeasurement">px</span>
+							<input type="number" id="srxd_accWidth" min="0" max="500" step="1" value="140"/><span class="settingCellMeasurement">px</span>
 						</div>
 					</div>
 					<div class="setting">
@@ -9846,13 +9892,13 @@
 							<span class="settingInfo">Line height</span>
 						</div>
 						<div class="settingCell">
-							<input type="number" id="srxd_scoreLineHeight" min="0" max="999" step="1" value="21"/><span class="settingCellMeasurement">px</span>
+							<input type="number" id="srxd_accLineHeight" min="0" max="999" step="1" value="21"/><span class="settingCellMeasurement">px</span>
 						</div>
 					</div>
 					<hr/>
 					<div class="setting">
 						<div class="settingCell">
-							<input id="srxd_flipScoreDetails" type="checkbox"/> <span class="settingInfo">Flip vertical order of score / combo</span>
+							<input id="srxd_flipAccDetails" type="checkbox"/> <span class="settingInfo">Flip vertical order of accuracy / combo</span>
 						</div>
 					</div>
 					<div class="setting">
@@ -9860,7 +9906,7 @@
 							<span class="settingInfo">Horizontal alignment</span>
 						</div>
 						<div class="settingCell">
-							<select id="srxd_scoreAlignment">
+							<select id="srxd_accAlignment">
 								<option value="left">Left</option>
 								<option selected value="center">Center</option>
 								<option value="right">Right</option>
@@ -9870,26 +9916,26 @@
 					<hr/>
 					<div class="setting">
 						<div class="settingCell">
-							<input checked id="srxd_animateScoreChanges" type="checkbox" data-dependent="animateScore"/> <span class="settingInfo">Animate score changes</span>
+							<input checked id="srxd_animateAccChanges" type="checkbox" data-dependent="srxdAnimateAcc"/> <span class="settingInfo">Animate accuracy changes</span>
 						</div>
 					</div>	
-					<div class="setting" data-dependent="animateScore">
+					<div class="setting" data-dependent="srxdAnimateAcc">
 						<div class="settingCellLabel">
 							<span class="settingInfo">Interval</span>
 						</div>
 						<div class="settingCell">
-							<input type="number" id="srxd_animateScoreInterval" min="1" max="250" step="1" value="10"/><span class="settingCellMeasurement">ms</span>
+							<input type="number" id="srxd_animateAccInterval" min="1" max="250" step="1" value="10"/><span class="settingCellMeasurement">ms</span>
 						</div>
 					</div>
-					<div class="setting" data-dependent="animateScore">
+					<div class="setting" data-dependent="srxdAnimateAcc">
 						<div class="settingCellLabel">
 							<span class="settingInfo">Divisor</span>
 						</div>
 						<div class="settingCell">
-							<input type="number" id="srxd_scoreAnimationDivisor" min="1" max="100" step="1" value="10"/>
+							<input type="number" id="srxd_accAnimationDivisor" min="1" max="100" step="1" value="10"/>
 						</div>
 					</div>
-					<!--<hr/>
+					<hr/>
 					<div class="setting">
 						<div class="settingCellLabel">
 							<span class="settingInfo">Decimal precision</span>
@@ -9897,39 +9943,39 @@
 						<div class="settingCell">
 							<input type="number" id="srxd_accPrecision" min="0" max="4" step="1" value="2"/><span class="settingCellMeasurement">digits</span>
 						</div>
-					</div>-->
+					</div>
 					<hr/>
 					<div class="setting">
 						<div class="settingCellLabel">
-							<span class="settingInfo">Score color</span>
+							<span class="settingInfo">Accuracy color</span>
 						</div>
 						<div class="settingCell">
-							<input id="srxd_scoreColor" type="text" data-coloris value="#FFFFFFFF"/>
+							<input id="srxd_accColor" type="text" data-coloris value="#FFFFFFFF"/>
 						</div>
 					</div>
 					<div class="setting">
 						<div class="settingCellLabel">
-							<span class="settingInfo">Score font</span>
+							<span class="settingInfo">Accuracy font</span>
 						</div>
 						<div class="settingCell">
-							<input id="srxd_scoreFontFamily" type="text" value="Manrope"/>
-							<input id="srxd_scoreFontItalic" type="checkbox"/> <span class="settingInfo">Italic</span>
+							<input id="srxd_accFontFamily" type="text" value="Manrope"/>
+							<input id="srxd_accFontItalic" type="checkbox"/> <span class="settingInfo">Italic</span>
 						</div>
 					</div>
 					<div class="setting">
 						<div class="settingCellLabel">
-							<span class="settingInfo">Score size</span>
+							<span class="settingInfo">Accuracy size</span>
 						</div>
 						<div class="settingCell">
-							<input type="number" id="srxd_scoreFontSize" min="0" max="96" step="0.25" value="27"/><span class="settingCellMeasurement">pt</span>
+							<input type="number" id="srxd_accFontSize" min="0" max="96" step="0.25" value="27"/><span class="settingCellMeasurement">pt</span>
 						</div>
 					</div>
 					<div class="setting">
 						<div class="settingCellLabel">
-							<span class="settingInfo">Score font weight</span>
+							<span class="settingInfo">Accuracy font weight</span>
 						</div>
 						<div class="settingCell">
-							<input type="number" id="srxd_scoreFontWeight" min="0" max="900" step="100" value="900"/>
+							<input type="number" id="srxd_accFontWeight" min="0" max="900" step="100" value="900"/>
 						</div>
 					</div>
 					<div class="setting">
@@ -9937,15 +9983,15 @@
 							<span class="settingInfo">Additional accuracy weight</span>
 						</div>
 						<div class="settingCell">
-							<input type="number" id="srxd_scoreFontAdditionalWeight" min="0" max="20" step="0.1" value="0"/><span class="settingCellMeasurement">px</span>
+							<input type="number" id="srxd_accFontAdditionalWeight" min="0" max="20" step="0.1" value="0"/><span class="settingCellMeasurement">px</span>
 						</div>
 					</div>
 					<div class="setting">
 						<div class="settingCellLabel">
-							<span class="settingInfo">Score character spacing</span>
+							<span class="settingInfo">Accuracy character spacing</span>
 						</div>
 						<div class="settingCell">
-							<input type="number" id="srxd_scoreLetterSpacing" min="-20" max="20" step="0.1" value="-1"/><span class="settingCellMeasurement">px</span>
+							<input type="number" id="srxd_accLetterSpacing" min="-20" max="20" step="0.1" value="-1"/><span class="settingCellMeasurement">px</span>
 						</div>
 					</div>
 					<hr/>
@@ -9988,6 +10034,171 @@
 						</div>
 						<div class="settingCell">
 							<input type="number" id="srxd_comboFontAdditionalWeight" min="0" max="20" step="0.1" value="0"/><span class="settingCellMeasurement">px</span>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCell">
+							<input checked id="srxd_showPerfectPlusHitsIfFC" type="checkbox"/> <span class="settingInfo">Show Perfect+ hits while in a full combo</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Color</span>
+						</div>
+						<div class="settingCell">
+							<input id="srxd_perfectPlusHitsColor" type="text" data-coloris value="#FFFFFFFF"/>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Font</span>
+						</div>
+						<div class="settingCell">
+							<input id="srxd_perfectPlusHitsFontFamily" type="text" value="Manrope"/>
+							<input id="srxd_perfectPlusHitsFontItalic" type="checkbox"/> <span class="settingInfo">Italic</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Size</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="srxd_perfectPlusHitsFontSize" min="0" max="96" step="0.25" value="12"/><span class="settingCellMeasurement">pt</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Font weight</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="srxd_perfectPlusHitsFontWeight" min="0" max="900" step="100" value="900"/>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Additional font weight</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="srxd_perfectPlusHitsFontAdditionalWeight" min="0" max="20" step="0.1" value="0"/><span class="settingCellMeasurement">px</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Header transform</span>
+						</div>
+						<div class="settingCell">
+							<select id="srxd_perfectPlusHitsHeadTransform">
+								<option selected value="capitalize">Capitalize</option>
+								<option value="lowercase">Lowercase</option>
+								<option value="uppercase">Uppercase</option>
+								<option value="none">Do not transform</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section" data-content="srxd_score">
+				<div class="part">
+					<h1>Score Cell</h1>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Width</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="srxd_scoreWidth" min="0" max="500" step="1" value="130"/><span class="settingCellMeasurement">px</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Line height</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="srxd_scoreLineHeight" min="0" max="999" step="1" value="0"/><span class="settingCellMeasurement">px</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Horizontal alignment</span>
+						</div>
+						<div class="settingCell">
+							<select id="srxd_scoreAlignment">
+								<option value="left">Left</option>
+								<option selected value="center">Center</option>
+								<option value="right">Right</option>
+							</select>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCell">
+							<input checked id="srxd_animateScoreChanges" type="checkbox" data-dependent="animateScore"/> <span class="settingInfo">Animate score changes</span>
+						</div>
+					</div>	
+					<div class="setting" data-dependent="animateScore">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Interval</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="srxd_animateScoreInterval" min="1" max="250" step="1" value="10"/><span class="settingCellMeasurement">ms</span>
+						</div>
+					</div>
+					<div class="setting" data-dependent="animateScore">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Divisor</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="srxd_scoreAnimationDivisor" min="1" max="100" step="1" value="10"/>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Score color</span>
+						</div>
+						<div class="settingCell">
+							<input id="srxd_scoreColor" type="text" data-coloris value="#FFFFFFFF"/>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Score font</span>
+						</div>
+						<div class="settingCell">
+							<input id="srxd_scoreFontFamily" type="text" value="Manrope"/>
+							<input id="srxd_scoreFontItalic" type="checkbox"/> <span class="settingInfo">Italic</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Score size</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="srxd_scoreFontSize" min="0" max="96" step="0.25" value="27"/><span class="settingCellMeasurement">pt</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Score font weight</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="srxd_scoreFontWeight" min="0" max="900" step="100" value="900"/>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Additional score weight</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="srxd_scoreFontAdditionalWeight" min="0" max="20" step="0.1" value="0"/><span class="settingCellMeasurement">px</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Score character spacing</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="srxd_scoreLetterSpacing" min="-20" max="20" step="0.1" value="-1"/><span class="settingCellMeasurement">px</span>
 						</div>
 					</div>
 				</div>
@@ -11127,6 +11338,8 @@
 	<script defer type="text/javascript" src="connections/heartratebroadcaster.js"></script>
 	<script defer type="text/javascript" src="connections/nightscout.js"></script>
 	<script defer type="text/javascript" src="connections/srxd.js"></script>
+	<script defer type="text/javascript" src="connections/srxd_spinstatus.js"></script>
+	<script defer type="text/javascript" src="connections/srxd_anotherspinstatus.js"></script>
 
 	<script type="text/javascript">
 		window.addEventListener("load", async function() {

@@ -247,7 +247,7 @@ broadcastFuncs = {
 		postToChannel("settingsKeysSRXD", settingsKeysSRXD);
 
 		showExtraRow("srxd");
-		startSpinStatusWebsocket();
+		connectSpinRhythmXD();
 
 		if(currentSRXDSong !== null) {
 			postToSRXDEventChannel({

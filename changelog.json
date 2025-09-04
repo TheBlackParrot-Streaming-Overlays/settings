@@ -1,5 +1,5 @@
 {
-	"9999999999999": {
+	"1756970934557": {
 		"updates": {
 			"bs": {
 				"revision": 23,
@@ -22,11 +22,46 @@
 				]
 			},
 
+			"srxd": {
+				"revision": 2,
+				"notes": [
+					[
+						"added accuracy cell",
+						["(currently only works with AnotherSpinStatus at changelog entry time)"]
+					],
+					[
+						"moved combo display to the accuracy cell by default"
+					],
+					[
+						"added rating display to difficulty data",
+						["(currently only works with AnotherSpinStatus at changelog entry time)"]
+					],
+					[
+						"re-enabled timing display",
+						[
+							"note this will only properly work with AnotherSpinStatus, as SpinStatus shows extra timing information the game doesn't normally show you",
+							"i also have this rendering below both the main bar area and the art background area, you should be able to position it where you want using OBS transforms without issue"
+						]
+					],
+					[
+						"added a setting to show Perfect+ hit amount while in a full combo",
+						{"anchor": "srxd_showPerfectPlusHitsIfFC"}
+					]
+				]
+			},
+
 			"settings": {
 				"revision": 94,
 				"notes": [
 					[
-						"(update only contains new settings)"
+						"added connection support for AnotherSpinStatus for the SRXD overlay"
+					],
+					[
+						"added missing SpinStatus port setting",
+						["(oops)"]
+					],
+					[
+						"fixed wrong wording for a score setting in the SRXD section"
 					]
 				]
 			}
