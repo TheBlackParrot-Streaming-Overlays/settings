@@ -1533,7 +1533,8 @@ const defaultConfig = {
 	"srxd_perfectPlusHitsFontItalic": "false",
 	"srxd_perfectPlusHitsFontSize": "12",
 	"srxd_perfectPlusHitsFontWeight": "900",
-	"srxd_perfectPlusHitsFontAdditionalWeight": "0"
+	"srxd_perfectPlusHitsFontAdditionalWeight": "0",
+	"srxd_perfectPlusHitsHeadTransform": "capitalize"
 };
 // i typed out the bigNoNoWords so you don't have to, i'm sorry :(
 // it's gotta know what to remove

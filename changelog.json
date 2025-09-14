@@ -1,4 +1,17 @@
 {
+	"9999999999999": {
+		"updates": {
+			"settings": {
+				"revision": 95,
+				"notes": [
+					[
+						"fixed missing default value for the perfect plus hits header text on the SRXD overlay"
+					]
+				]
+			}
+		}
+	},
+
 	"1756970934557": {
 		"updates": {
 			"bs": {
