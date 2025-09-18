@@ -29,6 +29,8 @@ const AnotherSpinStatusMessageHandlers = {
 			type: "reset"
 		});
 
+		currentSRXDState.acc = 1;
+
 		currentSRXDSong = {
 			song: {
 				title: data.Title,

@@ -1,6 +1,15 @@
 {
 	"9999999999999": {
 		"updates": {
+			"srxd": {
+				"revision": 3,
+				"notes": [
+					[
+						"fixed accuracy display not resetting when maps start"
+					]
+				]
+			},
+			
 			"settings": {
 				"revision": 95,
 				"notes": [
