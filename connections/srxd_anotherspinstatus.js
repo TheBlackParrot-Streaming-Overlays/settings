@@ -44,7 +44,8 @@ const AnotherSpinStatusMessageHandlers = {
 				hash: data.FileReference,
 				author: data.Charter,
 				code: null,
-				uploaders: []
+				uploaders: [],
+				pack: data.Pack
 			},
 			cover: {
 				colors: {

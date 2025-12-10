@@ -6,6 +6,10 @@
 				"notes": [
 					[
 						"fixed accuracy display not resetting when maps start"
+					],
+					[
+						"added overbeat display to accuracy log",
+						["only if using AnotherSpinStatus"]
 					]
 				]
 			},
