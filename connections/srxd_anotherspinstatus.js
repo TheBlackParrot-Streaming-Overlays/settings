@@ -59,6 +59,10 @@ const AnotherSpinStatusMessageHandlers = {
 					image: null,
 					url: null
 				}
+			},
+			best: {
+				acc: data.BestAccuracy,
+				score: data.BestScore
 			}
 		};
 

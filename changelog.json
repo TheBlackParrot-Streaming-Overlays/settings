@@ -10,6 +10,12 @@
 					[
 						"added overbeat display to accuracy log",
 						["only if using AnotherSpinStatus"]
+					],
+					[
+						"added DLC/pack information for non-custom maps"
+					],
+					[
+						"added personal best display"
 					]
 				]
 			},

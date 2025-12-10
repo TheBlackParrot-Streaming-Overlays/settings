@@ -148,7 +148,7 @@
 					<div class="row" data-tab="srxd_art"><i class="fas fa-image"></i>Cover Art Cell</div>
 					<div class="row" data-tab="srxd_hitmiss"><i class="fas fa-xmark"></i>Hit / Miss Cell</div>
 					<div class="row" data-tab="srxd_misc"><i class="fas fa-circle-info"></i>Miscellaneous Info Cell</div>
-					<!--<div class="row" data-tab="srxd_pb"><i class="fas fa-trophy"></i>Personal Best Cell</div>-->
+					<div class="row" data-tab="srxd_pb"><i class="fas fa-trophy"></i>Personal Best Cell</div>
 					<!--<div class="row" data-tab="srxd_qr"><i class="fas fa-qrcode"></i>Scannable Map URL Cell</div>-->
 					<div class="row" data-tab="srxd_metadata"><i class="fas fa-compact-disc"></i>Song Metadata Cell</div>
 					<hr/>
@@ -9863,7 +9863,7 @@
 					</div>
 					<div class="setting">
 						<div class="settingCell smol">
-							<strong>Available elements:</strong> acc, art, hitmiss, metadata, misc, score
+							<strong>Available elements:</strong> acc, art, hitmiss, metadata, misc, score, pb
 						</div>
 					</div>
 					<div class="setting">
@@ -11017,43 +11017,9 @@
 					</div>
 				</div>
 			</div>
-			<!--<div class="section" data-content="srxd_pb">
+			<div class="section" data-content="srxd_pb">
 				<div class="part">
 					<h1>Personal Best Cell</h1>
-					<div class="setting">
-						<div class="settingCell smol">
-							<strong>NOTE:</strong> This currently only pulls data from BeatLeader.
-						</div>
-					</div>
-					<hr/>
-					<div class="setting">
-						<div class="settingCellLabel">
-							<span class="settingInfo">Leaderboard context</span>
-						</div>
-						<div class="settingCell">
-							<select id="srxd_pbLeaderboardContext">
-								<option selected value="general">General</option>
-								<option value="noMods">No Modifiers</option>
-								<option value="noPause">No Pauses</option>
-								<option value="golf">Golf</option>
-								<option value="sCPM">Small Cubes Pro Mode</option>
-							</select>
-						</div>
-					</div>
-					<div class="setting">
-						<div class="settingCellLabel">
-							<span class="settingInfo">Player ID</span>
-						</div>
-						<div class="settingCell">
-							<input id="srxd_pbPlayerIdentifier" type="text" value="" data-noDefaultValue/>
-						</div>
-					</div>
-					<div class="setting">
-						<div class="settingCell smol">
-							If your BeatLeader profile link is <strong>https://beatleader.xyz/u/76561198023999436</strong>, for example, enter <strong>76561198023999436</strong> into the above field.
-						</div>
-					</div>
-					<hr/>
 					<div class="setting">
 						<div class="settingCell">
 							<input id="srxd_hidePBCellIfNoScore" type="checkbox"/> <span class="settingInfo">Hide the personal best cell if no score has been set</span>
@@ -11067,7 +11033,7 @@
 							<span class="settingInfo">Width</span>
 						</div>
 						<div class="settingCell">
-							<input type="number" id="srxd_pbWidth" min="0" max="500" step="1" value="130"/><span class="settingCellMeasurement">px</span>
+							<input type="number" id="srxd_pbWidth" min="0" max="500" step="1" value="140"/><span class="settingCellMeasurement">px</span>
 						</div>
 					</div>
 					<div class="setting">
@@ -11081,7 +11047,7 @@
 					<hr/>
 					<div class="setting">
 						<div class="settingCell">
-							<input id="srxd_flipPBDetails" type="checkbox"/> <span class="settingInfo">Flip vertical order of the accuracy display and combo display</span>
+							<input id="srxd_flipPBDetails" type="checkbox"/> <span class="settingInfo">Flip vertical order of the accuracy display and header text</span>
 						</div>
 					</div>
 					<div class="setting">
@@ -11104,7 +11070,7 @@
 							<span class="settingInfo">Text</span>
 						</div>
 						<div class="settingCell">
-							<input id="srxd_pbHeaderText" type="text" value="PB" data-noDefaultValue/>
+							<input id="srxd_pbHeaderText" type="text" value="Best" data-noDefaultValue/>
 						</div>
 					</div>
 					<hr/>
@@ -11184,53 +11150,13 @@
 					</div>
 				</div>
 				<div class="part">
-					<h1>Ranking Display</h1>
-					<div class="setting">
-						<div class="settingCell">
-							<input checked id="srxd_pbDisplayGlobalRank" type="checkbox"/> <span class="settingInfo">Display global rank on the active map's leaderboard in the cell header</span>
-						</div>
-					</div>
-					<div class="setting">
-						<div class="settingCellLabel">
-							<span class="settingInfo">Rank icon</span>
-						</div>
-						<div class="settingCell">
-							<select id="srxd_pbRankIcon">
-								<option value="none">None</option>
-								<option value="avatar">BeatLeader Avatar</option>
-								<option value="blicon">BeatLeader Icon</option>
-								<option data-icon="../shared/assets/fontawesome/sprites/solid.svg#award" value="fa-award">award</option>
-								<option data-icon="../shared/assets/fontawesome/sprites/solid.svg#crown" value="fa-crown">crown</option>
-								<option selected data-icon="../shared/assets/fontawesome/sprites/solid.svg#globe" value="fa-globe">globe</option>
-								<option data-icon="../shared/assets/fontawesome/sprites/solid.svg#medal" value="fa-medal">medal</option>
-								<option data-icon="../shared/assets/fontawesome/sprites/solid.svg#star" value="fa-star">star</option>
-								<option data-icon="../shared/assets/fontawesome/sprites/regular.svg#star" value="fa-star_reg">star</option>
-								<option data-icon="../shared/assets/fontawesome/sprites/solid.svg#trophy" value="fa-trophy">trophy</option>
-								<option data-icon="../shared/assets/fontawesome/sprites/solid.svg#earth-africa" value="fa-earth-africa">earth-africa</option>
-								<option data-icon="../shared/assets/fontawesome/sprites/solid.svg#earth-americas" value="fa-earth-americas">earth-americas</option>
-								<option data-icon="../shared/assets/fontawesome/sprites/solid.svg#earth-asia" value="fa-earth-asia">earth-asia</option>
-								<option data-icon="../shared/assets/fontawesome/sprites/solid.svg#earth-europe" value="fa-earth-europe">earth-europe</option>
-								<option data-icon="../shared/assets/fontawesome/sprites/solid.svg#earth-oceania" value="fa-earth-oceania">earth-oceania</option>
-							</select>
-						</div>
-					</div>
-					<div class="setting">
-						<div class="settingCellLabel">
-							<span class="settingInfo">Horizontal offset</span>
-						</div>
-						<div class="settingCell">
-							<input type="number" id="srxd_pbHeaderGlobeSeparation" min="0" max="64" step="1" value="6"/><span class="settingCellMeasurement">px</span>
-						</div>
-					</div>
-				</div>
-				<div class="part">
 					<h1>Accuracy Display</h1>
 					<div class="setting">
 						<div class="settingCellLabel">
 							<span class="settingInfo">Decimal precision</span>
 						</div>
 						<div class="settingCell">
-							<input type="number" id="srxd_pbPrecision" min="0" max="4" step="1" value="2"/><span class="settingCellMeasurement">digits</span>
+							<input type="number" id="srxd_pbPrecision" min="0" max="2" step="1" value="2"/><span class="settingCellMeasurement">digits</span>
 						</div>
 					</div>
 					<hr/>
