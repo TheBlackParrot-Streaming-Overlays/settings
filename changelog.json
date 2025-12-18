@@ -1,6 +1,15 @@
 {
-	"9999999999999": {
+	"1766046981870": {
 		"updates": {
+			"chat": {
+				"revision": 89,
+				"notes": [
+					[
+						"fixed ordering of the new lead moderator badge, also classified it properly"
+					]
+				]
+			},
+			
 			"srxd": {
 				"revision": 3,
 				"notes": [
