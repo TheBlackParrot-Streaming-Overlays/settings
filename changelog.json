@@ -1,4 +1,27 @@
 {
+	"9999999999999": {
+		"updates": {
+			"srxd": {
+				"revision": 4,
+				"notes": [
+					[
+						"mapped perfect+ header settings to the personal best header settings",
+						["(i am lazy)"]
+					]
+				]
+			},
+
+			"spotify": {
+				"revision": 30,
+				"notes": [
+					[
+						"fix cover art colors not updating on playback being resumed for external players"
+					]
+				]
+			}
+		}
+	},
+
 	"1766046981870": {
 		"updates": {
 			"chat": {
