@@ -16,6 +16,27 @@
 				"notes": [
 					[
 						"fix cover art colors not updating on playback being resumed for external players"
+					],
+					[
+						"hardened some things related to cover art and cover art colors"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 96,
+				"notes": [
+					[
+						"added support for fetching music now playing data from a Rainwave instance",
+						["as a warning: i am unable to test cover art as the only Rainwave instance i'm aware of is rainwave.cc, and i'm not allowed to link to their album art. hopefully things work lol"],
+						{"anchor": "mus_dataService"}
+					],
+					[
+						"moved external music player settings to their own section under the Now Playing settings"
+					],
+					[
+						"revised the on/off toggle for external music players into a list setting",
+						{"anchor": "mus_dataService"}
 					]
 				]
 			}

@@ -161,15 +161,30 @@ broadcastFuncs = {
 
 		showExtraRow("spotify");
 
-		if(localStorage.getItem("setting_mus_overrideSpotify") !== "true") {
-			checkToSendSpotifyData();
-		} else {
-			startMusicWebsocket();
-			if(currentSong) {
-				if("id" in currentSong) {
-					sendOutTrackData(currentSong);
+		switch(localStorage.getItem("setting_mus_dataService")) {
+			case "rainwave":
+				startRainwaveDataFetching();
+				postToMusicEventChannel({
+					event: "track",
+					data: currentSong
+				});
+				if(!rainwaveStateTimerInterval) {
+					rainwaveStateTimerInterval = setInterval(rainwaveStateTimer, 1000);
 				}
-			}
+				break;
+
+			case "external":
+				startMusicWebsocket();
+				if(currentSong) {
+					if("id" in currentSong) {
+						sendOutTrackData(currentSong);
+					}
+				}
+				break;
+
+			default:
+				checkToSendSpotifyData();
+				break;
 		}
 	},
 

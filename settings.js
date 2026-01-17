@@ -90,6 +90,13 @@ const settingUpdaters = {
 const settingUpdatersTrigger = {
 	bs_qrCodeGlyph: function() {
 		updateQRCode();
+	},
+
+	mus_rainwaveInstance: async function() {
+		await updateRainwaveStationSelection();
+	},
+	mus_rainwaveStation: async function() {
+		await startRainwaveDataFetching();
 	}
 };
 settingUpdatersTrigger.bs_qrCodeECLevel = settingUpdatersTrigger.bs_qrCodeGlyph;

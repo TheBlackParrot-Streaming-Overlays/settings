@@ -148,7 +148,6 @@ const nonPublicSettings = [
 	"mus_port",
 	"mus_ip",
 	"mus_timeoutWait",
-	"mus_overrideSpotify",
 	"enableTwitchDJBadges",
 	"hr_timeoutFunctionUseUpdates",
 	"chatBSRAccountAgeThreshold",
@@ -192,7 +191,9 @@ const nonPublicSettings = [
 	"srxd_healthOutlineTimeout",
 	"spinstatus_port",
 	"anotherspinstatus_port",
-	"srxdDataMod"
+	"srxdDataMod",
+	"mus_dataService",
+	"mus_rainwaveInstance"
 ];
 
 const defaultConfig = {
@@ -1041,7 +1042,6 @@ const defaultConfig = {
 	"mus_ip": "127.0.0.1",
 	"mus_port": "42069",
 	"mus_timeoutWait": "7.5",
-	"mus_overrideSpotify": "false",
 	"bs_fcAccColor": "#ffffff",
 	"bs_fcAccFontFamily": "Manrope",
 	"bs_fcAccFontItalic": "false",
@@ -1529,7 +1529,10 @@ const defaultConfig = {
 	"srxd_perfectPlusHitsFontSize": "12",
 	"srxd_perfectPlusHitsFontWeight": "900",
 	"srxd_perfectPlusHitsFontAdditionalWeight": "0",
-	"srxd_perfectPlusHitsHeadTransform": "capitalize"
+	"srxd_perfectPlusHitsHeadTransform": "capitalize",
+	"mus_dataService": "spotify",
+	"mus_rainwaveInstance": "https://rainwave.cc",
+	"mus_rainwaveStationDisplayName": ""
 };
 // i typed out the bigNoNoWords so you don't have to, i'm sorry :(
 // it's gotta know what to remove
