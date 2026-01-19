@@ -1,5 +1,5 @@
 const properOverlayNames = {
-	"spotify": "Spotify Now Playing Overlay",
+	"spotify": "Now Playing Overlay",
 	"settings": "Settings Panel",
 	"chat": "Twitch Chat Overlay",
 	"clock": "Clock Overlay",
