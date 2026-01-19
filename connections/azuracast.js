@@ -103,12 +103,11 @@ async function handleAzuraCastSSEData(payload) {
 		}
 	}
 
-	let newMetadataCheck = JSON.stringify(metadata);
-	if(processingMetadata == newMetadataCheck) {
+	if(processingMetadata == metadata.id) {
 		return;
 	}
 
-	processingMetadata = newMetadataCheck;
+	processingMetadata = metadata.id;
 
 	currentSong = {
 		title: metadata.title,
