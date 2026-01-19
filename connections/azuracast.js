@@ -89,7 +89,7 @@ function azuracastStateTimer() {
 }
 
 var azuracastArtIsAllowed = true;
-var processingMetadata = {};
+var processingMetadata;
 async function handleAzuraCastSSEData(payload) {
 	const trackData = payload.data.np;
 	const metadata = trackData.now_playing.song;
@@ -103,11 +103,12 @@ async function handleAzuraCastSSEData(payload) {
 		}
 	}
 
-	if(processingMetadata == metadata) {
+	let newMetadataCheck = JSON.stringify(metadata);
+	if(processingMetadata == newMetadataCheck) {
 		return;
 	}
 
-	processingMetadata = metadata;
+	processingMetadata = newMetadataCheck;
 
 	currentSong = {
 		title: metadata.title,
