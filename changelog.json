@@ -30,6 +30,9 @@
 				"revision": 96,
 				"notes": [
 					[
+						"changed some spotify-centric language/iconage[?] in the now playing settings"
+					],
+					[
 						"added support for fetching music now playing data from Rainwave and AzuraCast instances",
 						["as a warning: i am unable to test cover art for Rainwave instances as the only Rainwave instance i'm aware of is rainwave.cc, and i'm not allowed to link to their album art. hopefully things work lol"],
 						{"anchor": "mus_dataService"}
