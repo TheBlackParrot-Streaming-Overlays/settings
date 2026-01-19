@@ -36,6 +36,47 @@ function sendOutTrackData(data) {
 		data: out
 	});
 }
+
+async function parseExtraData(data) {
+	persistentData.labels = "labels" in data ? data.labels : [];
+	persistentData.year = null;
+
+	if(data.isrc) {
+		await fetchMusicBrainz(data.isrc);
+	}
+
+	if(localStorage.getItem("setting_mus_useCommentFieldAsScannableID") === "true") {
+		data.uri = "comment" in data ? `spotify:${localStorage.getItem("setting_spotify_scannableUseAlbum") === "true" ? "album" : "track"}:${data.comment}` : null;
+	}
+
+	let externalData = {};
+	if(localStorage.getItem("spotify_accessToken") && localStorage.getItem("setting_spotifyClientID")) {
+		if("isrc" in data) {
+			if(data.isrc && (localStorage.getItem("setting_mus_useISRCToFetchScannableID") === "true" || localStorage.getItem("setting_mus_useISRCToFetchArtistMetadata") === "true")) {
+				if(data.isrc.length === 12) {
+					externalData = await getTrackDataFromISRC(data.isrc);
+				}
+			}
+		}
+	}
+
+	if("tracks" in externalData) {
+		if(externalData.tracks.items.length) {
+			if(localStorage.getItem("setting_mus_useISRCToFetchScannableID") === "true") {
+				if(localStorage.getItem("setting_spotify_scannableUseAlbum") === "true") {
+					data.uri = `spotify:album:${externalData.tracks.items[0].album.id}`
+				} else {
+					data.uri = `spotify:track:${externalData.tracks.items[0].id}`
+				}
+			}
+
+			if(localStorage.getItem("setting_mus_useISRCToFetchArtistMetadata") === "true") {
+				data.artists = await parseArtistInfo(externalData.tracks.items[0].artists);
+			}
+		}
+	}
+}
+
 const musicFuncs = {
 	track: async function(data) {
 		console.log(data);
@@ -53,42 +94,7 @@ const musicFuncs = {
 			$("#musicImageContainer").attr("src", "connections/placeholder.png");
 		}
 
-		persistentData.labels = [];
-		persistentData.year = null;
-		if(data.isrc) {
-			await fetchMusicBrainz(data.isrc);
-		}
-
-		if(localStorage.getItem("setting_mus_useCommentFieldAsScannableID") === "true") {
-			data.uri = "comment" in data ? `spotify:${localStorage.getItem("setting_spotify_scannableUseAlbum") === "true" ? "album" : "track"}:${data.comment}` : null;
-		}
-
-		let externalData = {};
-		if(localStorage.getItem("spotify_accessToken") && localStorage.getItem("setting_spotifyClientID")) {
-			if("isrc" in data) {
-				if(data.isrc && (localStorage.getItem("setting_mus_useISRCToFetchScannableID") === "true" || localStorage.getItem("setting_mus_useISRCToFetchArtistMetadata") === "true")) {
-					if(data.isrc.length === 12) {
-						externalData = await getTrackDataFromISRC(data.isrc);
-					}
-				}
-			}
-		}
-
-		if("tracks" in externalData) {
-			if(externalData.tracks.items.length) {
-				if(localStorage.getItem("setting_mus_useISRCToFetchScannableID") === "true") {
-					if(localStorage.getItem("setting_spotify_scannableUseAlbum") === "true") {
-						data.uri = `spotify:album:${externalData.tracks.items[0].album.id}`
-					} else {
-						data.uri = `spotify:track:${externalData.tracks.items[0].id}`
-					}
-				}
-
-				if(localStorage.getItem("setting_mus_useISRCToFetchArtistMetadata") === "true") {
-					data.artists = await parseArtistInfo(externalData.tracks.items[0].artists);
-				}
-			}
-		}
+		await parseExtraData(data);
 
 		currentSong = data;
 		sendOutTrackData(data);

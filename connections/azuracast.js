@@ -133,11 +133,39 @@ async function handleAzuraCastSSEData(payload) {
 		id: metadata.id
 	};
 
-	if(localStorage.getItem("setting_mus_azuracastStationDisplayName")) {
-		const wantedStation = azuracastStationData.filter((item) => {
-			return item.station.id == localStorage.getItem("setting_mus_azuracastStation");
-		})[0].station.name;
-		currentSong.labels = [`${localStorage.getItem("setting_mus_azuracastStationDisplayName")} (${wantedStation})`];
+	console.log(metadata);
+
+	let useISRC = false;
+	if("isrc" in metadata) {
+		if(metadata.isrc.length > 0) {
+			useISRC = true;
+		}
+	}
+
+	if(useISRC) {
+		currentSong.isrc = metadata.isrc;
+	} else {
+		if(localStorage.getItem("setting_mus_azuracastStationDisplayName")) {
+			const wantedStation = azuracastStationData.filter((item) => {
+				return item.station.id == localStorage.getItem("setting_mus_azuracastStation");
+			})[0].station.name;
+			currentSong.labels = [`${localStorage.getItem("setting_mus_azuracastStationDisplayName")} (${wantedStation})`];
+		}
+	}
+
+	await parseExtraData(currentSong);
+
+	if("custom_fields" in metadata) {
+		if("comment" in metadata.custom_fields) {
+			if(metadata.custom_fields.comment) {
+				currentSong.comment = metadata.custom_fields.comment;
+			}
+		}
+		if("year" in metadata.custom_fields) {
+			if(metadata.custom_fields.year) {
+				currentSong.album.released = (persistentData.year ? persistentData.year : new Date(metadata.custom_fields.year).getUTCFullYear())
+			}
+		}
 	}
 
 	if(persistentData.art) {
@@ -147,6 +175,12 @@ async function handleAzuraCastSSEData(payload) {
 			url: metadata.art,
 			colors: persistentData.colors
 		};
+	}
+
+	if("labels" in persistentData) {
+		if(persistentData.labels.length) {
+			currentSong.labels = persistentData.labels;
+		}
 	}
 
 	currentMusicState.elapsed = trackData.now_playing.elapsed;
