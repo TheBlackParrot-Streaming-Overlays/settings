@@ -69,7 +69,8 @@ async function startAzuraCastDataFetching() {
 		elapsed: 0
 	};
 
-	if(azuracastSSE) {
+	if(typeof azuracastSSE !== "undefined") {
+		azuracastSSE.onmessage = function(){}; // i am paranoid
 		azuracastSSE.close();
 	}
 
@@ -88,6 +89,7 @@ function azuracastStateTimer() {
 }
 
 var azuracastArtIsAllowed = true;
+var processingMetadata = {};
 async function handleAzuraCastSSEData(payload) {
 	const trackData = payload.data.np;
 	const metadata = trackData.now_playing.song;
@@ -100,6 +102,12 @@ async function handleAzuraCastSSEData(payload) {
 			}
 		}
 	}
+
+	if(processingMetadata == metadata) {
+		return;
+	}
+
+	processingMetadata = metadata;
 
 	currentSong = {
 		title: metadata.title,
@@ -132,8 +140,6 @@ async function handleAzuraCastSSEData(payload) {
 		duration: trackData.now_playing.duration,
 		id: metadata.id
 	};
-
-	console.log(metadata);
 
 	let useISRC = false;
 	if("isrc" in metadata) {

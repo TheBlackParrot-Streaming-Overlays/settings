@@ -33,16 +33,19 @@
 						"changed some spotify-centric language/iconage[?] in the now playing settings"
 					],
 					[
-						"added support for fetching music now playing data from Rainwave and AzuraCast instances",
-						["as a warning: i am unable to test cover art for Rainwave instances as the only Rainwave instance i'm aware of is rainwave.cc, and i'm not allowed to link to their album art. hopefully things work lol"],
-						{"anchor": "mus_dataService"}
-					],
-					[
 						"moved external music player settings to their own section under the Now Playing settings"
 					],
 					[
 						"revised the on/off toggle for external music players into a list setting",
 						{"anchor": "mus_dataService"}
+					],
+					[
+						"added support for fetching music now playing data from Rainwave and AzuraCast instances",
+						["as a warning: i am unable to test cover art for Rainwave instances as the only Rainwave instance i'm aware of is rainwave.cc, and i'm not allowed to link to their album art. hopefully things work lol"],
+						{"anchor": "mus_dataService"}
+					],
+					[
+						"shoo'd that funny little arrow at the bottom"
 					]
 				]
 			}

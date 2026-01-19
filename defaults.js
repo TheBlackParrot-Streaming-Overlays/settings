@@ -1539,7 +1539,7 @@ const defaultConfig = {
 	"mus_rainwaveInstance": "https://rainwave.cc",
 	"mus_rainwaveStation": "0",
 	"mus_rainwaveStationDisplayName": "",
-	"mus_azuracastInstance": "https://demo.azuracast.com",
+	"mus_azuracastInstance": "https://radio.theblackparrot.me",
 	"mus_azuracastStation": "0",
 	"mus_azuracastStationDisplayName": ""
 };

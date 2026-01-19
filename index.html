@@ -3047,7 +3047,7 @@
 					</div>
 				</div>
 				<div class="part">
-					<h1>External Bridge Script</h1>
+					<h1>External Data</h1>
 					<div class="setting">
 						<div class="settingCell">
 							<input id="mus_useCommentFieldAsScannableID" type="checkbox" data-noDefaultValue/> <span class="settingInfo">Use comment field in embedded track metadata as the identifier for Spotify scannables</span>
@@ -3064,12 +3064,15 @@
 							<input id="mus_useISRCToFetchArtistMetadata" type="checkbox" data-noDefaultValue/> <span class="settingInfo">Use ISRC in embedded track metadata to fetch replacement artist metadata from Spotify</span>
 						</div>
 					</div>
+					<hr/>
 					<div class="setting">
 						<div class="settingCell smol">
-							Spotify API tokens are required for these settings to function
+							Spotify API tokens are required for these settings to function.<br/>These fields only apply to external bridge scripts and AzuraCast instances.
 						</div>
 					</div>
-					<hr/>
+				</div>
+				<div class="part">
+					<h1>External Bridge Script</h1>
 					<div class="setting">
 						<div class="settingCellLabel">
 							<span class="settingInfo">IP address</span>
@@ -3127,7 +3130,7 @@
 					<hr/>
 					<div class="setting">
 						<div class="settingCell smol">
-							(The name will update on the next track information update, the <strong>Now Playing > Metadata > Show label/publisher information</strong> setting must be enabled for this to show)
+							The name will update on the next track information update, the <strong>Now Playing > Metadata > Show label/publisher information</strong> setting must be enabled for this to show.
 						</div>
 					</div>
 				</div>
@@ -3138,7 +3141,7 @@
 							<span class="settingInfo">AzuraCast instance</span>
 						</div>
 						<div class="settingCell">
-							<input id="mus_azuracastInstance" type="text" value="https://demo.azuracast.com" data-noDefaultValue/>
+							<input id="mus_azuracastInstance" type="text" value="https://radio.theblackparrot.me" data-noDefaultValue/>
 						</div>
 					</div>
 					<hr/>
@@ -3162,7 +3165,13 @@
 					<hr/>
 					<div class="setting">
 						<div class="settingCell smol">
-							(The name will update on the next track information update, the <strong>Now Playing > Metadata > Show label/publisher information</strong> setting must be enabled for this to show. ISRC information will override displays with relevant track information (if available))
+							The name will update on the next track information update, the <strong>Now Playing > Metadata > Show label/publisher information</strong> setting must be enabled for this to show.<br/>ISRC information will override displays with relevant track information (if available).
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCell smol">
+							Track release date/year is expected to be in a custom field with <tt style="opacity: 0.75;">year</tt> as the key, and Spotify track IDs as <tt style="opacity: 0.75;">comment</tt>.
 						</div>
 					</div>
 				</div>
