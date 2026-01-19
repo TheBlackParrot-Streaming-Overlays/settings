@@ -148,7 +148,7 @@ broadcastFuncs = {
 		}
 	},
 
-	SpotifyOverlayExists: function(data) {
+	SpotifyOverlayExists: async function(data) {
 		let settingsKeys = Object.keys(defaultConfig);
 		let settingsKeysSpotify = settingsKeys.filter((key) => key.substr(0, 8) === "spotify_");
 		postToChannel("settingsKeysSpotify", settingsKeysSpotify);
@@ -163,11 +163,13 @@ broadcastFuncs = {
 
 		switch(localStorage.getItem("setting_mus_dataService")) {
 			case "rainwave":
-				startRainwaveDataFetching();
-				postToMusicEventChannel({
-					event: "track",
-					data: currentSong
-				});
+				await startRainwaveDataFetching();
+				if(currentSong) {
+					postToMusicEventChannel({
+						event: "track",
+						data: currentSong
+					});
+				}
 				if(!rainwaveStateTimerInterval) {
 					rainwaveStateTimerInterval = setInterval(rainwaveStateTimer, 1000);
 				}
@@ -179,6 +181,19 @@ broadcastFuncs = {
 					if("id" in currentSong) {
 						sendOutTrackData(currentSong);
 					}
+				}
+				break;
+
+			case "azuracast":
+				await startAzuraCastDataFetching();
+				if(currentSong) {
+					postToMusicEventChannel({
+						event: "track",
+						data: currentSong
+					});
+				}
+				if(!azuracastStateTimerInterval) {
+					azuracastStateTimerInterval = setInterval(azuracastStateTimer, 1000);
 				}
 				break;
 

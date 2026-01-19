@@ -193,7 +193,12 @@ const nonPublicSettings = [
 	"anotherspinstatus_port",
 	"srxdDataMod",
 	"mus_dataService",
-	"mus_rainwaveInstance"
+	"mus_rainwaveInstance",
+	"mus_rainwaveStation",
+	"mus_rainwaveStationDisplayName",
+	"mus_azuracastInstance",
+	"mus_azuracastStation",
+	"mus_azuracastStationDisplayName"
 ];
 
 const defaultConfig = {
@@ -1532,7 +1537,11 @@ const defaultConfig = {
 	"srxd_perfectPlusHitsHeadTransform": "capitalize",
 	"mus_dataService": "spotify",
 	"mus_rainwaveInstance": "https://rainwave.cc",
-	"mus_rainwaveStationDisplayName": ""
+	"mus_rainwaveStation": "0",
+	"mus_rainwaveStationDisplayName": "",
+	"mus_azuracastInstance": "https://demo.azuracast.com",
+	"mus_azuracastStation": "0",
+	"mus_azuracastStationDisplayName": ""
 };
 // i typed out the bigNoNoWords so you don't have to, i'm sorry :(
 // it's gotta know what to remove

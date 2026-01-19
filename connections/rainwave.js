@@ -118,9 +118,11 @@ async function updateRainwaveData() {
 		}
 
 		if(persistentData.art) {
+			await updateArtColors(persistentData.art);
 			currentSong.album.art = {
 				data: persistentData.art,
-				url: albumArtURL.toString()
+				url: albumArtURL.toString(),
+				colors: persistentData.colors
 			};
 		}
 

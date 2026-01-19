@@ -2986,6 +2986,7 @@
 						</div>
 						<div class="settingCell">
 							<select id="mus_dataService">
+								<option value="azuracast">AzuraCast</option>
 								<option value="rainwave">Rainwave</option>
 								<option selected value="spotify">Spotify</option>
 								<option value="external">(external bridge script)</option>
@@ -3121,6 +3122,41 @@
 						</div>
 						<div class="settingCell">
 							<input id="mus_rainwaveStationDisplayName" type="text" value="" data-noDefaultValue/>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCell smol">
+							(The name will update on the next track information update, the <strong>Now Playing > Metadata > Show label/publisher information</strong> setting must be enabled for this to show)
+						</div>
+					</div>
+				</div>
+				<div class="part">
+					<h1>AzuraCast</h1>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">AzuraCast instance</span>
+						</div>
+						<div class="settingCell">
+							<input id="mus_azuracastInstance" type="text" value="https://demo.azuracast.com" data-noDefaultValue/>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Station</span>
+						</div>
+						<div class="settingCell">
+							<select id="mus_azuracastStation" data-noDefaultValue>
+							</select>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Name (for display)</span>
+						</div>
+						<div class="settingCell">
+							<input id="mus_azuracastStationDisplayName" type="text" value="" data-noDefaultValue/>
 						</div>
 					</div>
 					<hr/>
@@ -11310,6 +11346,7 @@
 	<script defer type="text/javascript" src="connections/spotify.js"></script>
 	<script defer type="text/javascript" src="connections/external_music.js"></script>
 	<script defer type="text/javascript" src="connections/rainwave.js"></script>
+	<script defer type="text/javascript" src="connections/azuracast.js"></script>
 	<script defer type="text/javascript" src="connections/heartratebroadcaster.js"></script>
 	<script defer type="text/javascript" src="connections/nightscout.js"></script>
 	<script defer type="text/javascript" src="connections/srxd.js"></script>
@@ -11363,6 +11400,7 @@
 			await getMapPacks();
 
 			await updateRainwaveStationSelection();
+			await updateAzuraCastStationSelection();
 
 			postToChannel("settingsOverlayLoaded");
 		});
