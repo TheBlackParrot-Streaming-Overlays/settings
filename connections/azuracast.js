@@ -109,6 +109,9 @@ async function handleAzuraCastSSEData(payload) {
 
 	processingMetadata = metadata.id;
 
+	persistentData.labels = [];
+	persistentData.year = null;
+
 	currentSong = {
 		title: metadata.title,
 		artists: [metadata.artist],
