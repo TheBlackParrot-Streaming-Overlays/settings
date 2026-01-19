@@ -19,6 +19,9 @@
 					],
 					[
 						"hardened some things related to cover art and cover art colors"
+					],
+					[
+						"empty album data now shows \"(unknown album)\" for non-spotify data sources"
 					]
 				]
 			},
