@@ -112,15 +112,6 @@ async function handleAzuraCastSSEData(payload) {
 	persistentData.labels = [];
 	persistentData.year = null;
 
-	currentSong = {
-		title: metadata.title,
-		artists: [metadata.artist],
-		album: {
-			name: metadata.album
-		},
-		duration: trackData.now_playing.duration
-	};
-
 	if(azuracastArtIsAllowed) {
 		try {
 			persistentData.art = await compressImage(metadata.art, parseInt(localStorage.getItem("setting_spotify_artImageSize")), parseInt(localStorage.getItem("setting_spotify_artImageQuality")) / 100, "spotify", 180);

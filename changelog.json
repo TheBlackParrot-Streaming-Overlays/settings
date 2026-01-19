@@ -22,6 +22,10 @@
 					],
 					[
 						"empty album data now shows \"(unknown album)\" for non-spotify data sources"
+					],
+					[
+						"fixed label information showing label information for the last song that had label information if label information is not available for the current song with non-Spotify track data",
+						["take a shot every time i write \"label information\""]
 					]
 				]
 			},
@@ -41,7 +45,10 @@
 					],
 					[
 						"added support for fetching music now playing data from Rainwave and AzuraCast instances",
-						["as a warning: i am unable to test cover art for Rainwave instances as the only Rainwave instance i'm aware of is rainwave.cc, and i'm not allowed to link to their album art. hopefully things work lol"],
+						[
+							"as a warning: i am unable to test cover art for Rainwave instances as the only Rainwave instance i'm aware of is rainwave.cc, and i'm not allowed to link to their album art. hopefully things work lol",
+							"also yes! feel free to use the safe AzuraCast instance on your streams, none of the music playing here should trigger VOD mutes: https://radio.theblackparrot.me/public/safe"
+						],
 						{"anchor": "mus_dataService"}
 					],
 					[
