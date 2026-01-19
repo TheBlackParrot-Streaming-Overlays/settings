@@ -1540,7 +1540,7 @@ const defaultConfig = {
 	"mus_rainwaveStation": "0",
 	"mus_rainwaveStationDisplayName": "",
 	"mus_azuracastInstance": "https://radio.theblackparrot.me",
-	"mus_azuracastStation": "0",
+	"mus_azuracastStation": "2",
 	"mus_azuracastStationDisplayName": ""
 };
 // i typed out the bigNoNoWords so you don't have to, i'm sorry :(
