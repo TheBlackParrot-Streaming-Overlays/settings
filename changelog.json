@@ -1,4 +1,26 @@
 {
+	"9999999999999": {
+		"updates": {
+			"spotify": {
+				"revision": 31,
+				"notes": [
+					[
+						"(revisions from settings panel)"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 97,
+				"notes": [
+					[
+						"moved automatic color-changing functions for the now playing overlay over to the now playing overlay itself"
+					]
+				]
+			}
+		}
+	},
+
 	"1769030701880": {
 		"updates": {
 			"srxd": {

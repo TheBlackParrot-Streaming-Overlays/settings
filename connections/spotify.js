@@ -258,9 +258,6 @@ async function updateArtColors(art) {
 		}
 		persistentData.colors.dark = `#${colors.dark[0].map(function(x) { return Math.floor(x).toString(16).padStart(2, "0"); }).join("")}`;
 		persistentData.colors.light = `#${colors.light[0].map(function(x) { return Math.floor(x).toString(16).padStart(2, "0"); }).join("")}`;
-		
-		localStorage.setItem("art_darkColor", persistentData.colors.dark);
-		localStorage.setItem("art_lightColor", persistentData.colors.light);
 	} catch(err) {
 		throw err;
 	}
