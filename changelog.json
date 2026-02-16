@@ -15,6 +15,9 @@
 				"notes": [
 					[
 						"moved automatic color-changing functions for the now playing overlay over to the now playing overlay itself"
+					],
+					[
+						"log HTTP errors a little more aggresively when doing things with spotify"
 					]
 				]
 			}

@@ -41,6 +41,8 @@ const oauthCode = oauthParams.get('code');
 const oauthState = oauthParams.get('state');
 
 async function regenSpotifyCodes() {
+	console.log("wants to regenerate spotify codes");
+
 	let spotifyClientID = localStorage.getItem("setting_spotifyClientID");
 
 	if(!spotifyClientID) {
@@ -66,6 +68,7 @@ async function regenSpotifyCodes() {
 		});
 
 		if(!response.ok) {
+			console.warn(`status code ${response.status}`);
 			localStorage.removeItem("spotify_refreshToken");
 			await regenSpotifyCodes();
 			return;
@@ -118,6 +121,7 @@ async function setSpotifyTokens() {
 	});
 
 	if(!response.ok) {
+		console.warn(`status code ${response.status}`);
 		await regenSpotifyCodes();
 		return;
 	}

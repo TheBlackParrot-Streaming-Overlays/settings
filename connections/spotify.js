@@ -9,18 +9,21 @@ async function getState() {
 
 	if(response.status === 204) {
 		// no active players
+		console.warn("no active spotify players");
 		await delay(15000);
 		return getState();
 	}
 
 	if(response.status === 401) {
 		// invalid tokens? try again
+		console.warn("invalid token");
 		await regenSpotifyCodes();
 		await delay(3000);
 		return getState();
 	}
 	
 	if(!response.ok) {
+		console.warn(`other issue: status code ${response.status}`);
 		await regenSpotifyCodes();
 		await delay(15000);
 		return getState();
@@ -45,12 +48,14 @@ async function getArtistInfos(id_arr) {
 
 	if(response.status === 401) {
 		// invalid tokens? try again
+		console.warn("invalid token");
 		await regenSpotifyCodes();
 		await delay(3000);
 		return getArtistInfos(id_arr);
 	}
 	
 	if(!response.ok) {
+		console.warn(`other issue: status code ${response.status}`);
 		await regenSpotifyCodes();
 		await delay(15000);
 		return getArtistInfos(id_arr);
@@ -79,12 +84,14 @@ async function getTrackDataFromISRC(isrc) {
 
 	if(response.status === 401) {
 		// invalid tokens? try again
+		console.warn("invalid token");
 		await regenSpotifyCodes();
 		await delay(3000);
 		return getTrackDataFromISRC(isrc);
 	}
 	
 	if(!response.ok) {
+		console.warn(`other issue: status code ${response.status}`);
 		await regenSpotifyCodes();
 		await delay(15000);
 		return getTrackDataFromISRC(isrc);
