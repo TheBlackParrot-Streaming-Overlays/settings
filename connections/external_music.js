@@ -80,10 +80,12 @@ async function parseExtraData(data) {
 			}
 		}
 	} else {
-		if("contributors" in externalData) {
-			data.artists = await parseDeezerArtistInfo(externalData.contributors);
-		} else {
-			data.artists = await parseDeezerArtistInfo([externalData.artist]);
+		if(externalData) {
+			if("contributors" in externalData) {
+				data.artists = await parseDeezerArtistInfo(externalData.contributors);
+			} else {
+				data.artists = await parseDeezerArtistInfo([externalData.artist]);
+			}
 		}
 	}
 }
