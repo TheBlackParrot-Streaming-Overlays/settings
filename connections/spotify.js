@@ -27,6 +27,12 @@ async function getState() {
 		await delay(3000);
 		return getState();
 	}
+
+	if(response.status === 429) {
+		// going too fast
+		await delay(3000);
+		return getState();
+	}
 	
 	if(!response.ok) {
 		console.warn(`other issue: status code ${response.status}`);
@@ -42,14 +48,10 @@ async function getState() {
 	return data;
 }
 
-async function getArtistInfos(id_arr) {
+async function getArtistInfo(id) {
 	let accessToken = localStorage.getItem("spotify_accessToken");
 
-	const artistIDs = new URLSearchParams({
-		ids: id_arr.join(",")
-	});
-
-	const response = await fetch(`https://api.spotify.com/v1/artists?${artistIDs.toString()}`, {
+	const response = await fetch(`https://api.spotify.com/v1/artists/${id.toString()}`, {
 		headers: {
 			Authorization: `Bearer ${accessToken}`
 		}
@@ -63,7 +65,13 @@ async function getArtistInfos(id_arr) {
 		}
 		await regenSpotifyCodes();
 		await delay(3000);
-		return getArtistInfos(id_arr);
+		return getArtistInfo(id);
+	}
+
+	if(response.status === 429) {
+		// going too fast
+		await delay(3000);
+		return getArtistInfo(id);
 	}
 	
 	if(!response.ok) {
@@ -73,7 +81,7 @@ async function getArtistInfos(id_arr) {
 		}
 		await regenSpotifyCodes();
 		await delay(15000);
-		return getArtistInfos(id_arr);
+		return getArtistInfo(id);
 	}
 
 	const data = await response.json();
@@ -107,6 +115,12 @@ async function getTrackDataFromISRC(isrc) {
 		await delay(3000);
 		return getTrackDataFromISRC(isrc);
 	}
+
+	if(response.status === 429) {
+		// going too fast
+		await delay(3000);
+		return getTrackDataFromISRC(isrc);
+	}
 	
 	if(!response.ok) {
 		console.warn(`other issue: status code ${response.status}`);
@@ -132,15 +146,8 @@ async function parseArtistInfo(artistList) {
 			continue;
 		}
 
-		artistIDs.push(artistList[i].id);
-	}
-
-	const artistInfos = await getArtistInfos(artistIDs);
-	console.log(artistInfos);
-	if(artistInfos) {
-		for(let i in artistInfos.artists) {
-			let artist = artistInfos.artists[i];
-
+		const artist = await getArtistInfo(artistList[i].id);
+		if(artist) {
 			let image = null;
 			if(artist.images.length) {
 				let size = ((parseInt(localStorage.getItem("setting_spotify_lineHeight")) * 2) || 32);

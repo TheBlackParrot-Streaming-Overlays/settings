@@ -1,4 +1,25 @@
 {
+	"1771301413500": {
+		"updates": {
+			"settings": {
+				"revision": 98,
+				"notes": [
+					[
+						"moved spotify /artists endpoint off the now-deprecated version that previously allowed fetching of multiple artists (it is still /artists, btw)",
+						["this should fix new users immediately getting asked to re-authenticate. what in the world is daniel ek doing over ther- oh right! fueling wars"]
+					],
+					[
+						"log HTTP errors even more aggresively when doing things with spotify"
+					],
+					[
+						"handle spotify HTTP 429 errors by just waiting 3 seconds arbitrarily",
+						["this can now happen if we're getting info on a lot of artists, before it was just 1 call so i never worried about it. thanks again daniel ek!"]
+					]
+				]
+			}
+		}
+	},
+
 	"1771280723088": {
 		"updates": {
 			"spotify": {
