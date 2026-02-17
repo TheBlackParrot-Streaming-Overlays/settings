@@ -1,4 +1,25 @@
 {
+	"9999999999999": {
+		"updates": {
+			"settings": {
+				"revision": 99,
+				"notes": [
+					[
+						"added an option to (attempt to) get music details from deezer instead of spotify for the now playing overlay",
+						[
+							"in this case, spotify data becomes a fallback. in the future, i'll refactor this to let the inverse happen",
+							"deezer's data may also be spotty in some instances, or (somewhat) incorrect. external players should be fine so long as ISRCs are provided"
+						],
+						{"anchor": "mus_useDeezerBeforeSpotify"}
+					],
+					[
+						"ensured music details are refreshed every time the now playing overlay is loaded"
+					]
+				]
+			}
+		}
+	},
+
 	"1771301413500": {
 		"updates": {
 			"settings": {

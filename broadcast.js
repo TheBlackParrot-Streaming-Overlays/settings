@@ -161,6 +161,8 @@ broadcastFuncs = {
 
 		showExtraRow("spotify");
 
+		oldID = null; // force an update when the overlay loads, it's fine
+
 		switch(localStorage.getItem("setting_mus_dataService")) {
 			case "rainwave":
 				await startRainwaveDataFetching();

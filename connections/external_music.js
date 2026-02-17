@@ -49,30 +49,41 @@ async function parseExtraData(data) {
 		data.uri = "comment" in data ? `spotify:${localStorage.getItem("setting_spotify_scannableUseAlbum") === "true" ? "album" : "track"}:${data.comment}` : null;
 	}
 
-	let externalData = {};
-	if(localStorage.getItem("spotify_accessToken") && localStorage.getItem("setting_spotifyClientID")) {
+	let externalDataObject = {};
+	if((localStorage.getItem("spotify_accessToken") && localStorage.getItem("setting_spotifyClientID")) || localStorage.getItem("setting_mus_useDeezerBeforeSpotify") === "true") {
 		if("isrc" in data) {
 			if(data.isrc && (localStorage.getItem("setting_mus_useISRCToFetchScannableID") === "true" || localStorage.getItem("setting_mus_useISRCToFetchArtistMetadata") === "true")) {
 				if(data.isrc.length === 12) {
-					externalData = await getTrackDataFromISRC(data.isrc);
+					externalDataObject = await getTrackDataFromISRC(data.isrc);
 				}
 			}
 		}
 	}
 
-	if("tracks" in externalData) {
-		if(externalData.tracks.items.length) {
-			if(localStorage.getItem("setting_mus_useISRCToFetchScannableID") === "true") {
-				if(localStorage.getItem("setting_spotify_scannableUseAlbum") === "true") {
-					data.uri = `spotify:album:${externalData.tracks.items[0].album.id}`
-				} else {
-					data.uri = `spotify:track:${externalData.tracks.items[0].id}`
+	const service = await externalDataObject.service; // wtf
+	const externalData = await externalDataObject.data; // also wtf
+
+	if(service === "spotify") {
+		if("tracks" in externalData) {
+			if(externalData.tracks.items.length) {
+				if(localStorage.getItem("setting_mus_useISRCToFetchScannableID") === "true") {
+					if(localStorage.getItem("setting_spotify_scannableUseAlbum") === "true") {
+						data.uri = `spotify:album:${externalData.tracks.items[0].album.id}`
+					} else {
+						data.uri = `spotify:track:${externalData.tracks.items[0].id}`
+					}
+				}
+
+				if(localStorage.getItem("setting_mus_useISRCToFetchArtistMetadata") === "true") {
+					data.artists = await parseArtistInfo(externalData.tracks.items[0].artists);
 				}
 			}
-
-			if(localStorage.getItem("setting_mus_useISRCToFetchArtistMetadata") === "true") {
-				data.artists = await parseArtistInfo(externalData.tracks.items[0].artists);
-			}
+		}
+	} else {
+		if("contributors" in externalData) {
+			data.artists = await parseDeezerArtistInfo(externalData.contributors);
+		} else {
+			data.artists = await parseDeezerArtistInfo([externalData.artist]);
 		}
 	}
 }

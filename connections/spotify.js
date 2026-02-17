@@ -89,6 +89,16 @@ async function getArtistInfo(id) {
 }
 
 async function getTrackDataFromISRC(isrc) {
+	if(localStorage.getItem("setting_mus_useDeezerBeforeSpotify") === "true") {
+		const deezerResponse = await fetch(`proxies/deezer.php?isrc=${isrc}`);
+		const deezerJSON = deezerResponse.json();
+
+		return {
+			service: "deezer",
+			data: deezerJSON
+		};
+	}
+
 	const accessToken = localStorage.getItem("spotify_accessToken");
 
 	const params = new URLSearchParams({
@@ -133,7 +143,11 @@ async function getTrackDataFromISRC(isrc) {
 	}
 
 	const data = await response.json();
-	return data;
+	return {
+		service: "spotify",
+		data: data
+	};
+	//return data;
 }
 
 async function parseArtistInfo(artistList) {
@@ -170,6 +184,55 @@ async function parseArtistInfo(artistList) {
 				image: image
 			});
 		}
+	}
+
+	return artists;
+}
+const deezerImageSizes = [
+	{
+		str: "xl",
+		int: 1000
+	},
+	{
+		str: "big",
+		int: 500
+	},
+	{
+		str: "medium",
+		int: 250
+	},
+	{
+		str: "small",
+		int: 56
+	}
+];
+async function parseDeezerArtistInfo(contributorList) {
+	let artists = [];
+
+	for(const contributor of contributorList) {
+		let image = null;
+
+		if("picture" in contributor) {
+			let size = ((parseInt(localStorage.getItem("setting_spotify_lineHeight")) * 2) || 32);
+			
+			let wantedImageSize = deezerImageSizes[deezerImageSizes.length - 1];
+			for(const definedImageSize of deezerImageSizes) {
+				if(definedImageSize.int > size) {
+					continue;
+				}
+
+				wantedImageSize = definedImageSize;
+				break;
+			}
+
+			let wantedImageURL = `picture_${wantedImageSize.str}` in contributor ? contributor[`picture_${wantedImageSize.str}`] : contributor.picture;
+			image = await compressImage(wantedImageURL, size, parseInt(localStorage.getItem("setting_spotify_artImageQuality")) / 100, "spotify", 30);
+		}
+
+		artists.push({
+			name: contributor.name,
+			image: image
+		});
 	}
 
 	return artists;
@@ -297,6 +360,60 @@ async function updateArtColors(art) {
 		throw err;
 	}
 }
+async function tryGettingDeezerInfoFromSpotifyResponse(response, skipToQuery = 0) {
+	let artists = [];
+	for(const artist of response.item.artists) {
+		artists.push(artist.name);
+	}
+
+	const searchQueries = [
+		new URLSearchParams({
+			title: response.item.name,
+			artist: artists.join(", "),
+			album: response.item.album.name
+		}),
+		new URLSearchParams({
+			title: response.item.name,
+			album: response.item.album.name
+		}),
+		new URLSearchParams({
+			title: response.item.name,
+			artist: artists.join(", "),
+		})
+	]
+
+	for(let idx = skipToQuery; idx < searchQueries.length; idx++) {
+		const searchQuery = searchQueries[idx];
+
+		console.log(`trying deezer query ${searchQuery.toString()}`);
+
+		let deezerResponse = await fetch(`proxies/deezer.php?${searchQuery.toString()}`);
+		let deezerData = await deezerResponse.json();
+
+		console.log(deezerData);
+
+		if("error" in deezerData) {
+			if(deezerResponse.error.code == 4) {
+				console.warn("querying deezer too fast, waiting 5 seconds");
+				await delay(5000);
+				return tryGettingDeezerInfoFromSpotifyResponse(response, idx);
+			}
+
+			return null;
+		}
+
+		if(!deezerResponse.ok) {
+			return null;
+		}
+
+		if(deezerData.total == 0) {
+			continue;
+		}
+
+		let deezerTrackResponse = await fetch(`proxies/deezer.php?id=${deezerData.data[0].id}`);
+		return await deezerTrackResponse.json();
+	}
+}
 async function updateTrack() {
 	const defaultUpdateDelay = parseFloat(localStorage.getItem("setting_spotify_refreshInterval")) * 1000;
 
@@ -318,33 +435,57 @@ async function updateTrack() {
 			
 			currentSong = response.item;
 
+			if(oldID === response.item.id) {
+				return;
+			}
+
+			let deezerData = null;
+			if(localStorage.getItem("setting_mus_useDeezerBeforeSpotify") === "true") {
+				deezerData = await tryGettingDeezerInfoFromSpotifyResponse(response);
+				console.log(deezerData);
+			}
+
+			//let art = deezerData ? deezerData.album.cover_medium : response.item.album.images[Math.ceil(response.item.album.images.length / 2) - 1].url;
 			let art = response.item.album.images[Math.ceil(response.item.album.images.length / 2) - 1].url;
 
-			if(oldID !== response.item.id) {
-				let artists = await parseArtistInfo(response.item.artists);
-
-				persistentData = {
-					artists: artists,
-
-					colors: {
-						light: localStorage.getItem("setting_spotify_scannableCustomBGColor"),
-						dark: localStorage.getItem("setting_spotify_scannableCustomBGColor")
-					},
-
-					labels: [],
-					isrc: null,
-					art: await compressImage(art, parseInt(localStorage.getItem("setting_spotify_artImageSize")), parseInt(localStorage.getItem("setting_spotify_artImageQuality")) / 100, "spotify", 180),
-					year: null
-				};
-
-				if(persistentData.art !== "placeholder.png") {
-					await updateArtColors(persistentData.art)
+			let artists;
+			if(deezerData) {
+				if("contributors" in deezerData) {
+					artists = await parseDeezerArtistInfo(deezerData.contributors);
+				} else {
+					artists = await parseDeezerArtistInfo([deezerData.artist]);
 				}
+			} else {
+				artists = await parseArtistInfo(response.item.artists);
+			}
 
+			persistentData = {
+				artists: artists,
+
+				colors: {
+					light: localStorage.getItem("setting_spotify_scannableCustomBGColor"),
+					dark: localStorage.getItem("setting_spotify_scannableCustomBGColor")
+				},
+
+				labels: [],
+				isrc: (deezerData ? deezerData.isrc : null),
+				art: await compressImage(art, parseInt(localStorage.getItem("setting_spotify_artImageSize")), parseInt(localStorage.getItem("setting_spotify_artImageQuality")) / 100, "spotify", 180),
+				year: (deezerData ? new Date(deezerData.release_date).getFullYear() : null)
+			};
+
+			if(persistentData.art !== "placeholder.png") {
+				await updateArtColors(persistentData.art)
+			}
+
+			if(deezerData) {
+				await fetchMusicBrainz(deezerData.isrc);
+			} else {
+				// remove after 9 March 2026
 				if("external_ids" in response.item) {
 					await fetchMusicBrainz(response.item.external_ids.isrc);
 				}
 			}
+
 			oldID = response.item.id;
 
 			var trackData = {

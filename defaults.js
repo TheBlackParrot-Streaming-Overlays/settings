@@ -198,7 +198,8 @@ const nonPublicSettings = [
 	"mus_rainwaveStationDisplayName",
 	"mus_azuracastInstance",
 	"mus_azuracastStation",
-	"mus_azuracastStationDisplayName"
+	"mus_azuracastStationDisplayName",
+	"mus_useDeezerBeforeSpotify"
 ];
 
 const defaultConfig = {
@@ -1541,7 +1542,8 @@ const defaultConfig = {
 	"mus_rainwaveStationDisplayName": "",
 	"mus_azuracastInstance": "https://radio.theblackparrot.me",
 	"mus_azuracastStation": "2",
-	"mus_azuracastStationDisplayName": ""
+	"mus_azuracastStationDisplayName": "",
+	"mus_useDeezerBeforeSpotify": "false"
 };
 // i typed out the bigNoNoWords so you don't have to, i'm sorry :(
 // it's gotta know what to remove
