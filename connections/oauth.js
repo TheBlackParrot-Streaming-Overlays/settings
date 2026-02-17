@@ -69,6 +69,9 @@ async function regenSpotifyCodes() {
 
 		if(!response.ok) {
 			console.warn(`status code ${response.status}`);
+			if("message" in response) {
+				console.warn(response.message);
+			}
 			localStorage.removeItem("spotify_refreshToken");
 			await regenSpotifyCodes();
 			return;
@@ -122,6 +125,9 @@ async function setSpotifyTokens() {
 
 	if(!response.ok) {
 		console.warn(`status code ${response.status}`);
+		if("message" in response) {
+			console.warn(response.message);
+		}
 		await regenSpotifyCodes();
 		return;
 	}
