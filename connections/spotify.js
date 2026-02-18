@@ -212,6 +212,11 @@ async function parseDeezerArtistInfo(contributorList) {
 	for(const contributor of contributorList) {
 		let image = null;
 
+		if(!contributor) {
+			// wtf
+			console.log(contributorList);
+			continue;
+		}
 		if("picture" in contributor) {
 			let size = ((parseInt(localStorage.getItem("setting_spotify_lineHeight")) * 2) || 32);
 			
