@@ -194,9 +194,8 @@ broadcastFuncs = {
 						data: currentSong
 					});
 				}
-				if(!azuracastStateTimerInterval) {
-					azuracastStateTimerInterval = setInterval(azuracastStateTimer, 1000);
-				}
+				clearInterval(azuracastStateTimerInterval);
+				azuracastStateTimerInterval = setInterval(azuracastStateTimer, 1000);
 				break;
 
 			default:

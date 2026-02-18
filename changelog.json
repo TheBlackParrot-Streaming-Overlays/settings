@@ -26,6 +26,9 @@
 					],
 					[
 						"fixed azuracast state data sometimes retriggering now playing data refreshes unnecessarily"
+					],
+					[
+						"ensured that azuracast's state timer always restarts when the now playing overlay announces its existence (and an azuracast instance is the data provider)"
 					]
 				]
 			}
