@@ -189,6 +189,7 @@ async function handleAzuraCastSSEData(payload) {
 		data: currentMusicState
 	});
 
+	currentSong.isPlaying = true;
 	postToMusicEventChannel({
 		event: "track",
 		data: currentSong

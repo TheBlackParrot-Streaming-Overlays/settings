@@ -1,6 +1,15 @@
 {
 	"9999999999999": {
 		"updates": {
+			"spotify": {
+				"revision": 32,
+				"notes": [
+					[
+						"small re-ordering of show/hide flows, log when these are unnecessarily triggered (for later fixing)"
+					]
+				]
+			},
+
 			"settings": {
 				"revision": 99,
 				"notes": [
@@ -14,6 +23,9 @@
 					],
 					[
 						"ensured music details are refreshed every time the now playing overlay is loaded"
+					],
+					[
+						"fixed azuracast state data sometimes retriggering now playing data refreshes unnecessarily"
 					]
 				]
 			}
