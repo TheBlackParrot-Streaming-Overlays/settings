@@ -276,7 +276,12 @@ var persistentData = {
 	year: null
 };
 async function fetchMusicBrainz(isrc) {
+	isrc = isrc.toUpperCase().replaceAll(/[^A-Z0-9]/gi, "").substring(0, 12);
 	persistentData.isrc = isrc;
+
+	if(isrc.length != 12) {
+		return;
+	}
 
 	// chrome doesn't allow user agent spoofing but you can't say i didn't try :(
 	// https://musicbrainz.org/doc/MusicBrainz_API/Rate_Limiting

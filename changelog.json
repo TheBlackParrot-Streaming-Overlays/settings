@@ -42,6 +42,9 @@
 					],
 					[
 						"fixed duplicate artists sometimes showing up in secondary metadata when fetching data from deezer"
+					],
+					[
+						"ensure ISRC are properly formatted before asking musicbrainz for additional info on music"
 					]
 				]
 			}
