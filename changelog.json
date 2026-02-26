@@ -39,6 +39,9 @@
 					],
 					[
 						"fixed style issue with checkboxes sometimes being narrower than intended"
+					],
+					[
+						"fixed duplicate artists sometimes showing up in secondary metadata when fetching data from deezer"
 					]
 				]
 			}

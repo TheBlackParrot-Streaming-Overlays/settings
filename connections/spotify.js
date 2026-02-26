@@ -208,6 +208,7 @@ const deezerImageSizes = [
 ];
 async function parseDeezerArtistInfo(contributorList) {
 	let artists = [];
+	let seenIDs = [];
 
 	for(const contributor of contributorList) {
 		let image = null;
@@ -217,6 +218,14 @@ async function parseDeezerArtistInfo(contributorList) {
 			console.log(contributorList);
 			continue;
 		}
+
+		// contributors can have both "main" and "featured" artist types lol
+		// https://api.deezer.com/track/2101675917
+		if(seenIDs.indexOf(contributor.id) != -1) {
+			continue;
+		}
+		seenIDs.push(contributor.id);
+
 		if("picture" in contributor) {
 			let size = ((parseInt(localStorage.getItem("setting_spotify_lineHeight")) * 2) || 32);
 			
