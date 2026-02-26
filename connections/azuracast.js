@@ -120,6 +120,8 @@ async function handleAzuraCastSSEData(payload) {
 				// more than likely a CORS issue. welp
 				azuracastArtIsAllowed = false;
 				console.warn("No album art is available for this AzuraCast instance, cross-origin resource sharing has not been allowed");
+
+				persistentData.art = "placeholder.png";
 			}
 		}
 	}

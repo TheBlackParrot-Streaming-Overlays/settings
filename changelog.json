@@ -29,6 +29,9 @@
 					],
 					[
 						"ensured that azuracast's state timer always restarts when the now playing overlay announces its existence (and an azuracast instance is the data provider)"
+					],
+					[
+						"fallback to placeholder album art in case errors are thrown when getting album art for azuracast and rainwave tracks"
 					]
 				]
 			}
