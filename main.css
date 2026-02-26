@@ -430,6 +430,7 @@ input, select, textarea {
 
 input[type="checkbox"] {
 	width: var(--checkbox-height);
+	min-width: var(--checkbox-height);
 	height: var(--checkbox-height);
 	vertical-align: middle;
 	margin-right: calc(var(--settings-padding) / 1.2);

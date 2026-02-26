@@ -3075,7 +3075,22 @@
 					<hr/>
 					<div class="setting">
 						<div class="settingCell smol">
-							Spotify API tokens are required for these settings to function.<br/>These fields only apply to external bridge scripts and AzuraCast instances.
+							Spotify API tokens are required for these settings listed above to function.<br/>These fields only apply to external bridge scripts and AzuraCast instances.
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCell">
+							<input id="mus_keepRetryingForArt" type="checkbox" data-noDefaultValue/> <span class="settingInfo">For AzuraCast and Rainwave data sources, keep trying to fetch cover art even if permission errors are encountered</span>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCell smol">
+							<strong>Note to station owners:</strong> You need to allow Cross Origin Resource Sharing (CORS) for this domain, with at least the following paths allowed:<br/>
+							<tt>https://your.radio.domain/*/art/*</tt>
+							<br/>
+							<tt>https://your.radio.domain/static/vite_dist/assets/generic_song*</tt>
 						</div>
 					</div>
 				</div>

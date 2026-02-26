@@ -87,7 +87,7 @@ async function updateRainwaveData() {
 		const albumArtURL = new URL(localStorage.getItem("setting_mus_rainwaveInstance"));
 		albumArtURL.pathname = `${trackData.albums[0].art}_240.jpg`;
 
-		if(artIsAllowed) {
+		if(artIsAllowed || localStorage.getItem("setting_mus_keepRetryingForArt") == "true") {
 			try {
 				persistentData.art = await compressImage(albumArtURL.toString(), parseInt(localStorage.getItem("setting_spotify_artImageSize")), parseInt(localStorage.getItem("setting_spotify_artImageQuality")) / 100, "spotify", 180);
 			} catch(err) {

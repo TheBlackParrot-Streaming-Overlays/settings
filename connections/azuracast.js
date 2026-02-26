@@ -112,7 +112,7 @@ async function handleAzuraCastSSEData(payload) {
 	persistentData.labels = [];
 	persistentData.year = null;
 
-	if(azuracastArtIsAllowed) {
+	if(azuracastArtIsAllowed || localStorage.getItem("setting_mus_keepRetryingForArt") == "true") {
 		try {
 			persistentData.art = await compressImage(metadata.art, parseInt(localStorage.getItem("setting_spotify_artImageSize")), parseInt(localStorage.getItem("setting_spotify_artImageQuality")) / 100, "spotify", 180);
 		} catch(err) {

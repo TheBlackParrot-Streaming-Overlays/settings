@@ -199,7 +199,8 @@ const nonPublicSettings = [
 	"mus_azuracastInstance",
 	"mus_azuracastStation",
 	"mus_azuracastStationDisplayName",
-	"mus_useDeezerBeforeSpotify"
+	"mus_useDeezerBeforeSpotify",
+	"mus_keepRetryingForArt"
 ];
 
 const defaultConfig = {
@@ -1543,7 +1544,8 @@ const defaultConfig = {
 	"mus_azuracastInstance": "https://radio.theblackparrot.me",
 	"mus_azuracastStation": "2",
 	"mus_azuracastStationDisplayName": "",
-	"mus_useDeezerBeforeSpotify": "false"
+	"mus_useDeezerBeforeSpotify": "false",
+	"mus_keepRetryingForArt": "false"
 };
 // i typed out the bigNoNoWords so you don't have to, i'm sorry :(
 // it's gotta know what to remove
