@@ -445,6 +445,19 @@ function generateScannableData(url) {
 		barcolor: "#ffffff"
 	}));
 }
+function refreshGeneratedScannable() {
+	if(!("url" in currentSong)) {
+		return;
+	}
+	
+	generateScannableData(currentSong.url);
+	currentSong.scannable = persistentData.qrCode;
+
+	postToMusicEventChannel({
+		event: "scannable",
+		data: currentSong.scannable
+	});
+}
 
 async function updateTrack() {
 	const defaultUpdateDelay = parseFloat(localStorage.getItem("setting_spotify_refreshInterval")) * 1000;

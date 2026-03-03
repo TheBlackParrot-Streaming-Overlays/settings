@@ -97,9 +97,14 @@ const settingUpdatersTrigger = {
 	},
 	mus_rainwaveStation: async function() {
 		await startRainwaveDataFetching();
+	},
+
+	spotify_qrCodeGlyph: function() {
+		refreshGeneratedScannable();
 	}
 };
 settingUpdatersTrigger.bs_qrCodeECLevel = settingUpdatersTrigger.bs_qrCodeGlyph;
+settingUpdatersTrigger.spotify_qrCodeECLevel = settingUpdatersTrigger.spotify_qrCodeGlyph;
 
 function updateSetting(which, value, oldValue) {
 	if(which.indexOf("setting_panel_") === -1) {
