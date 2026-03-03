@@ -433,6 +433,19 @@ async function tryGettingDeezerInfoFromSpotifyResponse(response, skipToQuery = 0
 		return await deezerTrackResponse.json();
 	}
 }
+function generateScannableData(url) {
+	const codeType = localStorage.getItem("setting_spotify_qrCodeGlyph");
+	const codeECLevel = localStorage.getItem("setting_spotify_qrCodeECLevel");
+	const codeECLevelFixed = qrCodeECLevelEnum[codeType][codeECLevel];
+
+	persistentData.qrCode = btoa(bwipjs.toSVG({
+		bcid: codeType,
+		text: url,
+		eclevel: codeECLevelFixed,
+		barcolor: "#ffffff"
+	}));
+}
+
 async function updateTrack() {
 	const defaultUpdateDelay = parseFloat(localStorage.getItem("setting_spotify_refreshInterval")) * 1000;
 
@@ -505,6 +518,23 @@ async function updateTrack() {
 				}
 			}
 
+			let url;
+			if(deezerData) {
+				try {
+					url = deezerData.link;
+				} catch(err) {
+					url = `https://www.deezer.com/track/${deezerData.id}`;
+				}
+			} else {
+				try {
+					url = response.item.external_urls.spotify;
+				} catch(err) {
+					url = `https://open.spotify.com/track/${response.item.uri}`;
+				}
+			}
+
+			generateScannableData(url);
+
 			oldID = response.item.id;
 
 			var trackData = {
@@ -524,22 +554,10 @@ async function updateTrack() {
 				duration: response.item.duration_ms,
 				isPlaying: response.is_playing,
 				isrc: persistentData.isrc,
-				labels: persistentData.labels
+				labels: persistentData.labels,
+				url: url,
+				scannable: persistentData.qrCode
 			};
-
-			if(deezerData) {
-				try {
-					trackData.url = deezerData.link;
-				} catch(err) {
-					trackData.url = `https://www.deezer.com/track/${deezerData.id}`;
-				}
-			} else {
-				try {
-					trackData.url = response.item.external_urls.spotify;
-				} catch(err) {
-					trackData.url = `https://open.spotify.com/track/${response.item.uri}`;
-				}
-			}
 
 			// ignore response.item.album.album_type, spotify will always fill this in with "single"
 			postToSpotifyEventChannel({event: "trackData", data: trackData});

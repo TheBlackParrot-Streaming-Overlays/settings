@@ -5,7 +5,12 @@
 				"revision": 33,
 				"notes": [
 					[
-						"tbd"
+						"added the ability to generate a scannable code from the URL field in provided track metadata",
+						{"anchor": "spotify_overrideScannable"}
+					],
+					[
+						"added a margin setting for scannable content",
+						{"anchor": "spotify_scannableMargin"}
 					]
 				]
 			},
@@ -14,7 +19,8 @@
 				"revision": 100,
 				"notes": [
 					[
-						"added support for a URL field in now playing metadata, for use in QR code generation"
+						"added support for a URL field in now playing metadata, for use in QR code generation on the now playing overlay",
+						{"anchor": "spotify_overrideScannable"}
 					]
 				]
 			}

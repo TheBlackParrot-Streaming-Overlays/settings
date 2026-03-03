@@ -84,6 +84,8 @@ async function updateRainwaveData() {
 	let newSong = trackData.id;
 
 	if(newSong != previousSong) {
+		persistentData.qrCode = null;
+		
 		const albumArtURL = new URL(localStorage.getItem("setting_mus_rainwaveInstance"));
 		albumArtURL.pathname = `${trackData.albums[0].art}_240.jpg`;
 
@@ -115,6 +117,8 @@ async function updateRainwaveData() {
 		if("url" in trackData) {
 			if(trackData.url) {
 				currentSong.url = trackData.url;
+				generateScannableData(currentSong.url);
+				currentSong.scannable = persistentData.qrCode;
 			}
 		}
 

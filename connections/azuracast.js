@@ -111,6 +111,7 @@ async function handleAzuraCastSSEData(payload) {
 
 	persistentData.labels = [];
 	persistentData.year = null;
+	persistentData.qrCode = null;
 
 	if(azuracastArtIsAllowed || localStorage.getItem("setting_mus_keepRetryingForArt") == "true") {
 		try {
@@ -171,6 +172,8 @@ async function handleAzuraCastSSEData(payload) {
 		if("url" in metadata.custom_fields) {
 			if(metadata.custom_fields.url) {
 				currentSong.url = metadata.custom_fields.url;
+				generateScannableData(currentSong.url);
+				currentSong.scannable = persistentData.qrCode;
 			}
 		}
 	}

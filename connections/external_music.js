@@ -24,7 +24,7 @@ function sendOutTrackData(data) {
 		},
 		duration: data.duration,
 		isrc: data.isrc,
-		labels: persistentData.labels
+		labels: persistentData.labels,
 	};
 
 	if("uri" in data) {
@@ -33,6 +33,9 @@ function sendOutTrackData(data) {
 
 	if("url" in data) {
 		out.url = data.url;
+
+		generateScannableData(data.url);
+		data.scannable = persistentData.qrCode;
 	}
 
 	postToMusicEventChannel({
@@ -81,6 +84,18 @@ async function parseExtraData(data) {
 				if(localStorage.getItem("setting_mus_useISRCToFetchArtistMetadata") === "true") {
 					data.artists = await parseArtistInfo(externalData.tracks.items[0].artists);
 				}
+
+				if(!("url" in data)) {
+					let url;
+
+					try {
+						url = externalData.tracks.items[0].external_urls.spotify;
+					} catch(err) {
+						url = `https://open.spotify.com/track/${externalData.tracks.items[0].uri}`;
+					}
+
+					data.url = url;
+				}
 			}
 		}
 	} else {
@@ -90,7 +105,24 @@ async function parseExtraData(data) {
 			} else if("artist" in externalData) {
 				data.artists = await parseDeezerArtistInfo([externalData.artist]);
 			}
+
+			if(!("url" in data)) {
+				let url;
+				
+				try {
+					url = externalData.link;
+				} catch(err) {
+					url = `https://www.deezer.com/track/${externalData.id}`;
+				}
+
+				data.url = url;
+			}
 		}
+	}
+
+	if("url" in data) {
+		generateScannableData(data.url);
+		data.scannable = persistentData.qrCode;
 	}
 }
 
@@ -110,6 +142,8 @@ const musicFuncs = {
 
 			$("#musicImageContainer").attr("src", "connections/placeholder.png");
 		}
+
+		persistentData.qrCode = null;
 
 		await parseExtraData(data);
 

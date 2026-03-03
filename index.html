@@ -3729,6 +3729,44 @@
 					</div>
 					<hr/>
 					<div class="setting">
+						<div class="settingCell">
+							<input id="spotify_overrideScannable" type="checkbox" data-dependent="spotify_overrideScannable"/> <span class="settingInfo">Override scannable content with the URL field within track metadata</span>
+						</div>
+					</div>
+					<div class="setting" data-dependent="spotify_overrideScannable">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Scannable code type</span>
+						</div>
+						<div class="settingCell">
+							<select id="spotify_qrCodeGlyph">
+								<option value="azteccode">Aztec Code</option>
+								<option value="pdf417">PDF417</option>
+								<option selected value="qrcode">QR Code</option>
+							</select>
+						</div>
+					</div>
+					<div class="setting" data-dependent="spotify_overrideScannable">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Error correction</span>
+						</div>
+						<div class="settingCell">
+							<select id="spotify_qrCodeECLevel">
+								<option selected value="lowest">Lowest</option>
+								<option value="low">Low</option>
+								<option value="medium">Medium</option>
+								<option value="high">High</option>
+								<option value="highest">Highest</option>
+							</select>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCell smol">
+							<strong>NOTE:</strong> It is <strong>highly recommended</strong> to make sure any changes to scannable settings still allows the code to be successfully scanned.
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
 						<div class="settingCellLabel" data-dependent="spotify_enableScannable">
 							<span class="settingInfo">Height</span>
 						</div>
@@ -3738,10 +3776,23 @@
 					</div>
 					<div class="setting">
 						<div class="settingCellLabel" data-dependent="spotify_enableScannable">
+							<span class="settingInfo">Margin</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="spotify_scannableMargin" min="0" max="64" step="1" value="0"/><span class="settingCellMeasurement">px</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel" data-dependent="spotify_enableScannable">
 							<span class="settingInfo">Border radius</span>
 						</div>
 						<div class="settingCell">
 							<input type="number" id="spotify_scannableBorderRadius" min="0" max="64" step="1" value="16"/><span class="settingCellMeasurement">px</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCell">
+							<input id="spotify_applyScannableBorderRadiusToContent" type="checkbox"/> <span class="settingInfo">Apply border radius to scannable content</span>
 						</div>
 					</div>
 					<hr/>
@@ -11358,6 +11409,7 @@
 	<img id="bsplusImageContainer" style="display: none;" src=""/>
 	<img id="musicImageContainer" style="display: none;" src=""/>
 
+	<script defer type="text/javascript" src="consts.js"></script>
 	<script defer type="text/javascript" src="notifs.js"></script>
 	<script defer type="text/javascript" src="defaults.js"></script>
 	<script defer type="text/javascript" src="main.js"></script>

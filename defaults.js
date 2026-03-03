@@ -200,7 +200,10 @@ const nonPublicSettings = [
 	"mus_azuracastStation",
 	"mus_azuracastStationDisplayName",
 	"mus_useDeezerBeforeSpotify",
-	"mus_keepRetryingForArt"
+	"mus_keepRetryingForArt",
+	"spotify_overrideScannable",
+	"spotify_qrCodeGlyph",
+	"spotify_qrCodeECLevel"
 ];
 
 const defaultConfig = {
@@ -1545,7 +1548,12 @@ const defaultConfig = {
 	"mus_azuracastStation": "2",
 	"mus_azuracastStationDisplayName": "",
 	"mus_useDeezerBeforeSpotify": "false",
-	"mus_keepRetryingForArt": "false"
+	"mus_keepRetryingForArt": "false",
+	"spotify_overrideScannable": "false",
+	"spotify_qrCodeGlyph": "qrcode",
+	"spotify_qrCodeECLevel": "lowest",
+	"spotify_scannableMargin": "0",
+	"spotify_applyScannableBorderRadiusToContent": "false"
 };
 // i typed out the bigNoNoWords so you don't have to, i'm sorry :(
 // it's gotta know what to remove
