@@ -31,6 +31,10 @@ function sendOutTrackData(data) {
 		out.uri = data.uri;
 	}
 
+	if("url" in data) {
+		out.url = data.url;
+	}
+
 	postToMusicEventChannel({
 		event: "track",
 		data: out

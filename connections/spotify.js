@@ -527,6 +527,12 @@ async function updateTrack() {
 				labels: persistentData.labels
 			};
 
+			try {
+				trackData.url = response.item.external_urls.spotify;
+			} catch(err) {
+				trackData.url = `https://open.spotify.com/track/${response.item.uri}`;
+			}
+
 			// ignore response.item.album.album_type, spotify will always fill this in with "single"
 			postToSpotifyEventChannel({event: "trackData", data: trackData});
 		} else {

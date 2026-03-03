@@ -168,6 +168,11 @@ async function handleAzuraCastSSEData(payload) {
 				currentSong.album.released = (persistentData.year ? persistentData.year : new Date(metadata.custom_fields.year).getUTCFullYear())
 			}
 		}
+		if("url" in metadata.custom_fields) {
+			if(metadata.custom_fields.url) {
+				currentSong.url = metadata.custom_fields.url;
+			}
+		}
 	}
 
 	if(persistentData.art) {

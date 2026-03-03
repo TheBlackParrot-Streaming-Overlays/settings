@@ -1,4 +1,26 @@
 {
+	"9999999999999": {
+		"updates": {
+			"spotify": {
+				"revision": 33,
+				"notes": [
+					[
+						"tbd"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 100,
+				"notes": [
+					[
+						"added support for a URL field in now playing metadata, for use in QR code generation"
+					]
+				]
+			}
+		}
+	},
+
 	"1772129436939": {
 		"updates": {
 			"spotify": {

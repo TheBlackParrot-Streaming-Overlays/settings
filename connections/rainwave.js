@@ -112,6 +112,12 @@ async function updateRainwaveData() {
 			id: trackData.id
 		};
 
+		if("url" in trackData) {
+			if(trackData.url) {
+				currentSong.url = trackData.url;
+			}
+		}
+
 		if(localStorage.getItem("setting_mus_rainwaveStationDisplayName")) {
 			const wantedStation = rainwaveStationData.filter((station) => {
 				return station.id == localStorage.getItem("setting_mus_rainwaveStation");
