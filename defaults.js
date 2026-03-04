@@ -1553,7 +1553,16 @@ const defaultConfig = {
 	"spotify_qrCodeGlyph": "qrcode",
 	"spotify_qrCodeECLevel": "lowest",
 	"spotify_scannableMargin": "0",
-	"spotify_applyScannableBorderRadiusToContent": "false"
+	"spotify_applyScannableBorderRadiusToContent": "false",
+	"spotify_shadowColorScannable": "#000000ff",
+	"spotify_shadowXOffsetScannable": "0",
+	"spotify_shadowYOffsetScannable": "1",
+	"spotify_shadowBlurRadiusScannable": "2",
+	"spotify_outlineColorScannable": "#000000ff",
+	"spotify_outlineOrderScannable": "5",
+	"spotify_outlineDivisorScannable": "3",
+	"spotify_outlineStripCornersScannable": "true",
+	"spotify_outlineThresholdScannable": "0.2"
 };
 // i typed out the bigNoNoWords so you don't have to, i'm sorry :(
 // it's gotta know what to remove

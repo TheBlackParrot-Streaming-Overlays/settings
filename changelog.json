@@ -11,6 +11,22 @@
 					[
 						"added a margin setting for scannable content",
 						{"anchor": "spotify_scannableMargin"}
+					],
+					[
+						"allowed scannables to exceed the height of the bar container"
+					],
+					[
+						"fixed some settings breaking effects on scannable content"
+					],
+					[
+						"fixed outline/shadow effects not working if scannable content is inverted"
+					],
+					[
+						"separated effect settings on scannable content from the settings for text content",
+						{"anchor": "spotify_enableShadowEffectsScannable"}
+					],
+					[
+						"fixed some effect settings not applying on change"
 					]
 				]
 			},

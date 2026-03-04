@@ -3948,15 +3948,10 @@
 			</div>
 			<div class="section" data-content="spotify_effects">
 				<div class="part">
-					<h1>Filters</h1>
+					<h1>Text Content Effects</h1>
 					<div class="setting">
 						<div class="settingCell">
 							<input checked id="spotify_enableShadowEffects" type="checkbox" data-dependent="spotify_enableShadowEffects"/> <span class="settingInfo">Draw shadows underneath text content</span>
-						</div>
-					</div>
-					<div class="setting">
-						<div class="settingCell">
-							<input id="spotify_enableShadowEffectsScannable" type="checkbox"/> <span class="settingInfo">Draw shadows underneath scannable's foreground content</span>
 						</div>
 					</div>
 					<div class="setting">
@@ -3998,16 +3993,6 @@
 						</div>
 					</div>
 					<div class="setting">
-						<div class="settingCell">
-							<input id="spotify_enableOutlineEffectsScannable" type="checkbox"/> <span class="settingInfo">Draw outlines underneath scannable's foreground content</span>
-						</div>
-					</div>
-					<div class="setting">
-						<div class="settingCell">
-							<input id="spotify_outlineColorReflectsScannable" type="checkbox"/> <span class="settingInfo">Scannable's outline color reflects its background color</span>
-						</div>
-					</div>
-					<div class="setting">
 						<div class="settingCellLabel">
 							<span class="settingInfo">Color</span>
 						</div>
@@ -4045,7 +4030,98 @@
 							<input type="number" id="spotify_outlineThreshold" min="0.01" max="0.99" step="0.01" value="0.2"/>
 						</div>
 					</div>
+				</div>
+				<div class="part">
+					<h1>Scannable Content Effects</h1>
+					<div class="setting">
+						<div class="settingCell">
+							<input id="spotify_enableShadowEffectsScannable" type="checkbox"/> <span class="settingInfo">Draw shadows underneath scannable's foreground content</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Color</span>
+						</div>
+						<div class="settingCell">
+							<input id="spotify_shadowColorScannable" type="text" data-coloris value="#000000ff"/>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">X offset</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="spotify_shadowXOffsetScannable" min="-32" max="32" step="0.25" value="0"/><span class="settingCellMeasurement">px</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Y offset</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="spotify_shadowYOffsetScannable" min="-32" max="32" step="0.25" value="1"/><span class="settingCellMeasurement">px</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Blur amount</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="spotify_shadowBlurRadiusScannable" min="0" max="32" step="0.25" value="2"/><span class="settingCellMeasurement">px</span>
+						</div>
+					</div>
 					<hr/>
+					<div class="setting">
+						<div class="settingCell">
+							<input id="spotify_enableOutlineEffectsScannable" type="checkbox"/> <span class="settingInfo">Draw outlines underneath scannable's foreground content</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCell">
+							<input id="spotify_outlineColorReflectsScannable" type="checkbox"/> <span class="settingInfo">Scannable's outline color reflects its background color</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Color</span>
+						</div>
+						<div class="settingCell">
+							<input id="spotify_outlineColorScannable" type="text" data-coloris value="#000000ff"/>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Matrix Size</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="spotify_outlineOrderScannable" min="0" max="64" step="1" value="5"/>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Divisor</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="spotify_outlineDivisorScannable" min="1" max="64" step="1" value="3"/>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCell">
+							<input checked id="spotify_outlineStripCornersScannable" type="checkbox"/> <span class="settingInfo">Smooth out corners of the outline matrix</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Distance threshold</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="spotify_outlineThresholdScannable" min="0.01" max="0.99" step="0.01" value="0.2"/>
+						</div>
+					</div>
+				</div>
+				<div class="part">
+					<h1>General Effects</h1>
 					<div class="setting">
 						<div class="settingCell">
 							<input checked id="spotify_enableBoxShadowEffects" type="checkbox" data-dependent="spotify_enableBoxShadowEffects"/> <span class="settingInfo">Draw box shadows underneath image content</span>
