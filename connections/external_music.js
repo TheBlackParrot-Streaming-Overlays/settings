@@ -84,7 +84,8 @@ async function parseExtraData(data) {
 					data.artists = await parseArtistInfo(externalData.tracks.items[0].artists);
 				}
 
-				if(!("url" in data)) {
+				// this looks so cursed
+				if("url" in data ? (data.url ? false : true) : false) {
 					let url;
 
 					try {
@@ -105,7 +106,7 @@ async function parseExtraData(data) {
 				data.artists = await parseDeezerArtistInfo([externalData.artist]);
 			}
 
-			if(!("url" in data)) {
+			if("url" in data ? (data.url ? false : true) : false) {
 				let url;
 				
 				try {
