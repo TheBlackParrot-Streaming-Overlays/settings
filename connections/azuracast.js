@@ -107,6 +107,8 @@ async function handleAzuraCastSSEData(payload) {
 		return;
 	}
 
+	console.log(payload);
+
 	processingMetadata = metadata.id;
 
 	persistentData.labels = [];

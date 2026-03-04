@@ -28,14 +28,13 @@ function sendOutTrackData(data) {
 	};
 
 	if("uri" in data) {
-		out.uri = data.uri;
+		if(data.uri) {
+			out.uri = data.uri;
+		}
 	}
 
-	if("url" in data) {
-		out.url = data.url;
-
-		generateScannableData(data.url);
-		data.scannable = persistentData.qrCode;
+	if("scannable" in data) {
+		out.scannable = persistentData.qrCode;
 	}
 
 	postToMusicEventChannel({
@@ -121,8 +120,10 @@ async function parseExtraData(data) {
 	}
 
 	if("url" in data) {
-		generateScannableData(data.url);
-		data.scannable = persistentData.qrCode;
+		if(data.url) {
+			generateScannableData(data.url);
+			data.scannable = persistentData.qrCode;
+		}
 	}
 }
 
