@@ -30,12 +30,6 @@
 					],
 					[
 						"fixed album/single display never showing with non-spotify data"
-					],
-					[
-						"allowed label information for now playing data to be sourced from deezer if musicbrainz comes back empty"
-					],
-					[
-						"fixed mus_useISRCToFetchArtistMetadata being ignored if data was being fetched from deezer"
 					]
 				]
 			},
@@ -49,6 +43,12 @@
 					],
 					[
 						"added support for denoting if an album is a single or not for data fetched from deezer in now playing metadata"
+					],
+					[
+						"allowed label information for now playing data to be sourced from deezer if musicbrainz comes back empty"
+					],
+					[
+						"fixed mus_useISRCToFetchArtistMetadata being ignored if data was being fetched from deezer"
 					]
 				]
 			}
