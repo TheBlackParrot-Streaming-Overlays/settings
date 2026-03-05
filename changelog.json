@@ -33,6 +33,9 @@
 					],
 					[
 						"allowed label information for now playing data to be sourced from deezer if musicbrainz comes back empty"
+					],
+					[
+						"fixed mus_useISRCToFetchArtistMetadata being ignored if data was being fetched from deezer"
 					]
 				]
 			},

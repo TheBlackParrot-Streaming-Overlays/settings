@@ -102,10 +102,12 @@ async function parseExtraData(data) {
 		}
 	} else {
 		if(externalData) {
-			if("contributors" in externalData) {
-				data.artists = await parseDeezerArtistInfo(externalData.contributors);
-			} else if("artist" in externalData) {
-				data.artists = await parseDeezerArtistInfo([externalData.artist]);
+			if(localStorage.getItem("setting_mus_useISRCToFetchArtistMetadata") === "true") {
+				if("contributors" in externalData) {
+					data.artists = await parseDeezerArtistInfo(externalData.contributors);
+				} else if("artist" in externalData) {
+					data.artists = await parseDeezerArtistInfo([externalData.artist]);
+				}
 			}
 
 			if("url" in data ? (data.url ? false : true) : true) {
