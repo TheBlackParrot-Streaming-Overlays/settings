@@ -144,11 +144,24 @@ async function parseExtraData(data) {
 
 					if(!isSelfPublished) {
 						persistentData.labels.push(albumJSON.label);
-						data.labels = persistentData.labels;
 					}
 				}
 			}
 		}
+	}
+
+	persistentData.labels = persistentData.labels.filter((label) => {
+		for(const artist of data.artists) {
+			if(label === artist.name) {
+				// is a self-publish, remove it
+				return false;
+			}
+		}
+
+		return true;
+	});
+	if(persistentData.labels.length) {
+		data.labels = persistentData.labels;
 	}
 
 	if("url" in data) {
