@@ -1563,7 +1563,8 @@ const defaultConfig = {
 	"spotify_outlineDivisorScannable": "3",
 	"spotify_outlineStripCornersScannable": "true",
 	"spotify_outlineThresholdScannable": "0.2",
-	"spotify_enableBoxShadowEffectsScannable": "true"
+	"spotify_enableBoxShadowEffectsScannable": "true",
+	"spotify_horizontalOffset": "0"
 };
 // i typed out the bigNoNoWords so you don't have to, i'm sorry :(
 // it's gotta know what to remove

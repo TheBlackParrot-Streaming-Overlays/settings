@@ -30,6 +30,10 @@
 					],
 					[
 						"fixed album/single display never showing with non-spotify data"
+					],
+					[
+						"added a horizontal offset setting for the main layout",
+						{"anchor": "spotify_horizontalOffset"}
 					]
 				]
 			},
