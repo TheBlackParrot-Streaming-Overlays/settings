@@ -152,7 +152,7 @@ async function parseExtraData(data) {
 
 	persistentData.labels = persistentData.labels.filter((label) => {
 		for(const artist of data.artists) {
-			if(label === artist.name) {
+			if(label === artist.name || label === "Various Artists") {
 				// is a self-publish, remove it
 				return false;
 			}

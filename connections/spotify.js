@@ -344,7 +344,7 @@ async function fetchMusicBrainz(isrc) {
 					}
 
 					for(const artist of currentSong.artists) {
-						if(label.textContent === artist.name) {
+						if(label.textContent === artist.name || label.textContent === "Various Artists") {
 							// is a self-publish
 							continue;
 						}
