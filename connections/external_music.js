@@ -128,6 +128,24 @@ async function parseExtraData(data) {
 			if("nb_tracks" in albumJSON) {
 				data.album.type = (albumJSON.nb_tracks > 2 ? "album" : "single");
 			}
+
+			if(!persistentData.labels.length && "label" in albumJSON) {
+				// deezer gives us a label!!
+				if(albumJSON.label) {
+					let isSelfPublished = false;
+					for(const artist of data.artists) {
+						if(artist.name === albumJSON.label) {
+							isSelfPublished = true;
+							break;
+						}
+					}
+
+					if(!isSelfPublished) {
+						persistentData.labels.push(albumJSON.label);
+						data.labels = persistentData.labels;
+					}
+				}
+			}
 		}
 	}
 

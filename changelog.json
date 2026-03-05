@@ -30,6 +30,9 @@
 					],
 					[
 						"fixed album/single display never showing with non-spotify data"
+					],
+					[
+						"allowed label information for now playing data to be sourced from deezer if musicbrainz comes back empty"
 					]
 				]
 			},
