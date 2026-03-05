@@ -30,6 +30,7 @@ if(isset($_GET['art'])) {
 	$album = null;
 	$isrc = null;
 	$id = null;
+	$albumid = null;
 
 	if(isset($_GET['artist'])) {
 		$artist = preg_replace("/[\.\-\/\\\:\"\?\=\&]/", ' ', strtoupper($_GET['artist']));
@@ -51,6 +52,14 @@ if(isset($_GET['art'])) {
 
 		$id = intval($_GET['id']);
 	}
+	if(isset($_GET['albumid'])) {
+		if(!is_numeric($_GET['albumid'])) {
+			http_response_code(404);
+			die();
+		}
+
+		$albumid = intval($_GET['albumid']);
+	}
 
 	if(!is_null($isrc)) {
 		echo file_get_contents('https://api.deezer.com/track/isrc:' . urlencode($isrc));
@@ -58,6 +67,10 @@ if(isset($_GET['art'])) {
 	}
 	if(!is_null($id)) {
 		echo file_get_contents('https://api.deezer.com/track/' . urlencode($id));
+		die();
+	}
+	if(!is_null($albumid)) {
+		echo file_get_contents('https://api.deezer.com/album/' . urlencode($albumid));
 		die();
 	}
 

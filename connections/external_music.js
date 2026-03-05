@@ -96,6 +96,8 @@ async function parseExtraData(data) {
 
 					data.url = url;
 				}
+
+				data.album.type = (externalData.tracks.items[0].album.total_tracks > 2 ? "album" : "single");
 			}
 		}
 	} else {
@@ -116,6 +118,15 @@ async function parseExtraData(data) {
 				}
 
 				data.url = url;
+			}
+
+			const albumResponse = await fetch(`proxies/deezer.php?albumid=${externalData.album.id}`);
+			const albumJSON = await albumResponse.json();
+
+			console.log(albumJSON);
+
+			if("nb_tracks" in albumJSON) {
+				data.album.type = (albumJSON.nb_tracks > 2 ? "album" : "single");
 			}
 		}
 	}

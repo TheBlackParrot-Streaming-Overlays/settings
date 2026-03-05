@@ -27,6 +27,9 @@
 					],
 					[
 						"fixed some effect settings not applying on change"
+					],
+					[
+						"fixed album/single display never showing with non-spotify data"
 					]
 				]
 			},
@@ -37,6 +40,9 @@
 					[
 						"added support for a URL field in now playing metadata, for use in QR code generation on the now playing overlay",
 						{"anchor": "spotify_overrideScannable"}
+					],
+					[
+						"added support for denoting if an album is a single or not for data fetched from deezer in now playing metadata"
 					]
 				]
 			}
