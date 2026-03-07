@@ -359,32 +359,50 @@ async function fetchMusicBrainz(isrc) {
 	}
 }
 async function updateArtColors(art) {
-	try {
-		let swatches = await Vibrant.from(art).getSwatches();
-		let colors = {
-			light: [],
-			dark: []
-		};
-		const checks = {
-			light: ["LightVibrant", "Vibrant", "LightMuted", "Muted"],
-			dark: ["DarkVibrant", "DarkMuted", "Muted", "Vibrant"]
-		};
+	let swatches = await Vibrant.from(art).getSwatches();
+	let colors = {
+		light: [],
+		dark: []
+	};
 
-		for(let shade in checks) {
-			for(let i in checks[shade]) {
-				let check = checks[shade][i];
-				if(check in swatches) {
-					if(swatches[check] !== null) {
-						colors[shade].push(swatches[check].getRgb());
-					}
-				}
-			}
+	const checks = {
+		light: {
+			Vibrant: 3,
+			LightVibrant: 2,
+			LightMuted: 1,
+			Muted: 0.5
+		},
+
+		dark: {
+			DarkVibrant: 3,
+			DarkMuted: 2.5,
+			Muted: 0.75,
+			Vibrant: 0.5
 		}
-		persistentData.colors.dark = `#${colors.dark[0].map(function(x) { return Math.floor(x).toString(16).padStart(2, "0"); }).join("")}`;
-		persistentData.colors.light = `#${colors.light[0].map(function(x) { return Math.floor(x).toString(16).padStart(2, "0"); }).join("")}`;
-	} catch(err) {
-		throw err;
+	};
+
+	for(const shade in checks) {
+		for(const swatchName in checks[shade]) {
+			const weightFactor = checks[shade][swatchName];
+			const color = swatches[swatchName];
+
+			colors[shade].push({
+				swatchName: swatchName,
+				weight: Math.max(weightFactor, color.population * weightFactor),
+				color: color
+			});
+		}
+
+		colors[shade].sort((a, b) => {
+			if(a.weight == b.weight) { return 0; }
+			return (a.weight < b.weight ? 1 : -1);
+		});
 	}
+
+	console.log(colors);
+
+	persistentData.colors.dark = colors.dark[0].color.getHex();
+	persistentData.colors.light = colors.light[0].color.getHex();
 }
 async function tryGettingDeezerInfoFromSpotifyResponse(response, skipToQuery = 0) {
 	let artists = [];

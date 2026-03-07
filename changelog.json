@@ -5,8 +5,12 @@
 				"revision": 34,
 				"notes": [
 					[
-						"fix some weird oddities with automatic colors that didn't appear until double-checking the dev instance",
+						"fix some weird oddities with automatic color fetching that didn't appear until double-checking the dev instance",
 						["........???????????"]
+					],
+					[
+						"refactored automatic color fetching with a weighted palette population value, instead of always preferring a specific swatch from the available swatches",
+						["if i like the results from this change, i'll update the other overlays that can auto-change colors with the same changes"]
 					]
 				]
 			}
