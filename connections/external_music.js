@@ -141,7 +141,7 @@ async function parseExtraData(data) {
 						let isSelfPublished = false;
 
 						for(const artist of data.artists) {
-							if(artist.name === albumJSON.label) {
+							if(artist.name.toLowerCase() === albumJSON.label.toLowerCase()) {
 								isSelfPublished = true;
 								break;
 							}
