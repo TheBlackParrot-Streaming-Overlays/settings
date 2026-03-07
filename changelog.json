@@ -9,7 +9,16 @@
 						["........???????????"]
 					],
 					[
-						"refactored automatic color fetching with a weighted palette population value, instead of always preferring a specific swatch from the available swatches",
+						"fixed some artist image settings not doing anything as it wasn't creating image elements correctly"
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 101,
+				"notes": [
+					[
+						"refactored automatic color fetching for the now playing overlay with a weighted palette population value, instead of always preferring a specific swatch from the available swatches",
 						["if i like the results from this change, i'll update the other overlays that can auto-change colors with the same changes"]
 					]
 				]
