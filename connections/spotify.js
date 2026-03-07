@@ -383,8 +383,16 @@ async function updateArtColors(art) {
 
 	for(const shade in checks) {
 		for(const swatchName in checks[shade]) {
-			const weightFactor = checks[shade][swatchName];
+			let weightFactor = checks[shade][swatchName];
 			const color = swatches[swatchName];
+
+			const hsl = color.getHsl();
+			if(hsl[1] <= 0.04) {
+				// very close to white or black, weight it down heavily
+				if(hsl[2] >= 0.8 || hsl[2] <= 0.1) {
+					weightFactor *= 0.25;
+				}
+			}
 
 			colors[shade].push({
 				swatchName: swatchName,
