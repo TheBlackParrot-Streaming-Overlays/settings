@@ -9,7 +9,7 @@
 						["........???????????"]
 					],
 					[
-						"fixed some artist image settings not doing anything as it wasn't creating image elements correctly"
+						"fixed some artist image settings not doing anything as image elements were not being created correctly when using non-spotify data sources"
 					]
 				]
 			},
@@ -20,6 +20,10 @@
 					[
 						"refactored automatic color fetching for the now playing overlay with a weighted palette population value, instead of always preferring a specific swatch from the available swatches",
 						["if i like the results from this change, i'll update the other overlays that can auto-change colors with the same changes"]
+					],
+					[
+						"hid more self-publish \"labels\" from deezer now playing information",
+						["labels named things like \"678632 Records DK2\" are just distributor groups for music published through specific distributors. it's weird"]
 					]
 				]
 			}

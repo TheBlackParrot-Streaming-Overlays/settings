@@ -135,10 +135,23 @@ async function parseExtraData(data) {
 				// deezer gives us a label!!
 				if(albumJSON.label) {
 					let isSelfPublished = false;
+
 					for(const artist of data.artists) {
 						if(artist.name === albumJSON.label) {
 							isSelfPublished = true;
 							break;
+						}
+					}
+
+					// 678632 Records DK2
+					const labelParts = albumJSON.label.split(" ");
+					if(labelParts.length === 3) {
+						if(!isNaN(parseInt(labelParts[0]))) {
+							if(labelParts[1] === "Records") {
+								if(labelParts[2].length <= 3) {
+									isSelfPublished = true;
+								}
+							}
 						}
 					}
 
