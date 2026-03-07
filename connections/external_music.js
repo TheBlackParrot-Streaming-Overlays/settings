@@ -102,61 +102,66 @@ async function parseExtraData(data) {
 		}
 	} else {
 		if(externalData) {
-			if(localStorage.getItem("setting_mus_useISRCToFetchArtistMetadata") === "true") {
-				if("contributors" in externalData) {
-					data.artists = await parseDeezerArtistInfo(externalData.contributors);
-				} else if("artist" in externalData) {
-					data.artists = await parseDeezerArtistInfo([externalData.artist]);
-				}
-			}
-
-			if("url" in data ? (data.url ? false : true) : true) {
-				let url;
-				
-				try {
-					url = externalData.link;
-				} catch(err) {
-					url = `https://www.deezer.com/track/${externalData.id}`;
+			if("error" in externalData) {
+				// wuh oh
+				console.warn(externalData);
+			} else {
+				if(localStorage.getItem("setting_mus_useISRCToFetchArtistMetadata") === "true") {
+					if("contributors" in externalData) {
+						data.artists = await parseDeezerArtistInfo(externalData.contributors);
+					} else if("artist" in externalData) {
+						data.artists = await parseDeezerArtistInfo([externalData.artist]);
+					}
 				}
 
-				data.url = url;
-			}
-
-			const albumResponse = await fetch(`proxies/deezer.php?albumid=${externalData.album.id}`);
-			const albumJSON = await albumResponse.json();
-
-			console.log(albumJSON);
-
-			if("nb_tracks" in albumJSON) {
-				data.album.type = (albumJSON.nb_tracks > 2 ? "album" : "single");
-			}
-
-			if(!persistentData.labels.length && "label" in albumJSON) {
-				// deezer gives us a label!!
-				if(albumJSON.label) {
-					let isSelfPublished = false;
-
-					for(const artist of data.artists) {
-						if(artist.name === albumJSON.label) {
-							isSelfPublished = true;
-							break;
-						}
+				if("url" in data ? (data.url ? false : true) : true) {
+					let url;
+					
+					try {
+						url = externalData.link;
+					} catch(err) {
+						url = `https://www.deezer.com/track/${externalData.id}`;
 					}
 
-					// 678632 Records DK2
-					const labelParts = albumJSON.label.split(" ");
-					if(labelParts.length === 3) {
-						if(!isNaN(parseInt(labelParts[0]))) {
-							if(labelParts[1] === "Records") {
-								if(labelParts[2].length <= 3) {
-									isSelfPublished = true;
+					data.url = url;
+				}
+
+				const albumResponse = await fetch(`proxies/deezer.php?albumid=${externalData.album.id}`);
+				const albumJSON = await albumResponse.json();
+
+				console.log(albumJSON);
+
+				if("nb_tracks" in albumJSON) {
+					data.album.type = (albumJSON.nb_tracks > 2 ? "album" : "single");
+				}
+
+				if(!persistentData.labels.length && "label" in albumJSON) {
+					// deezer gives us a label!!
+					if(albumJSON.label) {
+						let isSelfPublished = false;
+
+						for(const artist of data.artists) {
+							if(artist.name === albumJSON.label) {
+								isSelfPublished = true;
+								break;
+							}
+						}
+
+						// 678632 Records DK2
+						const labelParts = albumJSON.label.split(" ");
+						if(labelParts.length === 3) {
+							if(!isNaN(parseInt(labelParts[0]))) {
+								if(labelParts[1] === "Records") {
+									if(labelParts[2].length <= 3) {
+										isSelfPublished = true;
+									}
 								}
 							}
 						}
-					}
 
-					if(!isSelfPublished) {
-						persistentData.labels.push(albumJSON.label);
+						if(!isSelfPublished) {
+							persistentData.labels.push(albumJSON.label);
+						}
 					}
 				}
 			}
