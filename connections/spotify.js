@@ -364,6 +364,7 @@ async function updateArtColors(art) {
 		light: [],
 		dark: []
 	};
+	let skip = [];
 
 	const checks = {
 		light: {
@@ -383,15 +384,20 @@ async function updateArtColors(art) {
 
 	for(const shade in checks) {
 		for(const swatchName in checks[shade]) {
+			if(skip.indexOf(swatchName) !== -1) {
+				// we're already using the color, move on
+				continue;
+			}
+
 			let weightFactor = checks[shade][swatchName];
 			const color = swatches[swatchName];
 
 			let weight = Math.max(weightFactor, color.population * weightFactor);
 
 			const hsl = color.getHsl();
-			if(hsl[1] <= 0.04) {
+			if(hsl[1] <= 0.25) {
 				// very close to white or black, weight it down heavily
-				if(hsl[2] >= 0.8 || hsl[2] <= 0.1) {
+				if(hsl[2] >= 0.75 || hsl[2] <= 0.15) {
 					weight *= 0.25;
 				}
 			}
@@ -407,6 +413,8 @@ async function updateArtColors(art) {
 			if(a.weight == b.weight) { return 0; }
 			return (a.weight < b.weight ? 1 : -1);
 		});
+
+		skip.push(colors[shade][0].swatchName);
 	}
 
 	console.log(colors);
