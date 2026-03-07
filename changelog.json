@@ -1,4 +1,18 @@
 {
+	"9999999999999": {
+		"updates": {
+			"spotify": {
+				"revision": 34,
+				"notes": [
+					[
+						"fix some weird oddities with automatic colors that didn't appear until double-checking the dev instance",
+						["........???????????"]
+					]
+				]
+			}
+		}
+	},
+
 	"1772851510978": {
 		"updates": {
 			"spotify": {
