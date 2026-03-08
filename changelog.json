@@ -24,6 +24,9 @@
 					[
 						"hid more self-publish \"labels\" from deezer now playing information",
 						["labels named things like \"678632 Records DK2\" are just distributor groups for music published through specific distributors. it's weird"]
+					],
+					[
+						"gracefully handle exceptions from deezer in external music player metadata"
 					]
 				]
 			}
