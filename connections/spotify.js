@@ -343,6 +343,11 @@ async function fetchMusicBrainz(isrc) {
 						continue;
 					}
 
+					if(typeof currentSong === "undefined") {
+						// ...uh
+						continue;
+					}
+					
 					for(const artist of currentSong.artists) {
 						if(label.textContent === artist.name || label.textContent === "Various Artists") {
 							// is a self-publish

@@ -1,6 +1,19 @@
 {
 	"9999999999999": {
 		"updates": {
+			"settings": {
+				"revision": 102,
+				"notes": [
+					[
+						"added a catch for artists being undefined in now playing song data for musicbrainz stuff"
+					]
+				]
+			}
+		}
+	},
+
+	"1772987318393": {
+		"updates": {
 			"spotify": {
 				"revision": 34,
 				"notes": [
