@@ -7,6 +7,10 @@
 					[
 						"added missing settings for the header gradient (oops)",
 						{"anchor": "clock_headerUsesGradient"}
+					],
+					[
+						"added settings for the sliding motion on the fading animation between time displays",
+						{"anchor": "clock_slideAnimationIsVertical"}
 					]
 				]
 			},

@@ -1567,7 +1567,9 @@ const defaultConfig = {
 	"spotify_horizontalOffset": "0",
 	"clock_headerUsesGradient": "true",
 	"clock_headerGradientColor": "#ffffff",
-	"clock_headerGradientAngle": "170"
+	"clock_headerGradientAngle": "170",
+	"clock_slideAnimationIsVertical": "false",
+	"clock_slideAnimationAmount": "30"
 };
 // i typed out the bigNoNoWords so you don't have to, i'm sorry :(
 // it's gotta know what to remove
