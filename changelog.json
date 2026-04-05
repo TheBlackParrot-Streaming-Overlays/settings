@@ -15,6 +15,18 @@
 				]
 			},
 
+			"srxd": {
+				"revision": 5,
+				"notes": [
+					[
+						"fixed mapper and artist fields disappearing if gradients are disabled"
+					],
+					[
+						"fixed brightness checks on art-reflected secondary colors applying globally"
+					]
+				]
+			},
+
 			"settings": {
 				"revision": 103,
 				"notes": [
