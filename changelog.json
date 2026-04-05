@@ -1,4 +1,27 @@
 {
+	"9999999999999": {
+		"updates": {
+			"clock": {
+				"revision": 11,
+				"notes": [
+					[
+						"added missing settings for the header gradient (oops)",
+						{"anchor": "clock_headerUsesGradient"}
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 103,
+				"notes": [
+					[
+						"(update only contains new settings)"
+					]
+				]
+			}
+		}
+	},
+
 	"1773258262607": {
 		"updates": {
 			"settings": {
