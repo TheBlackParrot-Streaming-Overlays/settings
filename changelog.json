@@ -23,6 +23,9 @@
 					],
 					[
 						"fixed brightness checks on art-reflected secondary colors applying globally"
+					],
+					[
+						"fixed reflected art colors never applying from other overlays"
 					]
 				]
 			},
