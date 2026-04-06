@@ -35,6 +35,9 @@
 				"notes": [
 					[
 						"applied new art color fetching flow to the SRXD overlay"
+					],
+					[
+						"added adjustments to art color fetching that will ensure color contrast isn't too similar between light and dark colors"
 					]
 				]
 			}

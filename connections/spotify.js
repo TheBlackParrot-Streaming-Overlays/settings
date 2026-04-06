@@ -426,6 +426,26 @@ async function updateArtColors(art) {
 
 	persistentData.colors.dark = colors.dark[0].color.getHex();
 	persistentData.colors.light = colors.light[0].color.getHex();
+
+	if(getYIQ(persistentData.colors.light) <= 96 && getYIQ(persistentData.colors.dark) <= 64) {
+		console.log("both colors are pretty dark, force the light one to be brighter");
+		while(getYIQ(persistentData.colors.light) <= 64) {
+			console.log("took a brightening step");
+			persistentData.colors.light = interpolateColor(persistentData.colors.light, "#FFFFFF", 10);
+		}
+	} else if(getYIQ(persistentData.colors.light) >= 192 && getYIQ(persistentData.colors.dark) >= 160) {
+		console.log("both colors are pretty bright, force the dark one to be darker");
+		while(getYIQ(persistentData.colors.dark) >= 192) {
+			console.log("took a darkening step");
+			persistentData.colors.dark = interpolateColor(persistentData.colors.dark, "#000000", 10);
+		}
+	}
+
+	while(Math.abs(getYIQ(persistentData.colors.light) - getYIQ(persistentData.colors.dark)) <= 48) {
+		console.log(`colors are too similar: light YIQ (${persistentData.colors.light}) - ${getYIQ(persistentData.colors.light)}, dark YIQ (${persistentData.colors.dark}) - ${getYIQ(persistentData.colors.dark)}`);
+		persistentData.colors.light = interpolateColor(persistentData.colors.light, "#FFFFFF", 10);
+		persistentData.colors.dark = interpolateColor(persistentData.colors.dark, "#000000", 10);
+	}
 }
 async function tryGettingDeezerInfoFromSpotifyResponse(response, skipToQuery = 0) {
 	let artists = [];
