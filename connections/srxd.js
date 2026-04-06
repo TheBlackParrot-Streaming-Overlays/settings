@@ -95,6 +95,26 @@ async function updateSRXDMapData() {
 
 		currentSRXDSong.cover.colors.dark = colors.dark[0].color.getHex();
 		currentSRXDSong.cover.colors.light = colors.light[0].color.getHex();
+
+		if(getYIQ(currentSRXDSong.cover.colors.light) <= 96 && getYIQ(currentSRXDSong.cover.colors.dark) <= 64) {
+			console.log("both colors are pretty dark, force the light one to be brighter");
+			while(getYIQ(currentSRXDSong.cover.colors.light) <= 64) {
+				console.log("took a brightening step");
+				currentSRXDSong.cover.colors.light = interpolateColor(currentSRXDSong.cover.colors.light, "#FFFFFF", 10);
+			}
+		} else if(getYIQ(currentSRXDSong.cover.colors.light) >= 192 && getYIQ(currentSRXDSong.cover.colors.dark) >= 160) {
+			console.log("both colors are pretty bright, force the dark one to be darker");
+			while(getYIQ(currentSRXDSong.cover.colors.dark) >= 192) {
+				console.log("took a darkening step");
+				currentSRXDSong.cover.colors.dark = interpolateColor(currentSRXDSong.cover.colors.dark, "#000000", 10);
+			}
+		}
+
+		while(Math.abs(getYIQ(currentSRXDSong.cover.colors.light) - getYIQ(currentSRXDSong.cover.colors.dark)) <= 48) {
+			console.log(`colors are too similar: light YIQ (${currentSRXDSong.cover.colors.light}) - ${getYIQ(currentSRXDSong.cover.colors.light)}, dark YIQ (${currentSRXDSong.cover.colors.dark}) - ${getYIQ(currentSRXDSong.cover.colors.dark)}`);
+			currentSRXDSong.cover.colors.light = interpolateColor(currentSRXDSong.cover.colors.light, "#FFFFFF", 10);
+			currentSRXDSong.cover.colors.dark = interpolateColor(currentSRXDSong.cover.colors.dark, "#000000", 10);
+		}
 	}
 
 	postToSRXDEventChannel({
