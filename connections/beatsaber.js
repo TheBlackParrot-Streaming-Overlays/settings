@@ -237,7 +237,7 @@ async function updateBeatSaberMapData() {
 	}
 
 	let art;
-	let swatches;
+	//let swatches;
 	// DataPuller doesn't ever send raw image data, it's always remote
 	if(localStorage.getItem("setting_bs_useRemoteArtURL") === "true" || localStorage.getItem("setting_beatSaberDataMod") === "datapuller") {
 		art = currentBSSong.cover.external.image;
@@ -249,29 +249,88 @@ async function updateBeatSaberMapData() {
 	}
 	if(art !== null) {
 		$("#bsplusImageContainer").attr("src", art);
-		swatches = await Vibrant.from($("#bsplusImageContainer")[0]).getSwatches();
-
+		let swatches = await Vibrant.from($("#bsplusImageContainer")[0]).getSwatches();
 		let colors = {
 			light: [],
 			dark: []
 		};
+		let skip = [];
+
 		const checks = {
-			light: ["LightVibrant", "Vibrant", "LightMuted", "Muted"],
-			dark: ["DarkVibrant", "DarkMuted", "Muted", "Vibrant"]
+			light: {
+				Vibrant: 3,
+				LightVibrant: 2,
+				LightMuted: 1,
+				Muted: 0.5
+			},
+
+			dark: {
+				DarkVibrant: 3,
+				DarkMuted: 2.5,
+				Muted: 0.75,
+				Vibrant: 0.5
+			}
 		};
 
-		for(let shade in checks) {
-			for(let i in checks[shade]) {
-				let check = checks[shade][i];
-				if(check in swatches) {
-					if(swatches[check] !== null) {
-						colors[shade].push(swatches[check].getRgb());
+		for(const shade in checks) {
+			for(const swatchName in checks[shade]) {
+				if(skip.indexOf(swatchName) !== -1) {
+					// we're already using the color, move on
+					continue;
+				}
+
+				let weightFactor = checks[shade][swatchName];
+				const color = swatches[swatchName];
+
+				let weight = Math.max(weightFactor, color.population * weightFactor);
+
+				const hsl = color.getHsl();
+				if(hsl[1] <= 0.25) {
+					// very close to white or black, weight it down heavily
+					if(hsl[2] >= 0.75 || hsl[2] <= 0.15) {
+						weight *= 0.25;
 					}
 				}
+
+				colors[shade].push({
+					swatchName: swatchName,
+					weight: weight,
+					color: color
+				});
+			}
+
+			colors[shade].sort((a, b) => {
+				if(a.weight == b.weight) { return 0; }
+				return (a.weight < b.weight ? 1 : -1);
+			});
+
+			skip.push(colors[shade][0].swatchName);
+		}
+
+		console.log(colors);
+
+		currentBSSong.cover.colors.dark = colors.dark[0].color.getHex();
+		currentBSSong.cover.colors.light = colors.light[0].color.getHex();
+
+		if(getYIQ(currentBSSong.cover.colors.light) <= 96 && getYIQ(currentBSSong.cover.colors.dark) <= 64) {
+			console.log("both colors are pretty dark, force the light one to be brighter");
+			while(getYIQ(currentBSSong.cover.colors.light) <= 64) {
+				console.log("took a brightening step");
+				currentBSSong.cover.colors.light = interpolateColor(currentBSSong.cover.colors.light, "#FFFFFF", 10);
+			}
+		} else if(getYIQ(currentBSSong.cover.colors.light) >= 192 && getYIQ(currentBSSong.cover.colors.dark) >= 160) {
+			console.log("both colors are pretty bright, force the dark one to be darker");
+			while(getYIQ(currentBSSong.cover.colors.dark) >= 192) {
+				console.log("took a darkening step");
+				currentBSSong.cover.colors.dark = interpolateColor(currentBSSong.cover.colors.dark, "#000000", 10);
 			}
 		}
-		currentBSSong.cover.colors.dark = `#${colors.dark[0].map(function(x) { return Math.floor(x).toString(16).padStart(2, "0"); }).join("")}`;
-		currentBSSong.cover.colors.light = `#${colors.light[0].map(function(x) { return Math.floor(x).toString(16).padStart(2, "0"); }).join("")}`;
+
+		while(Math.abs(getYIQ(currentBSSong.cover.colors.light) - getYIQ(currentBSSong.cover.colors.dark)) <= 48) {
+			console.log(`colors are too similar: light YIQ (${currentBSSong.cover.colors.light}) - ${getYIQ(currentBSSong.cover.colors.light)}, dark YIQ (${currentBSSong.cover.colors.dark}) - ${getYIQ(currentBSSong.cover.colors.dark)}`);
+			currentBSSong.cover.colors.light = interpolateColor(currentBSSong.cover.colors.light, "#FFFFFF", 10);
+			currentBSSong.cover.colors.dark = interpolateColor(currentBSSong.cover.colors.dark, "#000000", 10);
+		}
 	}
 
 	const codeType = localStorage.getItem("setting_bs_qrCodeGlyph");
