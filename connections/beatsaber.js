@@ -318,6 +318,10 @@ function updateQRCode() {
 
 function connectBeatSaber() {
 	switch(localStorage.getItem("setting_beatSaberDataMod")) {
+		case "anotherstatussocket":
+			startAnotherStatusSocketWebsocket();
+			break;
+
 		case "bsplus":
 			startBSPlusWebsocket();
 			break;

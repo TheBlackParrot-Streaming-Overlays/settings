@@ -1,6 +1,18 @@
 {
 	"9999999999999": {
 		"updates": {
+			"bs": {
+				"revision": 24,
+				"notes": [
+					[
+						"fixed mapper and artist fields disappearing if gradients are disabled"
+					],
+					[
+						"fixed brightness checks on art-reflected secondary colors applying globally"
+					]
+				]
+			},
+
 			"clock": {
 				"revision": 11,
 				"notes": [
@@ -26,6 +38,9 @@
 					],
 					[
 						"fixed reflected art colors never applying from other overlays"
+					],
+					[
+						"fixed art always showing brighter than intended"
 					]
 				]
 			},
@@ -38,6 +53,9 @@
 					],
 					[
 						"added adjustments to art color fetching that will ensure color contrast isn't too similar between light and dark colors"
+					],
+					[
+						"added support for AnotherStatusSocket as a Beat Saber data endpoint"
 					]
 				]
 			}

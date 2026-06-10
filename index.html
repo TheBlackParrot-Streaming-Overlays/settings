@@ -2184,6 +2184,14 @@
 					<hr/>
 					<div class="setting">
 						<div class="settingCellLabel">
+							<strong>Beat Saber AnotherStatusSocket</strong>
+						</div>
+						<div class="settingCell">
+							<div class="statusCircle grayCircle" id="BSAnotherStatusSocketStatus"></div> <div class="statusMessage grayMessage">inactive</div>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
 							<strong>Beat Saber DataPuller</strong>
 						</div>
 						<div class="settingCell multipleStatusIndicators">
@@ -2794,6 +2802,14 @@
 					<h1>Beat Saber</h1>
 					<div class="setting">
 						<div class="settingCellLabel">
+							<span class="settingInfo">AnotherStatusSocket port</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="anotherstatussocket_port" min="1" max="65536" step="1" value="13339"/>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
 							<span class="settingInfo">Beat Saber Plus port</span>
 						</div>
 						<div class="settingCell">
@@ -2823,6 +2839,7 @@
 						</div>
 						<div class="settingCell">
 							<select id="beatSaberDataMod">
+								<option value="anotherstatussocket">AnotherStatusSocket</option>
 								<option selected value="bsplus">Beat Saber Plus</option>
 								<option value="datapuller">DataPuller</option>
 								<option value="sirastatus">HttpSiraStatus</option>
@@ -11548,6 +11565,7 @@
 	<script defer type="text/javascript" src="connections/obs.js"></script>
 	<script defer type="text/javascript" src="connections/beatsaber.js"></script>
 	<script defer type="text/javascript" src="connections/bsplus.js"></script>
+	<script defer type="text/javascript" src="connections/bs_another.js"></script>
 	<script defer type="text/javascript" src="connections/bs_datapuller.js"></script>
 	<script defer type="text/javascript" src="connections/bs_sirastatus.js"></script>
 	<script defer type="text/javascript" src="connections/streamlabs.js"></script>

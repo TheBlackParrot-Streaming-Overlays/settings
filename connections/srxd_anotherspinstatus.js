@@ -53,7 +53,7 @@ const AnotherSpinStatusMessageHandlers = {
 					dark: localStorage.getItem("setting_bs_artistColor")
 				},
 				internal: {
-					image: `data:image/jpg;base64,${data.CoverArt}`
+					image: `data:image/bmp;base64,${data.CoverArt}`
 				},
 				external: {
 					image: null,
