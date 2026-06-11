@@ -98,8 +98,8 @@ const anotherStatusSocketFunctions = {
 		currentHandColors = currentBSSong.colors;
 		currentBSState.acc = 0;
 		currentBSState.averages = {
-			left: 0,
-			right: 0
+			left: [0, 0, 0],
+			right: [0, 0, 0]
 		};
 
 		await updateBeatSaberMapData();
