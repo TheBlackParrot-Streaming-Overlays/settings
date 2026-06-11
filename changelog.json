@@ -64,7 +64,11 @@
 						"added adjustments to art color fetching that will ensure color contrast isn't too similar between light and dark colors"
 					],
 					[
-						"added support for AnotherStatusSocket as a Beat Saber data endpoint"
+						"added support for AnotherStatusSocket as a Beat Saber data endpoint",
+						[
+							"(this is my own WebSocket mod) https://git.gay/TheBlackParrot/BS_AnotherStatusSocket"
+						],
+						{"anchor": "beatSaberDataMod"}
 					]
 				]
 			}
