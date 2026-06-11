@@ -12,6 +12,9 @@
 					],
 					[
 						"fixed hand scoring averages not resetting on map change"
+					],
+					[
+						"fixed overlay visibility state improperly updating during scene transitions"
 					]
 				]
 			},
