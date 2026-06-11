@@ -4,7 +4,7 @@ var anotherStatusSocketTimeout;
 
 function parseAnotherStatusSocketNoteCut(values) {
 	let handSide = (values[0] === 0 ? "left" : "right");
-	let hand = (handSide === "left" ? leftHandTotal : rightHandTotal);
+	let hand = (values[0] === 0 ? leftHandTotal : rightHandTotal);
 
 	hand[3]++;
 	hand[0] += values[1];

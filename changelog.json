@@ -9,6 +9,9 @@
 					],
 					[
 						"fixed brightness checks on art-reflected secondary colors applying globally"
+					],
+					[
+						"fixed hand scoring averages not resetting on map change"
 					]
 				]
 			},
