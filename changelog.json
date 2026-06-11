@@ -15,6 +15,9 @@
 					],
 					[
 						"fixed overlay visibility state improperly updating during scene transitions"
+					],
+					[
+						"fixed FC acc header disappearing if gradients are disabled"
 					]
 				]
 			},
