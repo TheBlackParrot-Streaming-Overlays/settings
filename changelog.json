@@ -1,4 +1,29 @@
 {
+	"9999999999999": {
+		"updates": {
+			"bs": {
+				"revision": 25,
+				"notes": [
+					[
+						"added the ability to show VNJS changes via a sliding-up text display",
+						[
+							"this is only available through AnotherStatusSocket, it will do nothing on other socket data mods"
+						]
+					]
+				]
+			},
+
+			"settings": {
+				"revision": 104,
+				"notes": [
+					[
+						"backend updates to support the VNJS display"
+					]
+				]
+			}
+		}
+	},
+
 	"1781217459984": {
 		"updates": {
 			"bs": {

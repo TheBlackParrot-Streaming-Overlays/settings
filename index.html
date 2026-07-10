@@ -68,6 +68,7 @@
 					<div class="row" data-tab="bsinfo_pp"><i class="fas fa-ranking-star"></i>Ranked PP Cell</div>
 					<div class="row" data-tab="bsinfo_metadata"><i class="fas fa-compact-disc"></i>Song Metadata Cell</div>
 					<div class="row" data-tab="bsinfo_hands"><i class="fas fa-hands"></i>Swing Averages Cell</div>
+					<div class="row" data-tab="bsinfo_njs"><i class="fas fa-gauge-high"></i>VNJS Display</div>
 					<hr/>
 					<div class="row" data-tab="bsinfo_effects"><i class="fas fa-magic"></i>Effects</div>
 				</div>
@@ -5585,6 +5586,152 @@
 							<strong>NOTE:</strong> Values from DataPuller and HttpSiraStatus may not reflect actual swing average statistics currently. DataPuller occasionally fails to properly track cuts on the correct hands, and chains are untrackable. (bug has been reported)
 							<br/>
 							HttpSiraStatus sometimes reports values as 0 on pre-swing, post-swing, and accuracy, as well as firing events off twice for cuts.
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section" data-content="bsinfo_njs">
+				<div class="part">
+					<h1>VNJS Display</h1>
+					<div class="setting">
+						<div class="settingCell smol">
+							<strong>NOTE:</strong> VNJS display is only available through AnotherStatusSocket. No other data socket mods support sending this data at this time.
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCell">
+							<input id="bs_njsEnableDisplay" type="checkbox"/> <span class="settingInfo">Show current note jump speed value whenever it changes in maps utilizing VNJS events</span>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Width</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="bs_njsWidth" min="0" max="800" step="1" value="300"/><span class="settingCellMeasurement">px</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Horizontal alignment</span>
+						</div>
+						<div class="settingCell">
+							<select id="bs_njsAlignment">
+								<option selected value="left">Left</option>
+								<option value="center">Center</option>
+								<option value="right">Right</option>
+							</select>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Decimal precision</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="bs_njsPrecision" min="0" max="4" step="1" value="1"/><span class="settingCellMeasurement">digits</span>
+						</div>
+					</div>
+				</div>
+				<div class="part">
+					<h1>Label</h1>
+					<div class="setting">
+						<div class="settingCell">
+							<input id="bs_njsLabelColorReflectsArtColor" type="checkbox"/> <span class="settingInfo">Label color reflects album art/cover art color</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCell">
+							<input id="bs_njsLabelColorReflectsArtColorDarker" type="checkbox"/> <span class="settingInfo">Use darker album art/cover art color</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Color</span>
+						</div>
+						<div class="settingCell">
+							<input id="bs_njsLabelColor" type="text" data-coloris value="#cbadff"/>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Font</span>
+						</div>
+						<div class="settingCell">
+							<input id="bs_njsLabelFontFamily" type="text" value="Manrope"/>
+							<input id="bs_njsLabelFontItalic" type="checkbox"/> <span class="settingInfo">Italic</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Font size</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="bs_njsLabelFontSize" min="0" max="96" step="0.25" value="12"/><span class="settingCellMeasurement">pt</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Font weight</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="bs_njsLabelFontWeight" min="0" max="900" step="100" value="900"/>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Additional font weight</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="bs_njsLabelFontAdditionalWeight" min="0" max="20" step="0.1" value="0"/><span class="settingCellMeasurement">px</span>
+						</div>
+					</div>
+				</div>
+				<div class="part">
+					<h1>Value</h1>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Color</span>
+						</div>
+						<div class="settingCell">
+							<input id="bs_njsValueColor" type="text" data-coloris value="#ffffff"/>
+						</div>
+					</div>
+					<hr/>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Font</span>
+						</div>
+						<div class="settingCell">
+							<input id="bs_njsValueFontFamily" type="text" value="Manrope"/>
+							<input id="bs_njsValueFontItalic" type="checkbox"/> <span class="settingInfo">Italic</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Font size</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="bs_njsValueFontSize" min="0" max="96" step="0.25" value="12"/><span class="settingCellMeasurement">pt</span>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Font weight</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="bs_njsValueFontWeight" min="0" max="900" step="100" value="900"/>
+						</div>
+					</div>
+					<div class="setting">
+						<div class="settingCellLabel">
+							<span class="settingInfo">Additional font weight</span>
+						</div>
+						<div class="settingCell">
+							<input type="number" id="bs_njsValueFontAdditionalWeight" min="0" max="20" step="0.1" value="0"/><span class="settingCellMeasurement">px</span>
 						</div>
 					</div>
 				</div>

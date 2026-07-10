@@ -176,6 +176,13 @@ const anotherStatusSocketFunctions = {
 			type: "state",
 			data: currentBSState
 		});
+	},
+
+	njs: function(value) {
+		postToBSEventChannel({
+			type: "njs",
+			data: value
+		});
 	}
 }
 

@@ -203,7 +203,9 @@ const nonPublicSettings = [
 	"mus_keepRetryingForArt",
 	"spotify_overrideScannable",
 	"spotify_qrCodeGlyph",
-	"spotify_qrCodeECLevel"
+	"spotify_qrCodeECLevel",
+	"bs_njsEnableDisplay",
+	"bs_njsPrecision"
 ];
 
 const defaultConfig = {
@@ -1569,7 +1571,25 @@ const defaultConfig = {
 	"clock_headerGradientColor": "#ffffff",
 	"clock_headerGradientAngle": "170",
 	"clock_slideAnimationIsVertical": "false",
-	"clock_slideAnimationAmount": "30"
+	"clock_slideAnimationAmount": "30",
+	"bs_njsEnableDisplay": "false",
+	"bs_njsWidth": "200",
+	"bs_njsAlignment": "left",
+	"bs_njsPrecision": "1",
+	"bs_njsLabelColorReflectsArtColor": "false",
+	"bs_njsLabelColorReflectsArtColorDarker": "false",
+	"bs_njsLabelColor": "#cbadff",
+	"bs_njsLabelFontFamily": "Manrope",
+	"bs_njsLabelFontItalic": "false",
+	"bs_njsLabelFontSize": "12",
+	"bs_njsLabelFontWeight": "900",
+	"bs_njsLabelFontAdditionalWeight": "0",
+	"bs_njsValueColor": "#ffffff",
+	"bs_njsValueFontFamily": "Manrope",
+	"bs_njsValueFontItalic": "false",
+	"bs_njsValueFontSize": "12",
+	"bs_njsValueFontWeight": "900",
+	"bs_njsValueFontAdditionalWeight": "0"
 };
 // i typed out the bigNoNoWords so you don't have to, i'm sorry :(
 // it's gotta know what to remove
