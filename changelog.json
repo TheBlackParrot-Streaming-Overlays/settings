@@ -9,6 +9,14 @@
 						[
 							"this is only available through AnotherStatusSocket, it will do nothing on other socket data mods"
 						]
+					],
+					[
+						"added current AP display for AccSaber ranked maps",
+						{"anchor": "bs_ppDisplayAP"}
+					],
+					[
+						"added complexity/star rating display for AccSaber ranked maps",
+						{"anchor": "bs_miscInfoShowAccSaberComplexity"}
 					]
 				]
 			},

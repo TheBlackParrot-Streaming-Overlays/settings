@@ -205,7 +205,9 @@ const nonPublicSettings = [
 	"spotify_qrCodeGlyph",
 	"spotify_qrCodeECLevel",
 	"bs_njsEnableDisplay",
-	"bs_njsPrecision"
+	"bs_njsPrecision",
+	"bs_ppDisplayAP",
+	"bs_miscInfoShowAccSaberComplexity"
 ];
 
 const defaultConfig = {
@@ -1589,7 +1591,9 @@ const defaultConfig = {
 	"bs_njsValueFontItalic": "false",
 	"bs_njsValueFontSize": "12",
 	"bs_njsValueFontWeight": "900",
-	"bs_njsValueFontAdditionalWeight": "0"
+	"bs_njsValueFontAdditionalWeight": "0",
+	"bs_ppDisplayAP": "true",
+	"bs_miscInfoShowAccSaberComplexity": "false"
 };
 // i typed out the bigNoNoWords so you don't have to, i'm sorry :(
 // it's gotta know what to remove
