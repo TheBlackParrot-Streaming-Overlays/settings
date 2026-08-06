@@ -21,6 +21,18 @@
 				]
 			},
 
+			"chat": {
+				"revision": 90,
+				"notes": [
+					[
+						"fixed Beat Saber map information cells wrapping oddly depending on specific variables unintentionally using invalid values for CSS calc() functions",
+						[
+							"what a mouthful"
+						]
+					]
+				]
+			},
+
 			"settings": {
 				"revision": 104,
 				"notes": [
